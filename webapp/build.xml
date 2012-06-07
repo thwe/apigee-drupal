@@ -323,11 +323,9 @@
 	</target>
 	<target name="dc-local-build">
 		<drush command="updatedb" assume="yes">
-			<option>nocolor</option>
 			<param>@dc-local</param>
 		</drush>
 		<drush command="cc" assume="yes">
-			<option>nocolor</option>
 			<param>@dc-local</param>
 			<param>all</param>
 		</drush>
@@ -335,22 +333,19 @@
 	<target name="dc-dev-build">
 		<exec command="rsync -avz webapp /var/www/devconnect-dev.apigee.com" />
 		<drush command="updatedb" assume="yes">
-			<option>nocolor</option>
+			<option>no-color</option>
 			<param>@dc-dev</param>
 		</drush>
 		<drush command="cc" assume="yes">
-			<option>nocolor</option>
 			<param>@dc-dev</param>
 			<param>all</param>
 		</drush>
 	</target>
 	<target name="dc-dit-build">
 		<drush command="updatedb" assume="yes">
-			<option>nocolor</option>
 			<param>@dc-dit</param>
 		</drush>
 		<drush command="cc" assume="yes">
-			<option>nocolor</option>
 			<param>@dc-dit</param>
 			<param>all</param>
 		</drush>
