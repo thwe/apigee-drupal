@@ -292,6 +292,10 @@
 		<gitclonetask 
 			repository="git@github.com:apigee/drupal-settings" 
 			targetPath="../drupal-settings" />
-		<copy file="../drupal-settings/sites/*" tofile="sites" overwrite="true" />
+		<copy todir="sites" >
+		  <fileset dir="../drupal-settings/sites">
+		    <include name="*" />
+		  </fileset>
+		</copy>
 	</target>
 </project>
