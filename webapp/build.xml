@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <project name="apigee-drupal-project" default="apigee-drupal" description="Apigee Drupal Build">
+	<target name="invalid">
+	        <fail>This build has failed. Please reconsider your life choices.</fail>
+	</target>
+	
 	<target name="apigee-drupal">
+		<echo>-------------------------------------------------</echo>
+		<echo> +++++ Running Phing  Drush build </echo>
+		<echo>-------------------------------------------------</echo>
 		<adhoc-task name="drush"><![CDATA[
 
 			require_once "phing/Task.php";
@@ -275,21 +282,16 @@
 			
 			]]></adhoc-task>
 	    <drush command="make" assume="yes">
-			<option name="prepare-install"></option>
-			<option name="working-copy"></option>
-			<option name="no-gitinfofile"></option>
-			<option name="no-cache"></option>
-			<option name="force-complete"></option>
+			<option name="prepare-install" />
+			<option name="working-copy" />
+			<option name="no-gitinfofile" />
+			<option name="no-cache" />
+			<option name="force-complete" />
 			<param>apigee.make</param>
 		</drush>
-		<loadfile property="en.error" file="error"/>
-		<if>
-			<contains string="${en.error}" substring="warning"/>
-			<then>
-				<property name="en.fail" value="Build FAILED!!!"/>
-			</then>
-		</if>
-		<fail if="en.fail" message="${en.fail}"/>
-		
+		<gitclonetask 
+			repository="git@github.com:apigee/drupal-settings" 
+			targetPath="../drupal-settings" />
+		<copy file="../drupal-settings/sites/*" tofile="sites" overwrite="true" />
 	</target>
 </project>
