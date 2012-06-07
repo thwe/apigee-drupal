@@ -333,6 +333,7 @@
 		</drush>
 	</target>
 	<target name="dc-dev-build">
+		<exec command="rsync -avz webapp /var/www/devconnect-dev.apigee.com" />
 		<drush command="updatedb" assume="yes">
 			<option>nocolor</option>
 			<param>@dc-dev</param>
