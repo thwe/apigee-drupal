@@ -289,9 +289,8 @@
 			<option name="force-complete" />
 			<param>apigee.make</param>
 		</drush>
-		<gitclonetask 
-			repository="git@github.com:apigee/drupal-settings" 
-			targetPath="../drupal-settings" />
+		<delete dir="../drupal-settings" quiet=true />
+		<exec command="git clone git@github.com:apigee/drupal-settings.git ../drupal-settings"  />
 		<copy todir="sites" >
 		  <fileset dir="../drupal-settings/sites">
 		    <include name="*" />
