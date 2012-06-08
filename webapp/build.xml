@@ -278,6 +278,9 @@
 	</target>
 	
 	<target name="apigee-drupal">
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
 		<echo>-------------------------------------------------</echo>
 		<echo> +++++ Running Phing  Drush build </echo>
 		<echo>-------------------------------------------------</echo>
@@ -322,6 +325,9 @@
 		</if>
 	</target>
 	<target name="dc-local-build">
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
 		<drush command="updatedb" assume="yes">
 			<param>@dc-local</param>
 		</drush>
@@ -331,6 +337,9 @@
 		</drush>
 	</target>
 	<target name="dc-dev-build">
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
 		<exec command="rsync -avz webapp /var/www/devconnect-dev.apigee.com" />
 		<drush command="updatedb" assume="yes">
 			<param>@dc-dev</param>
@@ -341,6 +350,9 @@
 		</drush>
 	</target>
 	<target name="dc-dit-build">
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
 		<drush command="updatedb" assume="yes">
 			<param>@dc-dit</param>
 		</drush>
