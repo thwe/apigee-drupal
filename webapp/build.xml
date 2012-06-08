@@ -282,9 +282,8 @@
 			<param>drush</param>
 		</drush>
 		<echo>-------------------------------------------------</echo>
-		<echo> +++++ Running Phing  Drush build </echo>
+		<echo> +++++ Running Phing/Drush build </echo>
 		<echo>-------------------------------------------------</echo>
-
 		<delete dir="../tmp" quiet="true" includeemptydirs="true" />
 		<available file="sites/default/files/*" property="sites_default_files" value="Yes" />
 		<if>
@@ -341,8 +340,8 @@
 			<param>drush</param>
 		</drush>
 		<copy todir="/var/www/devconnect-dev.apigee.com/webapp">
-			<fileset dir="webapp">
-			    <include name="*/*/*/*/*/*/*" />
+			<fileset dir="../webapp">
+			    <include name="**/**" />
 			</fileset>
 		</copy>
 		<exec command="drush @dc-dev updatedb -y" />
