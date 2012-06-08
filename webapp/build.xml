@@ -341,24 +341,28 @@
 			<param>drush</param>
 		</drush>
 		<exec command="rsync -avz webapp /var/www/devconnect-dev.apigee.com" />
-		<drush command="updatedb" assume="yes">
-			<param>@dc-dev</param>
-		</drush>
-		<drush command="cc" assume="yes">
-			<param>@dc-dev</param>
-			<param>all</param>
-		</drush>
+		<exec command="drush @dc-dev updatedb -y" />
+		<exec command="drush @dc-dev cc all -y" />
 	</target>
 	<target name="dc-dit-build">
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<drush command="updatedb" assume="yes">
-			<param>@dc-dit</param>
+		<exec command="drush @dc-dit updatedb -y" />
+		<exec command="drush @dc-dit cc all -y" />
+	</target>
+	<target name="dc-stage-build">
+		<drush command="cc">
+			<param>drush</param>
 		</drush>
-		<drush command="cc" assume="yes">
-			<param>@dc-dit</param>
-			<param>all</param>
+		<exec command="drush @dc-stage updatedb -y" />
+		<exec command="drush @dc-stage cc all -y" />
+	</target>
+	<target name="dc-prod-build">
+		<drush command="cc">
+			<param>drush</param>
 		</drush>
+		<exec command="drush @dc-stage updatedb -y" />
+		<exec command="drush @dc-stage cc all -y" />
 	</target>
 </project>
