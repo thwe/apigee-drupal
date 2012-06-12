@@ -114,7 +114,8 @@ projects[strongarm][subdir] = 'contrib'
 projects[styles][subdir] = "contrib"
 projects[taxonomy_access][subdir] = "contrib"
 projects[textformatter][subdir] = "contrib"
-projects[toc_filter][subdir] = "contrib"
+projects[tableofcontents][subdir] = "contrib"
+;projects[tableofcontents][patch][] = "http://drupal.org/files/issues/...patch"
 projects[token][subdir] = "contrib"
 projects[twitter][subdir] = "contrib"
 projects[util][subdir] = "contrib"
@@ -195,6 +196,13 @@ projects[apigee_search][type] = module
 projects[apigee_search][subdir] = custom
 projects[apigee_search][download][type] = 'git'
 projects[apigee_search][download][url] = "git@github.com:apigee/apigee_search.git"
+projects[apigee_search][download][branch] = "7.x-1.x"
+
+; apigee table of content module
+projects[apigee_search][type] = module
+projects[apigee_search][subdir] = custom
+projects[apigee_search][download][type] = 'git'
+projects[apigee_search][download][url] = "git@github.com:apigee/apigee_toc.git"
 projects[apigee_search][download][branch] = "7.x-1.x"
 
 projects[less][type] = module
