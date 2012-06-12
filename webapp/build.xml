@@ -322,16 +322,26 @@
 				</copy>
 			</then>
 		</if>
+		<copy todir="${user.home}/.drush" overwrite="true" >
+			<fileset dir="../drupal-settings/drush">
+				<include name="*.aliases.drushrc.php" />
+			</fileset>
+		</copy>
 	</target>
 	<target name="dc-local-build">
+<<<<<<< Updated upstream
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
 		<drush command="updatedb" assume="yes">
 			<param>@dc-local</param>
+=======
+		<drush command="@dc-local" assume="yes">
+			<param>updatedb</param>
+>>>>>>> Stashed changes
 		</drush>
-		<drush command="cc" assume="yes">
-			<param>@dc-local</param>
+		<drush command="@dc-local" assume="yes">
+			<param>cc</param>
 			<param>all</param>
 		</drush>
 	</target>
@@ -380,5 +390,11 @@
 		<exec command="drush @docs-dev updatedb -y" />
 		<exec command="drush @docs-dev cc all -y" />
 	</target>
-	
+	<target name='copy-drush'>
+		<copy todir="${user.home}/.drush" overwrite="true" >
+			<fileset dir="../drupal-settings/drush">
+				<include name="*.aliases.drushrc.php" />
+			</fileset>
+		</copy>
+	</target>
 </project>
