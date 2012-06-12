@@ -329,16 +329,13 @@
 		</copy>
 	</target>
 	<target name="dc-local-build">
-<<<<<<< Updated upstream
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
 		<drush command="updatedb" assume="yes">
 			<param>@dc-local</param>
-=======
 		<drush command="@dc-local" assume="yes">
 			<param>updatedb</param>
->>>>>>> Stashed changes
 		</drush>
 		<drush command="@dc-local" assume="yes">
 			<param>cc</param>
