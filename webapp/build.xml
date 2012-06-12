@@ -368,4 +368,17 @@
 		<exec command="drush @dc-stage updatedb -y" />
 		<exec command="drush @dc-stage cc all -y" />
 	</target>
+	<target name="docs-dev-build">
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
+		<copy todir="/var/www/v4docs-dev.apigee.com/webapp">
+			<fileset dir="../webapp">
+			    <include name="**/**" />
+			</fileset>
+		</copy>
+		<exec command="drush @docs-dev updatedb -y" />
+		<exec command="drush @docs-dev cc all -y" />
+	</target>
+	
 </project>
