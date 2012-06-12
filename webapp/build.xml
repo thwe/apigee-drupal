@@ -332,15 +332,8 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<drush command="updatedb" assume="yes">
-			<param>@dc-local</param>
-		<drush command="@dc-local" assume="yes">
-			<param>updatedb</param>
-		</drush>
-		<drush command="@dc-local" assume="yes">
-			<param>cc</param>
-			<param>all</param>
-		</drush>
+		<exec command="drush @dc-local updatedb -y" />
+		<exec command="drush @dc-local cc all -y" />
 	</target>
 	<target name="dc-dev-build">
 		<drush command="cc">
