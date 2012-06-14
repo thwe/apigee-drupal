@@ -123,7 +123,7 @@ projects[uuid][subdir] = "contrib"
 projects[variable][subdir] = "contrib"
 projects[views][subdir] = "contrib"
 projects[views_accordion][subdir] = "contrib"
-projects[views_bulk_operations][supdir] = "contrib"
+projects[views_bulk_operations][subdir] = "contrib"
 projects[views_slideshow][subdir] = "contrib"
 projects[webform][subdir] = "contrib"
 projects[weight][subdir] = "contrib"
@@ -261,11 +261,6 @@ projects[gi][subdir]= custom
 projects[gi][download][type] = 'git'
 projects[gi][download][url] = 'http://git.drupal.org/sandbox/stovak/1470710.git'
 projects[gi][download][branch] = "7.x-1.x"
-
-projects[wadl_docs][type] = module
-projects[wadl_docs][subdir] = custom
-projects[wadl_docs][download][type] = 'git'
-projects[wadl_docs][download][url] = 'git@github.com:ossobuffo/wadl_docs.git'
 
 ; Libraries
 ; ------------------------------------------------------------------
