@@ -178,6 +178,12 @@ projects[apigee][download][type] = 'git'
 projects[apigee][download][url] = "git@github.com:apigee/apigee_drupal_theme.git"
 projects[apigee][download][branch] = "7.x-1.x"
 
+; apigee base theme
+projects[apigee_base][type] = "theme"
+projects[apigee_base][download][type] = 'git'
+projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
+projects[apigee_base][download][branch] = "7.x-1.x"
+
 ; development seed's admin theme
 projects[tao][type]=theme
 projects[rubik][type]=theme
