@@ -387,4 +387,16 @@
 			</fileset>
 		</copy>
 	</target>
+	<target name="mktg-dev-build">
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
+		<copy todir="/var/www/mktg-dev.apigee.com/webapp">
+			<fileset dir="../webapp">
+			    <include name="**/**" />
+			</fileset>
+		</copy>
+		<!-- exec command="drush @mktg-dev updatedb -y" / -->
+		<!-- exec command="drush @mktg-dev cc all -y" / -->
+	</target>
 </project>
