@@ -383,7 +383,7 @@
 			    <include name="**/**" />
 			</fileset>
 		</copy>
-		<!-- exec command="drush @mktg-dev updatedb -y" / -->
-		<!-- exec command="drush @mktg-dev cc all -y" / -->
+		<exec command="drush @mktg-dev updatedb -y" />
+		<exec command="drush @mktg-dev cc all -y" />
 	</target>
 </project>
