@@ -284,19 +284,6 @@
 		<echo>-------------------------------------------------</echo>
 		<echo> +++++ Running Phing/Drush build </echo>
 		<echo>-------------------------------------------------</echo>
-		<delete dir="../tmp" quiet="true" includeemptydirs="true" />
-		<available file="sites/default/files/*" property="sites_default_files" value="Yes" />
-		<if>
-			<equals arg1="${sites_default_files}" arg2="Yes" />
-			<then>
-				<mkdir dir="../tmp/files" />
-				<copy todir="../tmp/files">
-					<fileset dir="sites">
-					    <include name="*/*/*" />
-					</fileset>
-				</copy>
-			</then>
-		</if>
 	    <drush command="make" assume="yes">
 			<option name="prepare-install" />
 			<option name="working-copy" />
