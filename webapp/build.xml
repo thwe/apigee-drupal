@@ -372,7 +372,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<copy todir="/var/www/v4docs-dev.apigee.com/webapp">
+		<copy todir="/var/www/v4docs-dev.apigee.com/docs">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
 			</fileset>
@@ -391,7 +391,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<copy todir="/var/www/mktg-dev.apigee.com/webapp">
+		<copy todir="/var/www/mktg-dev.apigee.com/about">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
 			</fileset>
