@@ -18,7 +18,7 @@ sudo pear upgrade --force pear
 sudo pear upgrade-all
 sudo pear install drush/drush
 sudo pear install pear.phpqatools.org/phpqatools pear.netpirates.net/phpDox
-sudo pear install phing/phing
+sudo pear install --alldeps phing/phing
 sudo pear install -a ezc/eZComponents
 sudo pear install -f phpunit/DbUnit-1.0.3
 sudo pear install -f phpunit/File_Iterator-1.2.6
