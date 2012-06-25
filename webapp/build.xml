@@ -284,19 +284,6 @@
 		<echo>-------------------------------------------------</echo>
 		<echo> +++++ Running Phing/Drush build </echo>
 		<echo>-------------------------------------------------</echo>
-		<delete dir="../tmp" quiet="true" includeemptydirs="true" />
-		<available file="sites/default/files/*" property="sites_default_files" value="Yes" />
-		<if>
-			<equals arg1="${sites_default_files}" arg2="Yes" />
-			<then>
-				<mkdir dir="../tmp/files" />
-				<copy todir="../tmp/files">
-					<fileset dir="sites">
-					    <include name="*/*/*" />
-					</fileset>
-				</copy>
-			</then>
-		</if>
 	    <drush command="make" assume="yes">
 			<option name="prepare-install" />
 			<option name="working-copy" />
@@ -309,7 +296,7 @@
 		<exec command="git clone git@github.com:apigee/drupal-settings.git ../drupal-settings"  />
 		<copy todir="sites" >
 		  <fileset dir="../drupal-settings/sites">
-		    <include name="*/*/*" />
+		    <include name="**/**" />
 		  </fileset>
 		</copy>
 		<if>
@@ -317,7 +304,7 @@
 			<then>
 				<copy todir="sites/default/files">
 					<fileset dir="../tmp/files">
-					    <include name="*/*/*" />
+					    <include name="**/**" />
 					</fileset>
 				</copy>
 			</then>
@@ -372,7 +359,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<copy todir="/var/www/v4docs-dev.apigee.com/webapp">
+		<copy todir="/var/www/v4docs-dev.apigee.com/docs">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
 			</fileset>
@@ -386,5 +373,17 @@
 				<include name="*.aliases.drushrc.php" />
 			</fileset>
 		</copy>
+	</target>
+	<target name="mktg-dev-build">
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
+		<copy todir="/var/www/mktg-dev.apigee.com/about">
+			<fileset dir="../webapp">
+			    <include name="**/**" />
+			</fileset>
+		</copy>
+		<exec command="drush @mktg-dev updatedb -y" />
+		<exec command="drush @mktg-dev cc all -y" />
 	</target>
 </project>

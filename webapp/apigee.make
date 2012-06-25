@@ -205,11 +205,11 @@ projects[apigee_search][download][url] = "git@github.com:apigee/apigee_search.gi
 projects[apigee_search][download][branch] = "7.x-1.x"
 
 ; apigee table of content module
-projects[apigee_search][type] = module
-projects[apigee_search][subdir] = custom
-projects[apigee_search][download][type] = 'git'
-projects[apigee_search][download][url] = "git@github.com:apigee/apigee_toc.git"
-projects[apigee_search][download][branch] = "7.x-1.x"
+projects[apigee_toc][type] = module
+projects[apigee_toc][subdir] = custom
+projects[apigee_toc][download][type] = 'git'
+projects[apigee_toc][download][url] = "git@github.com:apigee/apigee_toc.git"
+projects[apigee_toc][download][branch] = "7.x-1.x"
 
 projects[less][type] = module
 projects[less][subdir] = custom
