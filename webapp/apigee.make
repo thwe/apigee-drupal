@@ -182,7 +182,11 @@ projects[apigee][download][branch] = "7.x-1.x"
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
 projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
-projects[apigee_base][download][branch] = "7.x-1.x"
+
+; apigee devconnect theme
+projects[apigee_devconnect][type] = "theme"
+projects[apigee_devconnect][download][type] = 'git'
+projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
 
 ; development seed's admin theme
 projects[tao][type]=theme
