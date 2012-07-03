@@ -203,6 +203,13 @@ projects[apigee_bootstrap][download][type] = 'git'
 projects[apigee_bootstrap][download][url] = "git@github.com:apigee/apigee_drupal_bootstrap.git"
 projects[apigee_bootstrap][download][branch] = "7.x-1.x"
 
+; apigee breadcrumbs module
+projects[apigee_breadcrumbs][type] = module
+projects[apigee_breadcrumbs][subdir] = custom
+projects[apigee_breadcrumbs][download][type] = 'git'
+projects[apigee_breadcrumbs][download][url] = "git@github.com:apigee/apigee_breadcrumbs.git"
+projects[apigee_breadcrumbs][download][branch] = "7.x-1.x"
+
 ; apigee search module
 projects[apigee_search][type] = module
 projects[apigee_search][subdir] = custom
