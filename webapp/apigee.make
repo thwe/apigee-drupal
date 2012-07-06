@@ -7,7 +7,8 @@ projects[drupal][download][type] = "git"
 projects[drupal][download][tag] = "7.14"
 projects[drupal][download][url] = "http://git.drupal.org/project/drupal.git"
 
-;Contrib projects 
+;Contrib projects
+projects[admin_menu][subdir] = "contrib"
 projects[apachesolr][subdir] = "contrib"
 projects[apachesolr_autocomplete][subdir] = "contrib"
 projects[backup_migrate][subdir] = "contrib"
@@ -44,6 +45,11 @@ projects[wysiwyg][subdir] = "contrib"
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
 projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
+
+; apigee marketing theme
+projects[apigee_mktg][type] = "theme"
+projects[apigee_mktg][download][type] = 'git'
+projects[apigee_mktg][download][url] = "git@github.com:apigee/apigee_drupal_mktg_theme"
 
 ; development seed's admin theme
 projects[tao][type]=theme
