@@ -39,6 +39,7 @@ projects[token][subdir] = "contrib"
 projects[views][subdir] = "contrib"
 projects[views_slideshow][subdir] = "contrib"
 projects[webform][subdir] = "contrib"
+projects[workbench][subdir] = "contrib"
 projects[wysiwyg][subdir] = "contrib"
 
 ; apigee base theme
