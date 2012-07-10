@@ -43,6 +43,7 @@ projects[entityreference][subdir] = "contrib"
 projects[entity][subdir] = "contrib"
 projects[facetapi][subdir] = "contrib"
 projects[faq][subdir] = 'contrib'
+projects[fape][subdir] = "contrib"
 projects[features][subdir] = 'contrib'
 projects[feeds][subdir] = 'contrib'
 projects[field_group][subdir] = 'contrib'
@@ -60,6 +61,8 @@ projects[highcharts][subdir] = "contrib"
 projects[http_client][subdir] = "contrib"
 projects[imagemagick][subdir] = 'contrib'
 projects[imce][subdir] = 'contrib'
+projects[imce_tools][subdir] = 'contrib'
+projects[imce_mkdir][subdir] = 'contrib'
 projects[imce_wysiwyg][subdir] = 'contrib'
 projects[itoggle][subdir] = 'contrib'
 projects[jcarousel][subdir] = 'contrib'
@@ -116,9 +119,8 @@ projects[strongarm][subdir] = 'contrib'
 projects[styles][subdir] = "contrib"
 projects[taxonomy_access][subdir] = "contrib"
 projects[textformatter][subdir] = "contrib"
-projects[tableofcontents][subdir] = "contrib"
-projects[tableofcontents][patch][] = "http://drupal.org/files/tableofcontents-format-object-_tableofcontents_replace_toc.patch"
 projects[token][subdir] = "contrib"
+projects[toc_filter][subdir] = "contrib"
 projects[twitter][subdir] = "contrib"
 projects[util][subdir] = "contrib"
 projects[uuid][subdir] = "contrib"
@@ -203,6 +205,13 @@ projects[apigee_bootstrap][subdir] = custom
 projects[apigee_bootstrap][download][type] = 'git'
 projects[apigee_bootstrap][download][url] = "git@github.com:apigee/apigee_drupal_bootstrap.git"
 projects[apigee_bootstrap][download][branch] = "7.x-1.x"
+
+; apigee breadcrumbs module
+projects[apigee_breadcrumbs][type] = module
+projects[apigee_breadcrumbs][subdir] = custom
+projects[apigee_breadcrumbs][download][type] = 'git'
+projects[apigee_breadcrumbs][download][url] = "git@github.com:apigee/apigee_breadcrumbs.git"
+projects[apigee_breadcrumbs][download][branch] = "7.x-1.x"
 
 ; apigee search module
 projects[apigee_search][type] = module

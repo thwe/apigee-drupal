@@ -326,7 +326,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<copy todir="/var/www/devconnect-dev.apigee.com/webapp">
+		<copy todir="/disk2/www/devconnect-dev.apigee.com/webapp">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
 			</fileset>
@@ -359,7 +359,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<copy todir="/var/www/v4docs-dev.apigee.com/docs">
+		<copy todir="/disk2/www/v4docs-dev.apigee.com/docs">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
 			</fileset>
@@ -378,7 +378,19 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<copy todir="/var/www/mktg-dev.apigee.com/about">
+		<copy todir="/disk2/www/mktg-dev.apigee.com/about">
+			<fileset dir="../webapp">
+			    <include name="**/**" />
+			</fileset>
+		</copy>
+		<exec command="drush @mktg-dev updatedb -y" />
+		<exec command="drush @mktg-dev cc all -y" />
+	</target>
+	<target name="blog-dev-build">
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
+		<copy todir="/disk2/www/blog-dev.apigee.com">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
 			</fileset>
