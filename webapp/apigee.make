@@ -62,6 +62,7 @@ projects[imagemagick][subdir] = 'contrib'
 projects[imce][subdir] = 'contrib'
 projects[imce_wysiwyg][subdir] = 'contrib'
 projects[itoggle][subdir] = 'contrib'
+projects[jcarousel][subdir] = 'contrib'
 projects[jquerymobile][subdir] = 'contrib'
 projects[jquery_colorpicker][subdir] = 'contrib'
 projects[jquery_update][subdir] = 'contrib'
@@ -269,7 +270,7 @@ projects[gi][download][branch] = "7.x-1.x"
 
 ; Libraries
 ; ------------------------------------------------------------------
-; unfortunately, we can't link directly to a /download/latest 
+; unfortunately, we can't link directly to a /download/latest
 ; for some and the URL's will need to be updated
 ; by hand when security updates are posted
 
