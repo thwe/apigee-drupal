@@ -13,6 +13,9 @@ sudo pear channel-update pear.symfony-project.com
 sudo pear channel-discover saucelabs.github.com/pear
 sudo pear channel-update saucelabs.github.com/pear
 
+sudo pear install -f pear/Services_Amazon_S3-0.3.5
+sudo pear install -f pear/VersionControl_Git-0.4.4
+
 sudo pear upgrade --force Console_Getopt
 sudo pear upgrade --force pear
 sudo pear upgrade-all
