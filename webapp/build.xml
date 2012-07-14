@@ -28,7 +28,6 @@
 		</if>
 		
 	</target>
-	
 	<target name="apigee-drupal">
 		<echo>-------------------------------------------------</echo>
 		<echo> +++++ Running Phing/Drush build </echo>
@@ -47,26 +46,16 @@
 			<option name="force-complete" />
 			<param>apigee.make</param>
 		</drush>
-		<copy todir="sites" >
-		  <fileset dir="../drupal-settings/sites">
-		    <include name="**/**" />
-		  </fileset>
-		</copy>
 		<if>
-			<equals arg1="${sites_default_files}" arg2="Yes" />
+			<equals arg1="${build.type}" arg2="internal" />
 			<then>
-				<copy todir="sites/default/files">
-					<fileset dir="../tmp/files">
-					    <include name="**/**" />
-					</fileset>
+				<copy todir="sites" >
+				  <fileset dir="../drupal-settings/sites">
+				    <include name="**/**" />
+				  </fileset>
 				</copy>
 			</then>
 		</if>
-		<copy todir="${user.home}/.drush" overwrite="true" >
-			<fileset dir="../drupal-settings/drush">
-				<include name="*.aliases.drushrc.php" />
-			</fileset>
-		</copy>
 	</target>
 	<target name="dc-local-build">
 		<drush command="cc">
