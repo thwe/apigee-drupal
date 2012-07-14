@@ -53,6 +53,7 @@ projects[gist_filter][subdir] = "contrib"
 projects[git_deploy][subdir] = "contrib"
 projects[gmap][subdir] = "contrib"
 projects[gmap][version] = "1.x-dev"
+projects[github_connect][subdir] = 'contrib'
 projects[google_analytics][subdir] = 'contrib'
 projects[google_analytics_reports][subdir] = 'contrib'
 projects[gravatar][subdir] = "contrib"

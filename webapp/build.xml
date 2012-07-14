@@ -68,6 +68,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
+		<move file="/disk2/www/devconnect-dev.apigee.com/webapp" todir="/tmp/build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<copy todir="/disk2/www/devconnect-dev.apigee.com/webapp">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
@@ -77,6 +78,16 @@
 		<exec command="drush @dc-dev cc all -y" />
 	</target>
 	<target name="dc-dit-build">
+		<tar destination="build-${BUILD_ID}.tbz" 
+			basedir="/disk2/www/devconnect-dev.apigee.com/webapp" 
+			compression="bzip2"
+			includeemptydirs="true"
+			/>
+		<scp username="webupload"
+			privkeyfile="/var/lib/jenkins/.ssh/id_rsa_webupload"
+			host="ddm00apigee"
+			todir="/tmp"
+			file="build-${BUILD_ID}.tbz" />
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
