@@ -126,6 +126,8 @@
 		<exec command="drush @docs-dev updatedb -y" />
 		<exec command="drush @docs-dev cc all -y" />
 		<exec command="sudo chown -R apache.apache /disk2/www/v4docs-dev.apigee.com/docs" />
+		<symlink target="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit/files" 
+			link="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" />
 	</target>
 	<target name='copy-drush'>
 		<copy todir="${user.home}/.drush" overwrite="true" >
