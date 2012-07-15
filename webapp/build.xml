@@ -68,6 +68,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
+		<exec command="sudo chown -R jenkins.jenkins /disk2/www/devconnect-dev.apigee.com/webapp" />
 		<move file="/disk2/www/devconnect-dev.apigee.com/webapp" todir="/tmp/build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<copy todir="/disk2/www/devconnect-dev.apigee.com/webapp">
 			<fileset dir="../webapp">
@@ -109,6 +110,7 @@
 		<exec command="drush @dc-stage cc all -y" />
 	</target>
 	<target name="docs-dev-build">
+		<exec command="sudo chown -R jenkins.jenkins /disk2/www/v4docs-dev.apigee.com/docs" />
 		<move file="/disk2/www/v4docs-dev.apigee.com/docs" 
 			todir="/tmp/build-scraps-${BUILD_ID}" 
 			includeemptydirs="true" />
