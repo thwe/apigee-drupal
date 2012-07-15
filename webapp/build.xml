@@ -109,6 +109,7 @@
 		<exec command="drush @dc-stage cc all -y" />
 	</target>
 	<target name="docs-dev-build">
+		<move file="/disk2/www/v4docs-dev.apigee.com/webapp" todir="/tmp/build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
