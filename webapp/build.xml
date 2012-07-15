@@ -77,6 +77,7 @@
 		</copy>
 		<exec command="drush @dc-dev updatedb -y" />
 		<exec command="drush @dc-dev cc all -y" />
+		<exec command="sudo chown -R apache.apache /disk2/www/devconnect-dev.apigee.com/webapp" />
 	</target>
 	<target name="dc-dit-build">
 		<tar destination="build-${BUILD_ID}.tbz" 
@@ -124,6 +125,7 @@
 		</copy>
 		<exec command="drush @docs-dev updatedb -y" />
 		<exec command="drush @docs-dev cc all -y" />
+		<exec command="sudo chown -R apache.apache /disk2/www/v4docs-dev.apigee.com/docs" />
 	</target>
 	<target name='copy-drush'>
 		<copy todir="${user.home}/.drush" overwrite="true" >
