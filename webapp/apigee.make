@@ -37,6 +37,7 @@ projects[link_node][subdir] = "contrib"
 projects[node_export][subdir] = 'contrib'
 projects[pathauto][subdir] = "contrib"
 projects[rules][subdir] = "contrib"
+projects[smart_trim][subdir] = "contrib"
 projects[token][subdir] = "contrib"
 projects[views][subdir] = "contrib"
 projects[views_infinite_scroll][subdir] = 'contrib'
