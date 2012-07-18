@@ -57,8 +57,11 @@ The Apigee Drupal team's goal is to verify a Drupal point release within 15 days
 1.  From the command line, `cd` to the webapp folder
  
 1.  Phing
+
 	In the "webapp" folder there's a "build.xml" file. Invoke the phing default build by simply typing `phing -f build.xml`. 
-	This will trigger a series of commands resulting in a basic Apigee Drupal install.
+	This will trigger a series of commands resulting in a basic Apigee Drupal install. If you're on the Apigee development team
+	and have access to the drupal-settings repo, `phing -f build.xml -Dbuild.type=internal` will get you the drupal-settings folder
+	and then copy them to the correct place.
 
 1.  Make sure the webserver (typically Apache) can write to sites/default/files. If there's nobody else
     using your server, you can do a chmod -R 777 sites/default/files and that should fix
@@ -72,9 +75,9 @@ The Apigee Drupal team's goal is to verify a Drupal point release within 15 days
 	development, you can log into your existing portal and use the Backup/Migrate database export to get a copy
 	of your portal. In-house Apigee developers should use the DEVELOPMENT database exports for local development.
 
-1.	Drupal 7 has a setting for "private" files. It's good to not have this private directory in the files
-    that are available to the server. I've moved them to /var/cache/drupal and then changed
-    the perms on that folder so Apache could write to the directory.
+1.	Drupal 7 has a setting for "private" files. For a production site, you might want to not even have them inside of the webroot. 
+	For development, I've moved my default settings for this to sites/SITENAME/private or sites/default/private. Drupal will put 
+	an HTACCESS in the folder to keep prying eyes out.
      
 1.  Change the admin user's password 
 	
