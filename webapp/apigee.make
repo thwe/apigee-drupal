@@ -18,6 +18,7 @@ projects[block_class][subdir] = "contrib"
 projects[ckeditor][subdir] = "contrib"
 projects[content_access][subdir] = "contrib"
 projects[context][subdir] = "contrib"
+projects[cpn][subdir] = "contrib"
 projects[ctools][subdir] = "contrib"
 projects[devel][subdir] = 'contrib'
 projects[diff][subdir] = 'contrib'
@@ -81,3 +82,8 @@ libraries[ckeditor][download][type] = "get"
 libraries[ckeditor][download][url] = "http://mktg-dev.apigee.com/libraries/ckeditor_3.6.2.tar.gz"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
+
+libraries[codemirror][download][type] = "get"
+libraries[codemirror][download][url] = "http://codemirror.net/codemirror.zip"
+libraries[codemirror][directory_name] = "codemirror"
+libraries[codemirror][destination] = "libraries"
