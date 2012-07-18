@@ -112,6 +112,7 @@
 	</target>
 	<target name="docs-dev-build">
 		<exec command="sudo chown -R jenkins.jenkins /disk2/www/v4docs-dev.apigee.com/docs" />
+		<exec command="sudo chmod -R 777 /disk2/www/v4docs-dev.apigee.com/docs" />
 		<move file="/disk2/www/v4docs-dev.apigee.com/docs" 
 			todir="/tmp/build-scraps-${BUILD_ID}" 
 			includeemptydirs="true" />
@@ -123,6 +124,11 @@
 			    <include name="**/**" />
 			</fileset>
 		</copy>
+		<exec command="sudo chmod -R 777 /disk2/www/v4docs-dev.apigee.com/docs"  logoutput="true"  />
+		<echo> ===> Copy sites/docs-dit/files down from dit </echo>
+		<exec command="rsync -e 'ssh -i /var/lib/jenkins/.ssh/id_rsa_apache' -avz apache@50.112.133.243:/mnt/apigee/httpd/www/html/docs/sites/docs-dit/files /disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit"  logoutput="true" />
+		<delete dir="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" quiet="true" />
+		<symlink target="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit/files" link="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" />		
 		<exec command="drush @docs-dev updatedb -y" />
 		<exec command="drush @docs-dev cc all -y" />
 		<exec command="sudo chown -R apache.apache /disk2/www/v4docs-dev.apigee.com/docs" />
