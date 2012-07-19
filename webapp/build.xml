@@ -61,23 +61,27 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<exec command="drush @dc-local updatedb -y" />
-		<exec command="drush @dc-local cc all -y" />
+		<drush alias="@dc-local" assume="yes" command="updatedb" /> 
+		<drush alias="@dc-local" assume="yes" command="cc">
+			<param>all</param> 
+		</drush>
 	</target>
 	<target name="dc-dev-build">
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<exec command="sudo chown -R jenkins.jenkins /disk2/www/devconnect-dev.apigee.com/webapp" />
+		<exec command="sudo chown -R jenkins.jenkins /disk2/www/devconnect-dev.apigee.com/webapp"  logoutput="true" />
 		<move file="/disk2/www/devconnect-dev.apigee.com/webapp" todir="/tmp/build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<copy todir="/disk2/www/devconnect-dev.apigee.com/webapp">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
 			</fileset>
 		</copy>
-		<exec command="drush @dc-dev updatedb -y" />
-		<exec command="drush @dc-dev cc all -y" />
-		<exec command="sudo chown -R apache.apache /disk2/www/devconnect-dev.apigee.com/webapp" />
+		<drush alias="@dc-dev" assume="yes" command="updatedb" /> 
+		<drush alias="@dc-dev" assume="yes" command="cc">
+			<param>all</param> 
+		</drush>
+		<exec command="sudo chown -R apache.apache /disk2/www/devconnect-dev.apigee.com/webapp" logoutput="true"  />
 	</target>
 	<target name="dc-dit-build">
 		<tar destination="build-${BUILD_ID}.tbz" 
@@ -93,25 +97,32 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<exec command="drush @dc-dit updatedb -y" />
-		<exec command="drush @dc-dit cc all -y" />
+		<drush alias="@dc-dit" assume="yes" command="updatedb" /> 
+		<drush alias="@dc-dit" assume="yes" command="cc">
+			<param>all</param> 
+		</drush>
 	</target>
 	<target name="dc-stage-build">
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<exec command="drush @dc-stage updatedb -y" />
-		<exec command="drush @dc-stage cc all -y" />
+		<drush alias="@dc-stage" assume="yes" command="updatedb" /> 
+		<drush alias="@dc-stage" assume="yes" command="cc">
+			<param>all</param> 
+		</drush>
 	</target>
 	<target name="dc-prod-build">
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<exec command="drush @dc-stage updatedb -y" />
-		<exec command="drush @dc-stage cc all -y" />
+		<drush alias="@dc-prod" assume="yes" command="updatedb" /> 
+		<drush alias="@dc-prod" assume="yes" command="cc">
+			<param>all</param> 
+		</drush>
 	</target>
 	<target name="docs-dev-build">
-		<exec command="sudo chown -R jenkins.jenkins /disk2/www/v4docs-dev.apigee.com/docs" />
+		<exec command="sudo chown -R jenkins.jenkins /disk2/www/v4docs-dev.apigee.com/docs" logoutput="true" />
+		<exec command="sudo chmod -R 777 /disk2/www/v4docs-dev.apigee.com/docs"  logoutput="true" />
 		<move file="/disk2/www/v4docs-dev.apigee.com/docs" 
 			todir="/tmp/build-scraps-${BUILD_ID}" 
 			includeemptydirs="true" />
@@ -123,9 +134,14 @@
 			    <include name="**/**" />
 			</fileset>
 		</copy>
-		<exec command="drush @docs-dev updatedb -y" />
-		<exec command="drush @docs-dev cc all -y" />
-		<exec command="sudo chown -R apache.apache /disk2/www/v4docs-dev.apigee.com/docs" />
+		<exec command="sudo chmod -R 777 /disk2/www/v4docs-dev.apigee.com/docs"  logoutput="true"  />
+		<echo> ===> Copy sites/docs-dit/files down from dit </echo>
+		<exec command="rsync -e 'ssh -i /var/lib/jenkins/.ssh/id_rsa_apache' -avz apache@50.112.133.243:/mnt/apigee/httpd/www/html/docs/sites/docs-dit/files /disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit"  logoutput="true" />
+		<delete dir="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" quiet="true" />
+		<symlink target="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit/files" link="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" />		
+		<exec command="drush @docs-dev updatedb -y"  logoutput="true" />
+		<exec command="drush @docs-dev cc all -y"  logoutput="true" />
+		<exec command="sudo chown -R apache.apache /disk2/www/v4docs-dev.apigee.com/docs"  logoutput="true" />
 		<symlink target="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit/files" 
 			link="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" />
 	</target>
@@ -145,8 +161,10 @@
 			    <include name="**/**" />
 			</fileset>
 		</copy>
-		<exec command="drush @mktg-dev updatedb -y" />
-		<exec command="drush @mktg-dev cc all -y" />
+		<drush alias="@mktg-dev" assume="yes" command="updatedb" /> 
+		<drush alias="@mktg-dev" assume="yes" command="cc">
+			<param>all</param> 
+		</drush>
 	</target>
 	<target name="blog-dev-build">
 		<drush command="cc">
@@ -157,7 +175,9 @@
 			    <include name="**/**" />
 			</fileset>
 		</copy>
-		<exec command="drush @mktg-dev updatedb -y" />
-		<exec command="drush @mktg-dev cc all -y" />
+		<drush alias="@blog-dev" assume="yes" command="updatedb" /> 
+		<drush alias="@blog-dev" assume="yes" command="cc">
+			<param>all</param> 
+		</drush>
 	</target>
 </project>
