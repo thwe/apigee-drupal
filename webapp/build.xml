@@ -11,6 +11,18 @@
 	
 	<property name="build.type" value="external" override="false" />
 	
+	<property name="docs.dev.root" value="/disk2/www/v4docs-dev.apigee.com/docs" />
+	<property name="docs.dit.root" value="/mnt/apigee/httpd/www/html/docs" />
+	<property name="docs.stage.root" value="/mnt/apigee/httpd/www/html/docs" />
+	<property name="docs.orion.root" value="/mnt/apigee/httpd/www/html/docs" />
+	<property name="docs.han.root" value="/var/www/html/docs" />
+	<property name="docs.chewy.root" value="/var/www/html/docs" />
+	<property name="dc.dev.root" value="/disk2/www/devconnect-dev.apigee.com/docs" />
+	<property name="dc.dit.root" value="/mnt/apigee/httpd/www/html/webapp" />
+	<property name="dc.stage.root" value="/mnt/apigee/httpd/www/html/webapp" />
+	<property name="dc.prod.root" value="/mnt/apigee/httpd/www/html/webapp" />
+
+
 	<target name='init'>
 		<echo>-------------------------------------------------</echo>
 		<echo> => cloning latest drupal settings </echo>
@@ -20,6 +32,7 @@
 		<mkdir dir="tasks" />
 		<gitclone repository="http://git.drupal.org/project/phingdrushtask.git" targetPath="../tasks/drush" />
 		<gitbranch repository="../tasks/drush" branchname="7.x-1.x" />
+		<gitclone repository="git@github.com:AntonStoeckl/Phing-Additions.git" targetPath="../tasks/additions" />
 		<if>
 			<equals arg1="${build.type}" arg2="internal" />
 			<then>
@@ -70,7 +83,9 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<exec command="sudo chown -R jenkins.jenkins /disk2/www/devconnect-dev.apigee.com/webapp"  logoutput="true" />
+		<phingcall target="fix-perms">
+			<property name="dir" value="${dc.dev.root}" />
+		</phingcall>
 		<move file="/disk2/www/devconnect-dev.apigee.com/webapp" todir="/tmp/build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<copy todir="/disk2/www/devconnect-dev.apigee.com/webapp">
 			<fileset dir="../webapp">
@@ -81,48 +96,14 @@
 		<drush alias="@dc-dev" assume="yes" command="cc">
 			<param>all</param> 
 		</drush>
-		<exec command="sudo chown -R apache.apache /disk2/www/devconnect-dev.apigee.com/webapp" logoutput="true"  />
-	</target>
-	<target name="dc-dit-build">
-		<tar destination="build-${BUILD_ID}.tbz" 
-			basedir="/disk2/www/devconnect-dev.apigee.com/webapp" 
-			compression="bzip2"
-			includeemptydirs="true"
-			/>
-		<scp username="webupload"
-			privkeyfile="/var/lib/jenkins/.ssh/id_rsa_webupload"
-			host="ddm00apigee"
-			todir="/tmp"
-			file="build-${BUILD_ID}.tbz" />
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<drush alias="@dc-dit" assume="yes" command="updatedb" /> 
-		<drush alias="@dc-dit" assume="yes" command="cc">
-			<param>all</param> 
-		</drush>
-	</target>
-	<target name="dc-stage-build">
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<drush alias="@dc-stage" assume="yes" command="updatedb" /> 
-		<drush alias="@dc-stage" assume="yes" command="cc">
-			<param>all</param> 
-		</drush>
-	</target>
-	<target name="dc-prod-build">
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<drush alias="@dc-prod" assume="yes" command="updatedb" /> 
-		<drush alias="@dc-prod" assume="yes" command="cc">
-			<param>all</param> 
-		</drush>
+		<phingcall target="fix-perms">
+			<property name="dir" value="${dc.dev.root}" />
+		</phingcall>
 	</target>
 	<target name="docs-dev-build">
-		<exec command="sudo chown -R jenkins.jenkins /disk2/www/v4docs-dev.apigee.com/docs" logoutput="true" />
-		<exec command="sudo chmod -R 777 /disk2/www/v4docs-dev.apigee.com/docs"  logoutput="true" />
+		<phingcall target="fix-perms">
+			<property name="dir" value="${docs.dev.root}" />
+		</phingcall>
 		<move file="/disk2/www/v4docs-dev.apigee.com/docs" 
 			todir="/tmp/build-scraps-${BUILD_ID}" 
 			includeemptydirs="true" />
@@ -134,16 +115,24 @@
 			    <include name="**/**" />
 			</fileset>
 		</copy>
-		<exec command="sudo chmod -R 777 /disk2/www/v4docs-dev.apigee.com/docs"  logoutput="true"  />
+		<phingcall target="fix-perms">
+			<property name="dir" value="${docs.dev.root}" />
+		</phingcall>
 		<echo> ===> Copy sites/docs-dit/files down from dit </echo>
 		<exec command="rsync -e 'ssh -i /var/lib/jenkins/.ssh/id_rsa_apache' -avz apache@50.112.133.243:/mnt/apigee/httpd/www/html/docs/sites/docs-dit/files /disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit"  logoutput="true" />
 		<delete dir="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" quiet="true" />
 		<symlink target="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit/files" link="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" />		
-		<exec command="drush @docs-dev updatedb -y"  logoutput="true" />
-		<exec command="drush @docs-dev cc all -y"  logoutput="true" />
-		<exec command="sudo chown -R apache.apache /disk2/www/v4docs-dev.apigee.com/docs"  logoutput="true" />
+		<echo> ===> Drush Updatedb </echo>
+		<drush alias="@docs-dev" command="updatedb" assum="yes" />
+		<echo> ===> Fixing Clearing Cache </echo>
+		<drush alias="@docs-dev" command="cc" assume="yes">
+			<param>all</param>
+		</drush>
 		<symlink target="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dit/files" 
 			link="/disk2/www/v4docs-dev.apigee.com/docs/sites/docs-dev/files" />
+		<phingcall target="fix-perms">
+			<property name="dir" value="${docs.dev.root}" />
+		</phingcall>
 	</target>
 	<target name='copy-drush'>
 		<copy todir="${user.home}/.drush" overwrite="true" >
@@ -165,6 +154,7 @@
 		<drush alias="@mktg-dev" assume="yes" command="cc">
 			<param>all</param> 
 		</drush>
+
 	</target>
 	<target name="blog-dev-build">
 		<drush command="cc">
@@ -179,5 +169,10 @@
 		<drush alias="@blog-dev" assume="yes" command="cc">
 			<param>all</param> 
 		</drush>
+	</target>
+	<target name="fix-perms">
+		<echo> ===> Fixing Permissions </echo>
+		<exec command="sudo chmod -R 777 ${dir}"  logoutput="true"  />
+		<exec command="sudo chown -R apache.apache ${dir}"  logoutput="true" />
 	</target>
 </project>
