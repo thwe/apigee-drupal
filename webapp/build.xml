@@ -11,16 +11,7 @@
 	
 	<property name="build.type" value="external" override="false" />
 	
-	<property name="docs.dev.root" value="/disk2/www/v4docs-dev.apigee.com/docs" />
-	<property name="docs.dit.root" value="/mnt/apigee/httpd/www/html/docs" />
-	<property name="docs.stage.root" value="/mnt/apigee/httpd/www/html/docs" />
-	<property name="docs.orion.root" value="/mnt/apigee/httpd/www/html/docs" />
-	<property name="docs.han.root" value="/var/www/html/docs" />
-	<property name="docs.chewy.root" value="/var/www/html/docs" />
-	<property name="dc.dev.root" value="/disk2/www/devconnect-dev.apigee.com/docs" />
-	<property name="dc.dit.root" value="/mnt/apigee/httpd/www/html/webapp" />
-	<property name="dc.stage.root" value="/mnt/apigee/httpd/www/html/webapp" />
-	<property name="dc.prod.root" value="/mnt/apigee/httpd/www/html/webapp" />
+
 
 
 	<target name='init'>
@@ -80,14 +71,15 @@
 		</drush>
 	</target>
 	<target name="dc-dev-build">
+		<property name="dc.dev" file="../drupal-settings/properties/dc.dev.properties" />
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
 		<phingcall target="fix-perms">
 			<property name="dir" value="${dc.dev.root}" />
 		</phingcall>
-		<move file="/disk2/www/devconnect-dev.apigee.com/webapp" todir="/tmp/build-scraps-${BUILD_ID}" includeemptydirs="true" />
-		<copy todir="/disk2/www/devconnect-dev.apigee.com/webapp">
+		<move file="${dc.dev.root}" todir="/tmp/dc-dev-old-${BUILD_ID}" includeemptydirs="true" />
+		<copy todir="${dc.dev.root}">
 			<fileset dir="../webapp">
 			    <include name="**/**" />
 			</fileset>
@@ -101,6 +93,7 @@
 		</phingcall>
 	</target>
 	<target name="docs-dev-build">
+		<property name="docs.dev" file="../drupal-settings/properties/docs.dev.properties" />
 		<phingcall target="fix-perms">
 			<property name="dir" value="${docs.dev.root}" />
 		</phingcall>
