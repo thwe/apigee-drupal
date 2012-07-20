@@ -71,7 +71,7 @@
 		</drush>
 	</target>
 	<target name="dc-dev-build">
-		<property name="dc.dev" file="../drupal-settings/properties/dc.dev.properties" />
+		<property prefix="dc.dev" file="../drupal-settings/properties/dc.dev.properties" />
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
@@ -93,7 +93,7 @@
 		</phingcall>
 	</target>
 	<target name="docs-dev-build">
-		<property name="docs.dev" file="../drupal-settings/properties/docs.dev.properties" />
+		<property prefix="docs.dev" file="../drupal-settings/properties/docs.dev.properties" />
 		<phingcall target="fix-perms">
 			<property name="dir" value="${docs.dev.root}" />
 		</phingcall>
