@@ -229,12 +229,6 @@ projects[apigee_search][download][type] = 'git'
 projects[apigee_search][download][url] = "git@github.com:apigee/apigee_search.git"
 projects[apigee_search][download][branch] = "7.x-1.x"
 
-projects[less][type] = module
-projects[less][subdir] = custom
-projects[less][download][type] = 'git'
-projects[less][download][url] = "git@github.com:stovak/less.git"
-projects[less][download][branch] = "7.x-1.x"
-
 ; work in progress for the WADL=>entity
 ;projects[objective_forms][type] = module
 ;projects[objective_forms][subdir]= custom
