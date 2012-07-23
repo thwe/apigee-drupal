@@ -7,6 +7,8 @@
 	External builds are those who do not. Default is an external build. Internal builds will have ${build.type} = internal
 	in their Jenkins default properties.
 	
+	From the command line: phing apigee-drupal -Dbuild.type=internal
+	
 	-->
 	
 	<property name="build.type" value="external" override="false" />
