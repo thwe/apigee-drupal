@@ -116,6 +116,7 @@ projects[search_api_sorts][subdir] = "contrib"
 projects[search_api_ranges][subdir] = "contrib"
 projects[search_api_facets_paths][subdir] = "contrib"
 projects[securelogin][subdir] = "contrib"
+projects[selenium][subdir] = "contrib"
 projects[services_views][subdir] = "contrib"
 projects[service_links][subdir] = "contrib"
 projects[smtp][subdir] = 'contrib'
