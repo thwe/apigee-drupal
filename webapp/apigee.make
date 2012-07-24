@@ -35,6 +35,7 @@ projects[jquery_update][subdir] = 'contrib'
 projects[libraries][subdir] = "contrib"
 projects[link][subdir] = "contrib"
 projects[link_node][subdir] = "contrib"
+projects[metatag][subdir] = "contrib"
 projects[node_export][subdir] = 'contrib'
 projects[pathauto][subdir] = "contrib"
 projects[rules][subdir] = "contrib"
