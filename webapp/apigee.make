@@ -73,6 +73,7 @@ projects[jquerymobile][subdir] = 'contrib'
 projects[jquery_colorpicker][subdir] = 'contrib'
 projects[jquery_update][subdir] = 'contrib'
 projects[ldap][subdir] = "contrib"
+projects[legal][subdir] = "contrib"
 projects[libraries][subdir] = "contrib"
 projects[linkchecker][subdir] = "contrib"
 projects[link][subdir] = "contrib"
