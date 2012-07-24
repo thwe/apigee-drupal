@@ -49,7 +49,6 @@
 			<option name="working-copy" />
 			<option name="no-gitinfofile" />
 			<option name="no-cache" />
-			<option name="force-complete" />
 			<param>apigee.make</param>
 		</drush>
 		<if>
@@ -93,7 +92,7 @@
 		<phingcall target="fix-perms">
 			<property name="dir" value="${dc.dev.root}" />
 		</phingcall>
-		<delete dir="modules/php" quiet="true" />
+		<delete dir="${dc.dev.root}/modules/php" />
 	</target>
 	<target name="docs-dev-build">
 		<property prefix="docs.dev" file="../drupal-settings/properties/docs.dev.properties" />
