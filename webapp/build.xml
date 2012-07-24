@@ -93,6 +93,7 @@
 		<phingcall target="fix-perms">
 			<property name="dir" value="${dc.dev.root}" />
 		</phingcall>
+		<delete dir="modules/php" quiet="true" />
 	</target>
 	<target name="docs-dev-build">
 		<property prefix="docs.dev" file="../drupal-settings/properties/docs.dev.properties" />
