@@ -28,6 +28,7 @@ projects[entity][subdir] = "contrib"
 projects[entity_view_mode][subdir] = "contrib"
 projects[features][subdir] = 'contrib'
 projects[field_group][subdir] = 'contrib'
+projects[fivestar][subdir] = 'contrib'
 projects[google_analytics][subdir] = 'contrib'
 projects[google_analytics_reports][subdir] = 'contrib'
 projects[imce][subdir] = 'contrib'
