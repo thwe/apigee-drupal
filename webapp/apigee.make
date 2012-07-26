@@ -49,6 +49,7 @@ projects[faq][subdir] = 'contrib'
 projects[features][subdir] = 'contrib'
 projects[feeds][subdir] = 'contrib'
 projects[field_group][subdir] = 'contrib'
+projects[fivestar][subdir] = "contrib"
 projects[flood_control][subdir] = "contrib"
 projects[fontyourface][subdir] = "contrib"
 projects[footermap][subdir] = 'contrib'
