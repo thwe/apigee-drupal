@@ -22,6 +22,7 @@ projects[cpn][subdir] = "contrib"
 projects[ctools][subdir] = "contrib"
 projects[devel][subdir] = 'contrib'
 projects[diff][subdir] = 'contrib'
+projects[drupad][subdir] = 'contrib'
 projects[ds][subdir] = "contrib"
 projects[entity][subdir] = "contrib"
 projects[entity_view_mode][subdir] = "contrib"
