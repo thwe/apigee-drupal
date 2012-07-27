@@ -44,6 +44,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
+		<delete dir="webapp" quiet="true" />
 	    <drush command="make" assume="yes">
 			<option name="prepare-install" />
 			<option name="working-copy" />
