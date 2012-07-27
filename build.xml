@@ -109,7 +109,7 @@
 		<property prefix="docs.dev" file="drupal-settings/properties/docs.dev.properties" />
 		<property prefix="docs.dit" file="drupal-settings/properties/docs.dit.properties" />
 		<echo> ===> Backup files folder on ${docs.dit.name} </echo>
-		<phingcall task="backup-files-folder">
+		<phingcall target="backup-files-folder">
 			<property name="exec" value="${docs.dit.exec}" />
 			<property name="root" value="${docs.dit.root}" />
 			<property name="site_name" value="${docs.dit.name}" />
@@ -131,7 +131,7 @@
 			<property name="name" value="${docs.dev.name}" />
 		</phingcall>
 		<echo> ===> Copy sites/docs-dit/files down from dit storage </echo>
-		<phingcall task="restore-files-folder">
+		<phingcall target="restore-files-folder">
 			<property name="exec" value="${docs.dev.exec}" />
 			<property name="root" value="${docs.dev.root}" />
 			<property name="from_site_name" value="${docs.dit.name}" />
@@ -172,7 +172,7 @@
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
 		</phingcall>
-		<phingcall task="backup-files-folder">
+		<phingcall target="backup-files-folder">
 			<property name="root" value="${mktg.dev.root}" />
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="from_site_name" value="${mktg.dev.name}" />			
@@ -184,7 +184,7 @@
 		</drush>
 		<move file="${mktg.dev.root}" todir="/tmp/mktg-build-scraps-${BUILD_ID}" />
 		<move file="${WORKSPACE}/webapp" todir="${mktg.dev.container}" />
-		<phingcall task="restore-files-folder">
+		<phingcall target="restore-files-folder">
 			<property name="root" value="${mktg.dev.root}" />
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="from_site_name" value="${mktg.dev.name}" />			
@@ -215,7 +215,7 @@
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="name" value="${blog.dev.name}" />
 		</phingcall>
-		<phingcall task="backup-files-folder">
+		<phingcall target="backup-files-folder">
 			<property name="root" value="${blog.dev.root}" />
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="from_site_name" value="${blog.dev.name}" />			
@@ -232,7 +232,7 @@
 		</phingcall>
 		<move file="${blog.dev.root}" todir="/tmp/blog-build-scraps-${BUILD_ID}" />
 		<move file="${WORKSPACE}/webapp" todir="${blog.dev.container}" />
-		<phingcall task="restore-files-folder">
+		<phingcall target="restore-files-folder">
 			<property name="root" value="${blog.dev.root}" />
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="from_site_name" value="${blog.dev.name}" />			
