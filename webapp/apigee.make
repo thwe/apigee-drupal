@@ -28,6 +28,7 @@ projects[entity][subdir] = "contrib"
 projects[entity_view_mode][subdir] = "contrib"
 projects[features][subdir] = 'contrib'
 projects[feeds][subdir] = "contrib"
+projects[feeds_comment_processor][subdir] = "contrib"
 projects[feeds_tamper][subdir] = "contrib"
 projects[feeds_xpathparser][subdir] = "contrib"
 projects[field_group][subdir] = 'contrib'
