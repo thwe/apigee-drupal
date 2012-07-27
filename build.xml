@@ -260,13 +260,13 @@
 			<then>
 				<echo> ===> backing up local files in ${root}/sites/${from_site_name}/files to ${planet_storage}...</echo>
 				<exec 
-					command="${s3cmd} put --recursive --acl-public ${root}/sites/${from_site_name}/files s3://${planet_storage}"
+					command="${s3cmd} sync -recursive --acl-public ${root}/sites/${from_site_name}/files s3://${planet_storage}"
 					logoutput="true" />
 			</then>
 			<else>
 				<echo> ===> backing up remote files in ${root}/sites/${from_site_name}/files to ${planet_storage}...</echo>
 				<exec 
-					command="${exec} ${s3cmd} put --recursive --acl-public ${root}/sites/${from_site_name}/files s3://${planet_storage}"
+					command="${exec} ${s3cmd} sync -recursive --acl-public ${root}/sites/${from_site_name}/files s3://${planet_storage}"
 					logoutput="true" />
 			</else>
 		</if>
@@ -277,13 +277,13 @@
 			<then>
 				<echo> ===> restoring local files to ${root}/sites/${from_site_name}/files...</echo>
 				<exec 
-					command="${s3cmd} get s3://${planet_storage}/${from_site_name}/files ${root}/sites/${to_site_name}"
+					command="${s3cmd} sync s3://${planet_storage}/${from_site_name}/files ${root}/sites/${to_site_name}"
 					logoutput="true" />
 			</then>
 			<else>
 				<echo> ===> restoring remote files in ${root}/sites/${from_site_name}/files to ${planet_storage}...</echo>
 				<exec 
-					command="${exec} ${s3cmd} get s3://${planet_storage}/${from_site_name}/files ${root}/sites/${to_site_name}"
+					command="${exec} ${s3cmd} sync s3://${planet_storage}/${from_site_name}/files ${root}/sites/${to_site_name}"
 					logoutput="true" />
 			</else>
 		</if>
