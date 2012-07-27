@@ -86,10 +86,6 @@
 		</phingcall>
 		<move file="${dc.dev.root}" todir="/tmp/dc-build-scraps-${BUILD_ID}" />
 		<move file="${WORKSPACE}/webapp" todir="${dc.dev.container}" />
-		<drush alias="@dc-dev" assume="yes" command="updatedb" /> 
-		<drush alias="@dc-dev" assume="yes" command="cc">
-			<param>all</param> 
-		</drush>
 		<phingcall target="fix-perms">
 			<property name="root" value="${dc.dev.root}" />
 			<property name="exec" value="${dc.dev.exec}" />
@@ -141,12 +137,6 @@
 			<property name="to_site_name" value="${docs.dit.name}" />
 			<property name="planet_storage" value="${docs.dit.name}" />
 		</phingcall>
-		<echo> ===> Drush Updatedb </echo>
-		<drush alias="@docs-dev" command="updatedb" assume="yes" />
-		<echo> ===> Clearing Cache </echo>
-		<drush alias="@docs-dev" command="cc" assume="yes">
-			<param>all</param>
-		</drush>
 		<symlink target="${docs.dev.root}/sites/docs-dit/files" 
 			link="${docs.dev.root}/sites/docs-dev/files" />
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
@@ -197,10 +187,6 @@
 		</phingcall>
 		<mkdir dir="${mktg.dev.root}/sites/mktg-dev/tmp" />
 		<mkdir dir="${mktg.dev.root}/sites/mktg-dev/private" />
-		<drush alias="@mktg-dev" assume="yes" command="updatedb" /> 
-		<drush alias="@mktg-dev" assume="yes" command="cc">
-			<param>all</param> 
-		</drush>
 		<phingcall target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
 			<property name="exec" value="${mktg.dev.exec}" />
@@ -246,10 +232,6 @@
 		</phingcall>
 		<mkdir dir="${mktg.dev.root}/sites/mktg-dev/tmp" />
 		<mkdir dir="${mktg.dev.root}/sites/mktg-dev/private" />
-		<drush alias="@blog-dev" assume="yes" command="updatedb" /> 
-		<drush alias="@blog-dev" assume="yes" command="cc">
-			<param>all</param> 
-		</drush>
 		<phingcall target="fix-perms">
 			<property name="root" value="${blog.dev.root}" />
 			<property name="exec" value="${blog.dev.exec}" />
