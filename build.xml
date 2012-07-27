@@ -48,7 +48,7 @@
 			<option name="prepare-install" />
 			<option name="working-copy" />
 			<option name="no-gitinfofile" />
-			<option name="no-cache" />
+			<!-- option name="no-cache" /   -->
 			<param>apigee.make</param>
 			<param>webapp</param>
 		</drush>
