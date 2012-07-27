@@ -124,7 +124,7 @@
 		<echo> ===> Moving files </echo>
 		<move file="${docs.dev.root}" todir="/tmp/docs-build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<move file="${WORKSPACE}/webapp" todir="${docs.dev.container}" includeemptydirs="true" />
-		<php expression="rename('${dc.dev.container}/webapp', '${dc.dev.container}/docs');" />		
+		<exec command="mv '${docs.dev.container}/webapp' '${docs.dev.container}/docs' " />		
 		<echo> ===> Fix permissions on new build </echo>
 		<phingcall target="fix-perms">
 			<property name="root" value="${docs.dev.root}" />
