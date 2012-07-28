@@ -20,6 +20,7 @@ projects[content_access][subdir] = "contrib"
 projects[context][subdir] = "contrib"
 projects[cpn][subdir] = "contrib"
 projects[ctools][subdir] = "contrib"
+projects[date][subdir] = "contrib"
 projects[devel][subdir] = 'contrib'
 projects[diff][subdir] = 'contrib'
 projects[drupad][subdir] = 'contrib'
