@@ -57,6 +57,17 @@
 		</drush>
 	</target>
 
+	<target name='copy-drush'>
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
+		<copy todir="${user.home}/.drush" overwrite="true" >
+			<fileset dir="${project.basedir}/drush">
+				<include name="*.drushrc.php" />
+			</fileset>
+		</copy>
+	</target>
+
 
 	<target name="mktg-dev-build">
 		<property prefix="mktg.dev" file="drupal-settings/properties/mktg.dev.properties" />
