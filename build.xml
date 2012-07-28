@@ -62,7 +62,7 @@
 			<param>drush</param>
 		</drush>
 		<copy todir="${user.home}/.drush" overwrite="true" >
-			<fileset dir="${project.basedir}/drush">
+			<fileset dir="${project.basedir}/drupal-settings/drush">
 				<include name="*.drushrc.php" />
 			</fileset>
 		</copy>
