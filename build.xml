@@ -35,6 +35,8 @@
 		</if>
 		
 	</target>
+	
+	
 	<target name="apigee-drupal">
 		<echo>-------------------------------------------------</echo>
 		<echo> +++++ Running Phing/Drush build </echo>
@@ -94,6 +96,8 @@
 		</phingcall>
 		<delete dir="${dc.dev.root}/modules/php" />
 	</target>
+	
+	
 	<target name="docs-dev-build">
 		<if>
 			<equals arg1="${build.type}" arg2="internal" />
@@ -155,91 +159,8 @@
 			</fileset>
 		</copy>
 	</target>
-	<target name="mktg-dev-build">
-		<property prefix="mktg.dev" file="properties/mktg.dev.properties" />
-		<copy todir="webapp/sites" >
-		  <fileset dir="drupal-settings/sites">
-		    <include name="mktg-*/**/**" />
-		    <include name="sites.php" />
-		  </fileset>
-		</copy>
-		<phingcall target="fix-perms">
-			<property name="root" value="${mktg.dev.root}" />
-			<property name="exec" value="${mktg.dev.exec}" />
-			<property name="name" value="${mktg.dev.name}" />
-		</phingcall>
-		<phingcall target="backup-files-folder">
-			<property name="root" value="${mktg.dev.root}" />
-			<property name="exec" value="${mktg.dev.exec}" />
-			<property name="from_site_name" value="${mktg.dev.name}" />			
-			<property name="to_site_name" value="${mktg.dev.name}" />
-			<property name="planet_storage" value="devconnect-dit" />
-		</phingcall>
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<move file="${mktg.dev.root}" todir="/tmp/mktg-build-scraps-${BUILD_ID}" />
-		<move file="${WORKSPACE}/webapp" todir="${mktg.dev.container}" />
-		<phingcall target="restore-files-folder">
-			<property name="root" value="${mktg.dev.root}" />
-			<property name="exec" value="${mktg.dev.exec}" />
-			<property name="from_site_name" value="${mktg.dev.name}" />			
-			<property name="to_site_name" value="${mktg.dev.name}" />
-			<property name="planet_storage" value="devconnect-dit" />
-		</phingcall>
-		<mkdir dir="${mktg.dev.root}/sites/mktg-dev/tmp" />
-		<mkdir dir="${mktg.dev.root}/sites/mktg-dev/private" />
-		<phingcall target="fix-perms">
-			<property name="root" value="${mktg.dev.root}" />
-			<property name="exec" value="${mktg.dev.exec}" />
-			<property name="name" value="${mktg.dev.name}" />
-		</phingcall>
-	</target>
-	<target name="blog-dev-build">
-		<property prefix="blog.dev" file="properties/blog.dev.properties" />
-		<copy todir="webapp/sites" >
-		  <fileset dir="drupal-settings/sites">
-		    <include name="blog-*/**/**" />
-		    <include name="sites.php" />
-		  </fileset>
-		</copy>
-		<phingcall target="fix-perms">
-			<property name="root" value="${blog.dev.root}" />
-			<property name="exec" value="${blog.dev.exec}" />
-			<property name="name" value="${blog.dev.name}" />
-		</phingcall>
-		<phingcall target="backup-files-folder">
-			<property name="root" value="${blog.dev.root}" />
-			<property name="exec" value="${blog.dev.exec}" />
-			<property name="from_site_name" value="${blog.dev.name}" />			
-			<property name="to_site_name" value="${blog.dev.name}" />
-			<property name="planet_storage" value="devconnect-dit" />
-		</phingcall>
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<phingcall target="fix-perms">
-			<property name="root" value="${blog.dev.root}" />
-			<property name="exec" value="${blog.dev.exec}" />
-			<property name="name" value="${blog.dev.name}" />
-		</phingcall>
-		<move file="${blog.dev.root}" todir="/tmp/blog-build-scraps-${BUILD_ID}" />
-		<move file="${WORKSPACE}/webapp" todir="${blog.dev.container}" />
-		<phingcall target="restore-files-folder">
-			<property name="root" value="${blog.dev.root}" />
-			<property name="exec" value="${blog.dev.exec}" />
-			<property name="from_site_name" value="${blog.dev.name}" />			
-			<property name="to_site_name" value="${blog.dev.name}" />
-			<property name="planet_storage" value="devconnect-dit" />
-		</phingcall>
-		<mkdir dir="${mktg.dev.root}/sites/mktg-dev/tmp" />
-		<mkdir dir="${mktg.dev.root}/sites/mktg-dev/private" />
-		<phingcall target="fix-perms">
-			<property name="root" value="${blog.dev.root}" />
-			<property name="exec" value="${blog.dev.exec}" />
-			<property name="name" value="${blog.dev.name}" />
-		</phingcall>
-	</target>
+
+
 	<target name="fix-perms">
 		<echo> ===> Fixing Permissions on ${name} </echo>
 		<if>
