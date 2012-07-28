@@ -156,7 +156,7 @@
 		</copy>
 	</target>
 	<target name="mktg-dev-build">
-		<property prefix="mktg.dev" file="properties/mktg.dev.properties" />
+		<property prefix="mktg.dev" file="drupal-settings/properties/mktg.dev.properties" />
 		<copy todir="webapp/sites" >
 		  <fileset dir="drupal-settings/sites">
 		    <include name="mktg-*/**/**" />
@@ -196,7 +196,7 @@
 		</phingcall>
 	</target>
 	<target name="blog-dev-build">
-		<property prefix="blog.dev" file="properties/blog.dev.properties" />
+		<property prefix="blog.dev" file="drupal-settings/properties/blog.dev.properties" />
 		<copy todir="webapp/sites" >
 		  <fileset dir="drupal-settings/sites">
 		    <include name="blog-*/**/**" />
