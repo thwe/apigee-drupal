@@ -35,6 +35,7 @@
 		</if>
 		
 	</target>
+	
 	<target name="apigee-drupal">
 		<echo>-------------------------------------------------</echo>
 		<echo> +++++ Running Phing/Drush build </echo>
@@ -55,106 +56,8 @@
 			<param>webapp</param>
 		</drush>
 	</target>
-	<target name="dc-local-build">
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<drush alias="@dc-local" assume="yes" command="updatedb" /> 
-		<drush alias="@dc-local" assume="yes" command="cc">
-			<param>all</param> 
-		</drush>
-	</target>
-	<target name="dc-dev-build">
-		<if>
-			<equals arg1="${build.type}" arg2="internal" />
-			<then>
-				<copy todir="webapp/sites" >
-				  <fileset dir="drupal-settings/sites">
-				    <include name="**/**" />
-				    <include name="sites.php" />
-				  </fileset>
-				</copy>
-			</then>
-		</if>
-		<property prefix="dc.dev" file="drupal-settings/properties/dc.dev.properties" />
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<phingcall target="fix-perms">
-			<property name="root" value="${dc.dev.root}" />
-			<property name="exec" value="${dc.dev.exec}" />
-			<property name="name" value="${dc.dev.name}" />
-		</phingcall>
-		<move file="${dc.dev.root}" todir="/tmp/dc-build-scraps-${BUILD_ID}" />
-		<move file="${WORKSPACE}/webapp" todir="${dc.dev.container}" />
-		<phingcall target="fix-perms">
-			<property name="root" value="${dc.dev.root}" />
-			<property name="exec" value="${dc.dev.exec}" />
-			<property name="name" value="${dc.dev.name}" />
-		</phingcall>
-		<delete dir="${dc.dev.root}/modules/php" />
-	</target>
-	<target name="docs-dev-build">
-		<if>
-			<equals arg1="${build.type}" arg2="internal" />
-			<then>
-				<copy todir="webapp/sites" >
-				  <fileset dir="drupal-settings/sites">
-				    <include name="docs-*/**/**" />
-				    <include name="sites.php" />
-				  </fileset>
-				</copy>
-			</then>
-		</if>
-		<property prefix="docs.dev" file="drupal-settings/properties/docs.dev.properties" />
-		<property prefix="docs.dit" file="drupal-settings/properties/docs.dit.properties" />
-		<echo> ===> Backup files folder on ${docs.dit.name} </echo>
-		<phingcall target="backup-files-folder">
-			<property name="exec" value="${docs.dit.exec}" />
-			<property name="root" value="${docs.dit.root}" />
-			<property name="site_name" value="${docs.dit.name}" />
-			<property name="planet_storage" value="${docs.dit.name}" />
-		</phingcall>
-		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
-		<phingcall target="fix-perms">
-			<property name="root" value="${docs.dev.root}" />
-			<property name="exec" value="${docs.dev.exec}" />
-			<property name="name" value="${docs.dev.name}" />
-		</phingcall>
-		<echo> ===> Moving files </echo>
-		<move file="${docs.dev.root}" todir="/tmp/docs-build-scraps-${BUILD_ID}" includeemptydirs="true" />
-		<move file="${WORKSPACE}/webapp" todir="${docs.dev.container}" includeemptydirs="true" />
-		<exec command="mv '${docs.dev.container}/webapp' '${docs.dev.container}/docs' " />		
-		<echo> ===> Fix permissions on new build </echo>
-		<phingcall target="fix-perms">
-			<property name="root" value="${docs.dev.root}" />
-			<property name="exec" value="${docs.dev.exec}" />
-			<property name="name" value="${docs.dev.name}" />
-		</phingcall>
-		<echo> ===> Copy sites/docs-dit/files down from dit storage </echo>
-		<phingcall target="restore-files-folder">
-			<property name="exec" value="${docs.dev.exec}" />
-			<property name="root" value="${docs.dev.root}" />
-			<property name="from_site_name" value="${docs.dit.name}" />
-			<property name="to_site_name" value="${docs.dit.name}" />
-			<property name="planet_storage" value="${docs.dit.name}" />
-		</phingcall>
-		<symlink target="${docs.dev.root}/sites/docs-dit/files" 
-			link="${docs.dev.root}/sites/docs-dev/files" />
-		<echo> ===> Fix Permissions one last time for good measure...</echo>
-		<phingcall target="fix-perms">
-			<property name="root" value="${docs.dev.root}" />
-			<property name="exec" value="${docs.dev.exec}" />
-			<property name="name" value="${docs.dev.name}" />
-		</phingcall>
-	</target>
-	<target name='copy-drush'>
-		<copy todir="${user.home}/.drush" overwrite="true" >
-			<fileset dir="drupal-settings/drush">
-				<include name="*.aliases.drushrc.php" />
-			</fileset>
-		</copy>
-	</target>
+
+
 	<target name="mktg-dev-build">
 		<property prefix="mktg.dev" file="drupal-settings/properties/mktg.dev.properties" />
 		<copy todir="webapp/sites" >
@@ -195,6 +98,8 @@
 			<property name="name" value="${mktg.dev.name}" />
 		</phingcall>
 	</target>
+	
+	
 	<target name="blog-dev-build">
 		<property prefix="blog.dev" file="drupal-settings/properties/blog.dev.properties" />
 		<copy todir="webapp/sites" >
