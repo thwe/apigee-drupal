@@ -72,8 +72,8 @@
 				</copy>
 			</then>
 		</if>
-		<property prefix="blog.dev" file="drupal-settings/properties/docs.dev.properties" />
-		<echo> ===> Backup files folder on ${docs.dit.name} </echo>
+		<property prefix="blog.dev" file="drupal-settings/properties/blog.dev.properties" />
+		<echo> ===> Backup files folder on ${blog.dit.name} </echo>
 		<phingcall target="backup-files-folder">
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="public_files" value="${blog.dev.public_file_path}" />
@@ -86,7 +86,7 @@
 			<property name="name" value="${blog.dev.name}" />
 		</phingcall>
 		<echo> ===> Moving files </echo>
-		<move file="${blog.dev.root}" todir="/tmp/docs-build-scraps-${BUILD_ID}" includeemptydirs="true" />
+		<move file="${blog.dev.root}" todir="/tmp/blog-build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<move file="${WORKSPACE}/webapp" todir="${blog.dev.container}" includeemptydirs="true" />
 		<echo> ===> Fix permissions on new build </echo>
 		<phingcall target="fix-perms">
@@ -94,7 +94,7 @@
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="name" value="${blog.dev.name}" />
 		</phingcall>
-		<echo> ===> Copy sites/docs-dit/files down from dit storage </echo>
+		<echo> ===> Copy sites/blog-dit/files down from dit storage </echo>
 		<phingcall target="restore-files-folder">
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="public_files" value="${blog.dev.public_file_container}" />
@@ -121,7 +121,7 @@
 				</copy>
 			</then>
 		</if>
-		<property prefix="blog.dev" file="drupal-settings/properties/mktg.dev.properties" />
+		<property prefix="mktg.dev" file="drupal-settings/properties/mktg.dev.properties" />
 		<echo> ===> Backup files folder on ${blog.dit.name} </echo>
 		<phingcall target="backup-files-folder">
 			<property name="exec" value="${mktg.dev.exec}" />
@@ -135,7 +135,7 @@
 			<property name="name" value="${mktg.dev.name}" />
 		</phingcall>
 		<echo> ===> Moving files </echo>
-		<move file="${mktg.dev.root}" todir="/tmp/docs-build-scraps-${BUILD_ID}" includeemptydirs="true" />
+		<move file="${mktg.dev.root}" todir="/tmp/mktg-build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<move file="${WORKSPACE}/webapp" todir="${mktg.dev.container}" includeemptydirs="true" />
 		<echo> ===> Fix permissions on new build </echo>
 		<phingcall target="fix-perms">
@@ -143,7 +143,7 @@
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
 		</phingcall>
-		<echo> ===> Copy sites/docs-dit/files down from dit storage </echo>
+		<echo> ===> Copy sites/mktg-dev/files down from dit storage </echo>
 		<phingcall target="restore-files-folder">
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="public_files" value="${mktg.dev.public_file_container}" />
