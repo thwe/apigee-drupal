@@ -38,6 +38,7 @@ projects[feeds_comment_processor][subdir] = "contrib"
 projects[feeds_tamper][subdir] = "contrib"
 projects[feeds_xpathparser][subdir] = "contrib"
 projects[field_group][subdir] = 'contrib'
+projects[fieldable_panels_panes][subdir] = "contrib"
 projects[fivestar][subdir] = 'contrib'
 projects[google_analytics][subdir] = 'contrib'
 projects[google_analytics_reports][subdir] = 'contrib'
