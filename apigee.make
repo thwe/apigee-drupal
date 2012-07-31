@@ -360,3 +360,10 @@ libraries[codemirror][download][type] = "get"
 libraries[codemirror][download][url] = "http://codemirror.net/codemirror.zip"
 libraries[codemirror][directory_name] = "codemirror"
 libraries[codemirror][destination] = "libraries"
+
+libraries[amazon_aws][download][type] = "git"
+libraries[amazon_aws][download][url] = "git://github.com/amazonwebservices/aws-sdk-for-php.git"
+libraries[amazon_aws][directory_name] = "amazon_aws"
+libraries[amazon_aws][destination] = "libraries"
+libraries[amazon_aws][download][tag] = "1.5.10"
+
