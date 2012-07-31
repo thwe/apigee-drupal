@@ -136,7 +136,8 @@
 		</phingcall>
 		<echo> ===> Moving files </echo>
 		<move file="${mktg.dev.root}" todir="/tmp/mktg-build-scraps-${BUILD_ID}" includeemptydirs="true" />
-		<move file="${WORKSPACE}/webapp" todir="${mktg.dev.container}" includeemptydirs="true" />
+		<move file="${WORKSPACE}/about" todir="${mktg.dev.container}" includeemptydirs="true" />
+		<exec command="mv '${docs.dev.container}/webapp' '${docs.dev.container}/about' " />		
 		<echo> ===> Fix permissions on new build </echo>
 		<phingcall target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
