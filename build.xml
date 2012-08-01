@@ -80,11 +80,11 @@
 			<property name="storage_uri" value="${blog.dev.storage_uri_container}" />
 		</phing>
 		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${blog.dev.root}" />
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="name" value="${blog.dev.name}" />
-		</phingcall>
+		</phing>
 		<echo> ===> Moving files </echo>
 		<if>
 			<available file="${blog.dev.root}" />
@@ -95,11 +95,11 @@
 
 		<move file="${WORKSPACE}/webapp" todir="${blog.dev.container}" includeemptydirs="true" />
 		<echo> ===> Fix permissions on new build </echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${blog.dev.root}" />
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="name" value="${blog.dev.name}" />
-		</phingcall>
+		</phing>
 		<echo> ===> Copy sites/blog-dit/files down from storage </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" value="${blog.dev.exec}" />
@@ -107,11 +107,11 @@
 			<property name="storage_uri" value="${blog.dev.storage_uri}" />
 		</phing>	
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${blog.dev.root}" />
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="name" value="${blog.dev.name}" />
-		</phingcall>
+		</phing>
 	</target>
 
 
@@ -135,11 +135,11 @@
 			<property name="storage_uri" value="${mktg.dev.storage_uri_container}" />
 		</phing>
 		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
-		</phingcall>
+		</phing>
 		<echo> ===> Moving files </echo>
 		<if>
 			<available file="${mktg.dev.root}" />
@@ -150,11 +150,11 @@
 		<move file="${WORKSPACE}/webapp" todir="${mktg.dev.container}" includeemptydirs="true" />
 		<exec command="mv '${mktg.dev.container}/webapp' '${mktg.dev.container}/about' " />		
 		<echo> ===> Fix permissions on new build </echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
-		</phingcall>
+		</phing>
 		<echo> ===> Copy sites/mktg-dev/files down from dit storage </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" value="${mktg.dev.exec}" />
@@ -162,11 +162,11 @@
 			<property name="storage_uri" value="${mktg.dev.storage_uri}" />
 		</phing>	
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
-		</phingcall>
+		</phing>
 	</target>
 	
 	<target name='copy-drush'>
@@ -177,19 +177,4 @@
 		</copy>
 	</target>
 
-
-	<target name="fix-perms">
-		<echo> ===> Fixing Permissions on ${name} </echo>
-		<if>
-			<equals arg1="${exec}" arg2="local" />
-			<then>
-				<exec command="sudo chmod -R 777 ${root}"  logoutput="true"  />
-				<exec command="sudo chown -R apache.apache ${root}"  logoutput="true" />
-			</then>
-			<else>
-				<exec command="${exec} sudo chmod -R 777 ${root}"  logoutput="true"  />
-				<exec command="${exec} sudo chown -R apache.apache ${root}"  logoutput="true" />
-			</else>
-		</if>
-	</target>
 </project>
