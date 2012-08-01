@@ -74,7 +74,6 @@ projects[itoggle][subdir] = 'contrib'
 projects[jcarousel][subdir] = 'contrib'
 projects[jquerymobile][subdir] = 'contrib'
 projects[jquery_colorpicker][subdir] = 'contrib'
-projects[jquery_update][subdir] = 'contrib'
 projects[ldap][subdir] = "contrib"
 projects[legal][subdir] = "contrib"
 projects[libraries][subdir] = "contrib"
@@ -187,6 +186,8 @@ projects[node_embed][subdir]="contrib"
 projects[node_embed][version] = "1.0-rc2"
 projects[scanner][subdir]="contrib"
 projects[scanner][version] = "1.x-dev"
+projects[jquery_update][subdir] = 'contrib'
+projects[jquery_update][version] = "2.x-dev"
 
 
 ; apigee theme
