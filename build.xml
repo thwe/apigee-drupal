@@ -114,11 +114,7 @@
 		<property prefix="docs.dev" file="drupal-settings/properties/docs.dev.properties" />
 		<property prefix="docs.dit" file="drupal-settings/properties/docs.dit.properties" />
 		<echo> ===> Backup files folder on ${docs.dit.name} </echo>
-		<phingcall target="backup-files-folder">
-			<property name="exec" 			value="${docs.dit.exec}" />
-			<property name="public_files" 	value="${docs.dit.public_file_path}" />
-			<property name="storage_uri" 	value="${docs.dit.storage_uri_container}" />
-		</phingcall>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="docs-dit-backup" />
 		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
 		<phingcall target="fix-perms">
 			<property name="root" 			value="${docs.dev.root}" />
@@ -136,11 +132,11 @@
 			<property name="name" 			value="${docs.dev.name}" />
 		</phingcall>
 		<echo> ===> Copy sites/SITENAME/files down from storage </echo>
-		<phingcall target="restore-files-folder">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" 			value="${docs.dev.exec}" />
 			<property name="public_files" 	value="${docs.dev.public_file_container}" />
 			<property name="storage_uri" 	value="${docs.dev.storage_uri}" />
-		</phingcall>	
+		</phing>	
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
 		<phingcall target="fix-perms">
 			<property name="root" 			value="${docs.dev.root}" />
@@ -175,34 +171,5 @@
 			</else>
 		</if>
 	</target>
-	<target name="backup-files-folder">
-		<if>
-			<equals arg1="${exec}" arg2="local" />
-			<then>
-				<exec 
-					command="${s3cmd} put --recursive --acl-public ${public_files} ${storage_uri}"
-					logoutput="true" />
-			</then>
-			<else>
-				<exec 
-					command="${s3cmd} put --recursive --acl-public ${public_files} ${storage_uri}"
-					logoutput="true" />
-			</else>
-		</if>
-	</target>
-	<target name="restore-files-folder">
-		<if>
-			<equals arg1="${exec}" arg2="local" />
-			<then>
-				<exec 
-					command="${s3cmd} get --recursive --skip-existing ${storage_uri} ${public_files}"
-					logoutput="true" />
-			</then>
-			<else>
-				<exec 
-					command="${exec} ${s3cmd} get --recursive --skip-existing  ${storage_uri} ${public_files}"
-					logoutput="true" />
-			</else>
-		</if>
-	</target>
+
 </project>
