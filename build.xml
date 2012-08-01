@@ -84,18 +84,18 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${dc.dev.root}" />
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
-		</phingcall>
+		</phing>
 		<move file="${dc.dev.root}" todir="/tmp/dc-build-scraps-${BUILD_ID}" />
 		<move file="${WORKSPACE}/webapp" todir="${dc.dev.container}" />
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${dc.dev.root}" />
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
-		</phingcall>
+		</phing>
 		<delete dir="${dc.dev.root}/modules/php" />
 	</target>
 	
@@ -116,21 +116,21 @@
 		<echo> ===> Backup files folder on ${docs.dit.name} </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="docs-dit-backup" />
 		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" 			value="${docs.dev.root}" />
 			<property name="exec" 			value="${docs.dev.exec}" />
 			<property name="name" 			value="${docs.dev.name}" />
-		</phingcall>
+		</phing>
 		<echo> ===> Moving files </echo>
 		<move file="${docs.dev.root}" todir="/tmp/docs-build-scraps-${BUILD_ID}" includeemptydirs="true" />
 		<move file="${WORKSPACE}/webapp" todir="${docs.dev.container}" includeemptydirs="true" />
 		<exec command="mv '${docs.dev.container}/webapp' '${docs.dev.container}/docs' " />		
 		<echo> ===> Fix permissions on new build </echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" 			value="${docs.dev.root}" />
 			<property name="exec" 			value="${docs.dev.exec}" />
 			<property name="name" 			value="${docs.dev.name}" />
-		</phingcall>
+		</phing>
 		<echo> ===> Copy sites/SITENAME/files down from storage </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" 			value="${docs.dev.exec}" />
@@ -138,11 +138,11 @@
 			<property name="storage_uri" 	value="${docs.dev.storage_uri}" />
 		</phing>	
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
-		<phingcall target="fix-perms">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" 			value="${docs.dev.root}" />
 			<property name="exec" 			value="${docs.dev.exec}" />
 			<property name="name" 			value="${docs.dev.name}" />
-		</phingcall>
+		</phing>
 	</target>
 
 
@@ -157,19 +157,6 @@
 	</target>
 
 
-	<target name="fix-perms">
-		<echo> ===> Fixing Permissions on ${name} </echo>
-		<if>
-			<equals arg1="${exec}" arg2="local" />
-			<then>
-				<exec command="sudo chmod -R 777 ${root}"  logoutput="true"  />
-				<exec command="sudo chown -R apache.apache ${root}"  logoutput="true" />
-			</then>
-			<else>
-				<exec command="${exec} sudo chmod -R 777 ${root}"  logoutput="true"  />
-				<exec command="${exec} sudo chown -R apache.apache ${root}"  logoutput="true" />
-			</else>
-		</if>
-	</target>
+
 
 </project>
