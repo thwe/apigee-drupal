@@ -32,6 +32,7 @@ projects[google_analytics_reports][subdir] = 'contrib'
 projects[imce][subdir] = 'contrib'
 projects[imce_wysiwyg][subdir] = 'contrib'
 projects[jquery_update][subdir] = 'contrib'
+projects[jquery_update][version] = "2.x-dev"
 projects[libraries][subdir] = "contrib"
 projects[link][subdir] = "contrib"
 projects[link_node][subdir] = "contrib"
