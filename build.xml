@@ -195,12 +195,12 @@
 			<equals arg1="${exec}" arg2="local" />
 			<then>
 				<exec 
-					command="${s3cmd} sync ${storage_uri} ${public_files}"
+					command="${s3cmd} sync --recursive ${storage_uri} ${public_files}"
 					logoutput="true" />
 			</then>
 			<else>
 				<exec 
-					command="${exec} ${s3cmd} sync ${storage_uri} ${public_files}"
+					command="${exec} ${s3cmd} sync --recursive ${storage_uri} ${public_files}"
 					logoutput="true" />
 			</else>
 		</if>
