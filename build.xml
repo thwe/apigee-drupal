@@ -88,10 +88,11 @@
 		<echo> ===> Moving files </echo>
 		<if>
 			<available file="${blog.dev.root}" />
+			<then>
+				<move file="${blog.dev.root}" todir="/tmp/blog-build-scraps-${BUILD_ID}" includeemptydirs="true" />
+			</then>
 		</if>
-		<then>
-			<move file="${blog.dev.root}" todir="/tmp/blog-build-scraps-${BUILD_ID}" includeemptydirs="true" />
-		</then>
+
 		<move file="${WORKSPACE}/webapp" todir="${blog.dev.container}" includeemptydirs="true" />
 		<echo> ===> Fix permissions on new build </echo>
 		<phingcall target="fix-perms">
@@ -142,10 +143,10 @@
 		<echo> ===> Moving files </echo>
 		<if>
 			<available file="${mktg.dev.root}" />
+			<then>
+				<move file="${mktg.dev.root}" todir="/tmp/mktg-build-scraps-${BUILD_ID}" includeemptydirs="true" />
+			</then>
 		</if>
-		<then>
-			<move file="${mktg.dev.root}" todir="/tmp/mktg-build-scraps-${BUILD_ID}" includeemptydirs="true" />
-		</then>
 		<move file="${WORKSPACE}/webapp" todir="${mktg.dev.container}" includeemptydirs="true" />
 		<exec command="mv '${mktg.dev.container}/webapp' '${mktg.dev.container}/about' " />		
 		<echo> ===> Fix permissions on new build </echo>
