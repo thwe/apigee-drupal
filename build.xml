@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<project name="apigee-drupal-project" default="apigee-drupal" description="Apigee Drupal Build">
+	
+	<!--
+	
+	Two types of builds: internal and external build. Internal builds are those who have access to the apigee/drupal-settings repo.
+	External builds are those who do not. Default is an external build. Internal builds will have ${build.type} = internal
+	in their Jenkins default properties.
+	
+	From the command line: phing apigee-drupal -Dbuild.type=internal
+	
+	-->
+	
+	<property name="build.type" value="external" override="false" />
+	<property name="s3cmd" value="/usr/bin/s3cmd" override="false" />
+	
+
+
+
+	<target name='init'>
+		<echo>-------------------------------------------------</echo>
+		<echo> => cloning latest drupal settings </echo>
+		<echo>-------------------------------------------------</echo>
+		<delete dir="drupal-settings" quiet="true" />
+		<delete dir="tasks" quiet="true" />
+		<mkdir dir="tasks" />
+		<gitclone repository="http://git.drupal.org/project/phingdrushtask.git" targetPath="tasks/drush" />
+		<gitbranch repository="tasks/drush" branchname="7.x-1.x" />
+		<gitclone repository="git@github.com:AntonStoeckl/Phing-Additions.git" targetPath="tasks/additions" />
+		<if>
+			<equals arg1="${build.type}" arg2="internal" />
+			<then>
+				<gitclone repository="git@github.com:apigee/drupal-settings" targetPath="drupal-settings" />
+			</then>
+		</if>
+		
+	</target>
+	
+	
+	<target name="apigee-drupal">
+		<echo>-------------------------------------------------</echo>
+		<echo> +++++ Running Phing/Drush build </echo>
+		<echo>-------------------------------------------------</echo>
+		<phingcall target="init" />
+		<includepath classpath="tasks" />
+		<taskdef name="drush" classname="drush.DrushTask" />
+		<drush command="cc">
+			<param>drush</param>
+		</drush>
+		<delete dir="${WORKSPACE}/webapp" quiet="true" />
+	    <drush command="make" assume="yes">
+			<option name="prepare-install" />
+			<option name="working-copy" />
+			<option name="no-gitinfofile" />
+			<!-- option name="no-cache" /   -->
+			<param>apigee.make</param>
+			<param>webapp</param>
+		</drush>
+	</target>
+	
+
+
+	<target name="blog-dev-build">
+		<if>
+			<equals arg1="${build.type}" arg2="internal" />
+			<then>
+				<copy todir="webapp/sites" >
+				  <fileset dir="drupal-settings/sites">
+				    <include name="blog-*/**/**" />
+				    <include name="sites.php" />
+				  </fileset>
+				</copy>
+			</then>
+		</if>
+		<property prefix="blog.dev" file="drupal-settings/properties/blog.dev.properties" />
+		<echo> ===> Backup files folder on ${blog.dit.name} </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="backup-files-folder">
+			<property name="exec" value="${blog.dev.exec}" />
+			<property name="public_files" value="${blog.dev.public_file_path}" />
+			<property name="storage_uri" value="${blog.dev.storage_uri_container}" />
+		</phing>
+		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+			<property name="root" value="${blog.dev.root}" />
+			<property name="exec" value="${blog.dev.exec}" />
+			<property name="name" value="${blog.dev.name}" />
+		</phing>
+		<echo> ===> Moving files </echo>
+		<if>
+			<available file="${blog.dev.root}" />
+			<then>
+				<move file="${blog.dev.root}" todir="/tmp/blog-build-scraps-${BUILD_ID}" includeemptydirs="true" />
+			</then>
+		</if>
+
+		<move file="${WORKSPACE}/webapp" todir="${blog.dev.container}" includeemptydirs="true" />
+		<echo> ===> Fix permissions on new build </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+			<property name="root" value="${blog.dev.root}" />
+			<property name="exec" value="${blog.dev.exec}" />
+			<property name="name" value="${blog.dev.name}" />
+		</phing>
+		<echo> ===> Copy sites/blog-dit/files down from storage </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
+			<property name="exec" value="${blog.dev.exec}" />
+			<property name="public_files" value="${blog.dev.public_file_container}" />
+			<property name="storage_uri" value="${blog.dev.storage_uri}" />
+		</phing>	
+		<echo> ===> Fix Permissions one last time for good measure...</echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+			<property name="root" value="${blog.dev.root}" />
+			<property name="exec" value="${blog.dev.exec}" />
+			<property name="name" value="${blog.dev.name}" />
+		</phing>
+	</target>
+
+
+	<target name="mktg-dev-build">
+		<if>
+			<equals arg1="${build.type}" arg2="internal" />
+			<then>
+				<copy todir="webapp/sites" >
+				  <fileset dir="drupal-settings/sites">
+				    <include name="mktg-*/**/**" />
+				    <include name="sites.php" />
+				  </fileset>
+				</copy>
+			</then>
+		</if>
+		<property prefix="mktg.dev" file="drupal-settings/properties/mktg.dev.properties" />
+		<echo> ===> Backup files folder on ${blog.dit.name} </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="backup-files-folder">
+			<property name="exec" value="${mktg.dev.exec}" />
+			<property name="public_files" value="${mktg.dev.public_file_path}" />
+			<property name="storage_uri" value="${mktg.dev.storage_uri_container}" />
+		</phing>
+		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+			<property name="root" value="${mktg.dev.root}" />
+			<property name="exec" value="${mktg.dev.exec}" />
+			<property name="name" value="${mktg.dev.name}" />
+		</phing>
+		<echo> ===> Moving files </echo>
+		<if>
+			<available file="${mktg.dev.root}" />
+			<then>
+				<move file="${mktg.dev.root}" todir="/tmp/mktg-build-scraps-${BUILD_ID}" includeemptydirs="true" />
+			</then>
+		</if>
+		<move file="${WORKSPACE}/webapp" todir="${mktg.dev.container}" includeemptydirs="true" />
+		<exec command="mv '${mktg.dev.container}/webapp' '${mktg.dev.container}/about' " />		
+		<echo> ===> Fix permissions on new build </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+			<property name="root" value="${mktg.dev.root}" />
+			<property name="exec" value="${mktg.dev.exec}" />
+			<property name="name" value="${mktg.dev.name}" />
+		</phing>
+		<echo> ===> Copy sites/mktg-dev/files down from dit storage </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
+			<property name="exec" value="${mktg.dev.exec}" />
+			<property name="public_files" value="${mktg.dev.public_file_container}" />
+			<property name="storage_uri" value="${mktg.dev.storage_uri}" />
+		</phing>	
+		<echo> ===> Fix Permissions one last time for good measure...</echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+			<property name="root" value="${mktg.dev.root}" />
+			<property name="exec" value="${mktg.dev.exec}" />
+			<property name="name" value="${mktg.dev.name}" />
+		</phing>
+	</target>
+	
+	<target name='copy-drush'>
+		<copy todir="${user.home}/.drush" overwrite="true" >
+			<fileset dir="drupal-settings/drush">
+				<include name="*.aliases.drushrc.php" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>
