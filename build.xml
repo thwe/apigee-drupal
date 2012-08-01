@@ -57,6 +57,7 @@
 			<param>webapp</param>
 		</drush>
 	</target>
+	
 	<target name="dc-local-build">
 		<drush command="cc">
 			<param>drush</param>
@@ -66,6 +67,7 @@
 			<param>all</param> 
 		</drush>
 	</target>
+	
 	<target name="dc-dev-build">
 		<if>
 			<equals arg1="${build.type}" arg2="internal" />
@@ -97,7 +99,6 @@
 		<delete dir="${dc.dev.root}/modules/php" />
 	</target>
 	
-	
 	<target name="docs-dev-build">
 		<if>
 			<equals arg1="${build.type}" arg2="internal" />
@@ -115,9 +116,8 @@
 		<echo> ===> Backup files folder on ${docs.dit.name} </echo>
 		<phingcall target="backup-files-folder">
 			<property name="exec" value="${docs.dit.exec}" />
-			<property name="root" value="${docs.dit.root}" />
-			<property name="site_name" value="${docs.dit.name}" />
-			<property name="planet_storage" value="${docs.dit.name}" />
+			<property name="public_files" value="${docs.dit.public_file_path}" />
+			<property name="storage_uri" value="${docs.dit.storage_uri_container}" />
 		</phingcall>
 		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
 		<phingcall target="fix-perms">
@@ -138,13 +138,9 @@
 		<echo> ===> Copy sites/docs-dit/files down from dit storage </echo>
 		<phingcall target="restore-files-folder">
 			<property name="exec" value="${docs.dev.exec}" />
-			<property name="root" value="${docs.dev.root}" />
-			<property name="from_site_name" value="${docs.dit.name}" />
-			<property name="to_site_name" value="${docs.dit.name}" />
-			<property name="planet_storage" value="${docs.dit.name}" />
-		</phingcall>
-		<symlink target="${docs.dev.root}/sites/docs-dit/files" 
-			link="${docs.dev.root}/sites/docs-dev/files" />
+			<property name="public_files" value="${docs.dev.public_file_container}" />
+			<property name="storage_uri" value="${docs.dev.storage_uri}" />
+		</phingcall>	
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
 		<phingcall target="fix-perms">
 			<property name="root" value="${docs.dev.root}" />
@@ -152,6 +148,10 @@
 			<property name="name" value="${docs.dev.name}" />
 		</phingcall>
 	</target>
+
+
+	<!-- marketing and blog builds are in the marketing branch build.xml -->
+
 	<target name='copy-drush'>
 		<copy todir="${user.home}/.drush" overwrite="true" >
 			<fileset dir="drupal-settings/drush">
@@ -179,15 +179,13 @@
 		<if>
 			<equals arg1="${exec}" arg2="local" />
 			<then>
-				<echo> ===> backing up local files in ${root}/sites/${from_site_name}/files to ${planet_storage}...</echo>
 				<exec 
-					command="${s3cmd} sync -recursive --acl-public ${root}/sites/${from_site_name}/files s3://${planet_storage}"
+					command="${s3cmd} put --recursive --acl-public ${public_files} ${storage_uri}"
 					logoutput="true" />
 			</then>
 			<else>
-				<echo> ===> backing up remote files in ${root}/sites/${from_site_name}/files to ${planet_storage}...</echo>
 				<exec 
-					command="${exec} ${s3cmd} sync -recursive --acl-public ${root}/sites/${from_site_name}/files s3://${planet_storage}"
+					command="${s3cmd} put --recursive --acl-public ${public_files} ${storage_uri}"
 					logoutput="true" />
 			</else>
 		</if>
@@ -196,15 +194,13 @@
 		<if>
 			<equals arg1="${exec}" arg2="local" />
 			<then>
-				<echo> ===> restoring local files to ${root}/sites/${from_site_name}/files...</echo>
 				<exec 
-					command="${s3cmd} sync s3://${planet_storage}/${from_site_name}/files ${root}/sites/${to_site_name}"
+					command="${s3cmd} sync ${storage_uri} ${public_files}"
 					logoutput="true" />
 			</then>
 			<else>
-				<echo> ===> restoring remote files in ${root}/sites/${from_site_name}/files to ${planet_storage}...</echo>
 				<exec 
-					command="${exec} ${s3cmd} sync s3://${planet_storage}/${from_site_name}/files ${root}/sites/${to_site_name}"
+					command="${exec} ${s3cmd} sync ${storage_uri} ${public_files}"
 					logoutput="true" />
 			</else>
 		</if>
