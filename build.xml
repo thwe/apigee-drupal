@@ -197,12 +197,12 @@
 			<equals arg1="${exec}" arg2="local" />
 			<then>
 				<exec 
-					command="${s3cmd} put -recursive --acl-public ${public_files} ${storage_uri}"
+					command="${s3cmd} put --recursive --acl-public ${public_files} ${storage_uri}"
 					logoutput="true" />
 			</then>
 			<else>
 				<exec 
-					command="${s3cmd} put -recursive --acl-public ${public_files} ${storage_uri}"
+					command="${s3cmd} put --recursive --acl-public ${public_files} ${storage_uri}"
 					logoutput="true" />
 			</else>
 		</if>
