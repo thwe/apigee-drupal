@@ -115,15 +115,15 @@
 		<property prefix="docs.dit" file="drupal-settings/properties/docs.dit.properties" />
 		<echo> ===> Backup files folder on ${docs.dit.name} </echo>
 		<phingcall target="backup-files-folder">
-			<property name="exec" value="${docs.dit.exec}" />
-			<property name="public_files" value="${docs.dit.public_file_path}" />
-			<property name="storage_uri" value="${docs.dit.storage_uri_container}" />
+			<property name="exec" 			value="${docs.dit.exec}" />
+			<property name="public_files" 	value="${docs.dit.public_file_path}" />
+			<property name="storage_uri" 	value="${docs.dit.storage_uri_container}" />
 		</phingcall>
 		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
 		<phingcall target="fix-perms">
-			<property name="root" value="${docs.dev.root}" />
-			<property name="exec" value="${docs.dev.exec}" />
-			<property name="name" value="${docs.dev.name}" />
+			<property name="root" 			value="${docs.dev.root}" />
+			<property name="exec" 			value="${docs.dev.exec}" />
+			<property name="name" 			value="${docs.dev.name}" />
 		</phingcall>
 		<echo> ===> Moving files </echo>
 		<move file="${docs.dev.root}" todir="/tmp/docs-build-scraps-${BUILD_ID}" includeemptydirs="true" />
@@ -131,21 +131,21 @@
 		<exec command="mv '${docs.dev.container}/webapp' '${docs.dev.container}/docs' " />		
 		<echo> ===> Fix permissions on new build </echo>
 		<phingcall target="fix-perms">
-			<property name="root" value="${docs.dev.root}" />
-			<property name="exec" value="${docs.dev.exec}" />
-			<property name="name" value="${docs.dev.name}" />
+			<property name="root" 			value="${docs.dev.root}" />
+			<property name="exec" 			value="${docs.dev.exec}" />
+			<property name="name" 			value="${docs.dev.name}" />
 		</phingcall>
-		<echo> ===> Copy sites/docs-dit/files down from dit storage </echo>
+		<echo> ===> Copy sites/SITENAME/files down from storage </echo>
 		<phingcall target="restore-files-folder">
-			<property name="exec" value="${docs.dev.exec}" />
-			<property name="public_files" value="${docs.dev.public_file_container}" />
-			<property name="storage_uri" value="${docs.dev.storage_uri}" />
+			<property name="exec" 			value="${docs.dev.exec}" />
+			<property name="public_files" 	value="${docs.dev.public_file_container}" />
+			<property name="storage_uri" 	value="${docs.dev.storage_uri}" />
 		</phingcall>	
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
 		<phingcall target="fix-perms">
-			<property name="root" value="${docs.dev.root}" />
-			<property name="exec" value="${docs.dev.exec}" />
-			<property name="name" value="${docs.dev.name}" />
+			<property name="root" 			value="${docs.dev.root}" />
+			<property name="exec" 			value="${docs.dev.exec}" />
+			<property name="name" 			value="${docs.dev.name}" />
 		</phingcall>
 	</target>
 
@@ -195,12 +195,12 @@
 			<equals arg1="${exec}" arg2="local" />
 			<then>
 				<exec 
-					command="${s3cmd} sync --recursive ${storage_uri} ${public_files}"
+					command="${s3cmd} get --recursive --skip-existing ${storage_uri} ${public_files}"
 					logoutput="true" />
 			</then>
 			<else>
 				<exec 
-					command="${exec} ${s3cmd} sync --recursive ${storage_uri} ${public_files}"
+					command="${exec} ${s3cmd} get --recursive --skip-existing  ${storage_uri} ${public_files}"
 					logoutput="true" />
 			</else>
 		</if>
