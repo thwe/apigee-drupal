@@ -74,11 +74,11 @@
 		</if>
 		<property prefix="blog.dev" file="drupal-settings/properties/blog.dev.properties" />
 		<echo> ===> Backup files folder on ${blog.dit.name} </echo>
-		<phingcall target="backup-files-folder">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="backup-files-folder">
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="public_files" value="${blog.dev.public_file_path}" />
 			<property name="storage_uri" value="${blog.dev.storage_uri_container}" />
-		</phingcall>
+		</phing>
 		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
 		<phingcall target="fix-perms">
 			<property name="root" value="${blog.dev.root}" />
@@ -100,12 +100,12 @@
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="name" value="${blog.dev.name}" />
 		</phingcall>
-		<echo> ===> Copy sites/blog-dit/files down from dit storage </echo>
-		<phingcall target="restore-files-folder">
+		<echo> ===> Copy sites/blog-dit/files down from storage </echo>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="public_files" value="${blog.dev.public_file_container}" />
 			<property name="storage_uri" value="${blog.dev.storage_uri}" />
-		</phingcall>	
+		</phing>	
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
 		<phingcall target="fix-perms">
 			<property name="root" value="${blog.dev.root}" />
@@ -129,11 +129,11 @@
 		</if>
 		<property prefix="mktg.dev" file="drupal-settings/properties/mktg.dev.properties" />
 		<echo> ===> Backup files folder on ${blog.dit.name} </echo>
-		<phingcall target="backup-files-folder">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="backup-files-folder">
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="public_files" value="${mktg.dev.public_file_path}" />
 			<property name="storage_uri" value="${mktg.dev.storage_uri_container}" />
-		</phingcall>
+		</phing>
 		<echo> ===> Fix permissions on current dev build so it can be moved without permissions errors </echo>
 		<phingcall target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
@@ -156,11 +156,11 @@
 			<property name="name" value="${mktg.dev.name}" />
 		</phingcall>
 		<echo> ===> Copy sites/mktg-dev/files down from dit storage </echo>
-		<phingcall target="restore-files-folder">
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="public_files" value="${mktg.dev.public_file_container}" />
 			<property name="storage_uri" value="${mktg.dev.storage_uri}" />
-		</phingcall>	
+		</phing>	
 		<echo> ===> Fix Permissions one last time for good measure...</echo>
 		<phingcall target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
@@ -189,36 +189,6 @@
 			<else>
 				<exec command="${exec} sudo chmod -R 777 ${root}"  logoutput="true"  />
 				<exec command="${exec} sudo chown -R apache.apache ${root}"  logoutput="true" />
-			</else>
-		</if>
-	</target>
-	<target name="backup-files-folder">
-		<if>
-			<equals arg1="${exec}" arg2="local" />
-			<then>
-				<exec 
-					command="${s3cmd} put --recursive --acl-public ${public_files} ${storage_uri}"
-					logoutput="true" />
-			</then>
-			<else>
-				<exec 
-					command="${s3cmd} put --recursive --acl-public ${public_files} ${storage_uri}"
-					logoutput="true" />
-			</else>
-		</if>
-	</target>
-	<target name="restore-files-folder">
-		<if>
-			<equals arg1="${exec}" arg2="local" />
-			<then>
-				<exec 
-					command="${s3cmd} get --recursive --skip-existing ${storage_uri} ${public_files}"
-					logoutput="true" />
-			</then>
-			<else>
-				<exec 
-					command="${exec} ${s3cmd} get --recursive --skip-existing  ${storage_uri} ${public_files}"
-					logoutput="true" />
 			</else>
 		</if>
 	</target>
