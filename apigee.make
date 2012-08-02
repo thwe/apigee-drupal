@@ -42,6 +42,7 @@ projects[field_group][subdir] = "contrib"
 projects[field_slideshow][subdir] = "contrib"
 projects[fieldable_panels_panes][subdir] = "contrib"
 projects[fivestar][subdir] = 'contrib'
+projects[fontyourface][subdir] = 'contrib'
 projects[google_analytics][subdir] = 'contrib'
 projects[google_analytics_reports][subdir] = 'contrib'
 projects[imce][subdir] = 'contrib'
