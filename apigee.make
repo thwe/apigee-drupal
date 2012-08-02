@@ -368,3 +368,8 @@ libraries[amazon_aws][directory_name] = "amazon_aws"
 libraries[amazon_aws][destination] = "libraries"
 libraries[amazon_aws][download][tag] = "1.5.10"
 
+libraries[jquery_selectlist][download][type] = "get"
+libraries[jquery_selectlist][download][url] = "http://odyniec.net/projects/selectlist/jquery.selectlist-0.5.zip"
+libraries[jquery_selectlist][directory_name] = "jquery.selectlist"
+libraries[jquery_selectlist][destination] = "libraries"
+
