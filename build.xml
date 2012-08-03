@@ -82,18 +82,29 @@
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
 		</phing>
-		<move file="${dc.dev.root}" 
+		<mkdir dir="/tmp/dc-build-scraps-${BUILD_ID}" />
+		<move 
 			todir="/tmp/dc-build-scraps-${BUILD_ID}" 
-			includeemptydirs="true" 
-			haltonerror="false" />
-		<move file="${WORKSPACE}/webapp" 
-			todir="${dc.dev.container}" 
-			includeemptydirs="true" />
+			includeemptydirs="true" >
+			<fileset dir="${dc.dev.root}">
+			    <include name="**/**" />
+			    <include name=".**" />
+			</fileset>
+		</move>
+		<move
+			todir="${dc.dev.root}" 
+			includeemptydirs="true">
+			<fileset dir="${WORKSPACE}/webapp">
+			    <include name="**/**" />
+			    <include name=".**" />
+			</fileset>
+		</move>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${dc.dev.root}" />
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
 		</phing>
+		<exec command="sudo service httpd start" logoutput="true" />
 		<delete dir="${dc.dev.root}/modules/php" />
 	</target>
 	
@@ -119,6 +130,7 @@
 			<property name="exec" 			value="${docs.dev.exec}" />
 			<property name="name" 			value="${docs.dev.name}" />
 		</phing>
+		<echo> ===> Stopping Apache </echo>
 		<echo> ===> Moving files </echo>
 		<move file="${docs.dev.root}" 
 			todir="/tmp/docs-build-scraps-${BUILD_ID}" 
@@ -127,7 +139,8 @@
 		<move file="${WORKSPACE}/webapp" 
 			todir="${docs.dev.container}" 
 			includeemptydirs="true" />
-		<exec command="mv '${docs.dev.container}/webapp' '${docs.dev.container}/docs' " />		
+		<exec command="mv '${docs.dev.container}/webapp' '${docs.dev.container}/docs' " />
+			
 		<echo> ===> Fix permissions on new build </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" 			value="${docs.dev.root}" />
