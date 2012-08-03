@@ -82,29 +82,21 @@
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
 		</phing>
-		<mkdir dir="/tmp/dc-build-scraps-${BUILD_ID}" />
-		<move 
+		<echo> ===> Moving files </echo>
+		<exec command="sudo chown -R jenkins.jenkins ${dc.dev.root}" />
+		<move file="${dc.dev.root}" 
 			todir="/tmp/dc-build-scraps-${BUILD_ID}" 
-			includeemptydirs="true" >
-			<fileset dir="${dc.dev.root}">
-			    <include name="**/**" />
-			    <include name=".**" />
-			</fileset>
-		</move>
-		<move
-			todir="${dc.dev.root}" 
-			includeemptydirs="true">
-			<fileset dir="${WORKSPACE}/webapp">
-			    <include name="**/**" />
-			    <include name=".**" />
-			</fileset>
-		</move>
+			includeemptydirs="true" 
+			haltonerror="false" />
+		<move file="${WORKSPACE}/webapp" 
+			todir="${dc.dev.container}" 
+			includeemptydirs="true" />
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${dc.dev.root}" />
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
 		</phing>
-		<exec command="sudo service httpd start" logoutput="true" />
+		<echo> ===> Removing PHP Module </echo>
 		<delete dir="${dc.dev.root}/modules/php" />
 	</target>
 	
@@ -130,7 +122,7 @@
 			<property name="exec" 			value="${docs.dev.exec}" />
 			<property name="name" 			value="${docs.dev.name}" />
 		</phing>
-		<echo> ===> Stopping Apache </echo>
+		<exec command="sudo chown -R jenkins.jenkins ${docs.dev.root}" />
 		<echo> ===> Moving files </echo>
 		<move file="${docs.dev.root}" 
 			todir="/tmp/docs-build-scraps-${BUILD_ID}" 
