@@ -58,16 +58,6 @@
 		</drush>
 	</target>
 	
-	<target name="dc-local-build">
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<drush alias="@dc-local" assume="yes" command="updatedb" /> 
-		<drush alias="@dc-local" assume="yes" command="cc">
-			<param>all</param> 
-		</drush>
-	</target>
-	
 	<target name="dc-dev-build">
 		<if>
 			<equals arg1="${build.type}" arg2="internal" />
@@ -89,8 +79,13 @@
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
 		</phing>
-		<move file="${dc.dev.root}" todir="/tmp/dc-build-scraps-${BUILD_ID}" />
-		<move file="${WORKSPACE}/webapp" todir="${dc.dev.container}" />
+		<move file="${dc.dev.root}" 
+			todir="/tmp/dc-build-scraps-${BUILD_ID}" 
+			includeemptydirs="true" 
+			haltonfailure="false" />
+		<move file="${WORKSPACE}/webapp" 
+			todir="${dc.dev.container}" 
+			includeemptydirs="true" />
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${dc.dev.root}" />
 			<property name="exec" value="${dc.dev.exec}" />
@@ -122,8 +117,13 @@
 			<property name="name" 			value="${docs.dev.name}" />
 		</phing>
 		<echo> ===> Moving files </echo>
-		<move file="${docs.dev.root}" todir="/tmp/docs-build-scraps-${BUILD_ID}" includeemptydirs="true" />
-		<move file="${WORKSPACE}/webapp" todir="${docs.dev.container}" includeemptydirs="true" />
+		<move file="${docs.dev.root}" 
+			todir="/tmp/docs-build-scraps-${BUILD_ID}" 
+			includeemptydirs="true"
+			haltonfailure="false" />
+		<move file="${WORKSPACE}/webapp" 
+			todir="${docs.dev.container}" 
+			includeemptydirs="true" />
 		<exec command="mv '${docs.dev.container}/webapp' '${docs.dev.container}/docs' " />		
 		<echo> ===> Fix permissions on new build </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
