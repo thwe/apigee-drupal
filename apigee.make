@@ -306,7 +306,7 @@ libraries[json2][directory_name] = "json2"
 libraries[json2][destination] = "libraries"
 
 libraries[ckeditor][download][type] = "get"
-libraries[ckeditor][download][url] = "http://mktg-dev.apigee.com/libraries/ckeditor_3.6.2.tar.gz"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.4/ckeditor_3.6.4.zip"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
@@ -336,7 +336,7 @@ libraries[lessphp][directory_name] = "lessphp"
 libraries[lessphp][destination] = 'libraries'
 
 libraries[colorpicker][download][type] = 'get'
-libraries[colorpicker][download][url] = 'http://mktg-dev.apigee.com/libraries/colorpicker.zip'
+libraries[colorpicker][download][url] = 'http://www.eyecon.ro/colorpicker/colorpicker.zip'
 libraries[colorpicker][directory_name] = "colorpicker"
 libraries[colorpicker][destination] = "libraries"
 
