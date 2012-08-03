@@ -85,7 +85,7 @@
 		<move file="${dc.dev.root}" 
 			todir="/tmp/dc-build-scraps-${BUILD_ID}" 
 			includeemptydirs="true" 
-			haltonfailure="false" />
+			haltonerror="false" />
 		<move file="${WORKSPACE}/webapp" 
 			todir="${dc.dev.container}" 
 			includeemptydirs="true" />
@@ -123,7 +123,7 @@
 		<move file="${docs.dev.root}" 
 			todir="/tmp/docs-build-scraps-${BUILD_ID}" 
 			includeemptydirs="true"
-			haltonfailure="false" />
+			haltonerror="false" />
 		<move file="${WORKSPACE}/webapp" 
 			todir="${docs.dev.container}" 
 			includeemptydirs="true" />
