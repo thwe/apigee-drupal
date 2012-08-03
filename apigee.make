@@ -215,7 +215,12 @@ projects[apigee_docs][download][url] = "git@github.com:apigee/apigee_drupal_docs
 projects[tao][type]=theme
 projects[rubik][type]=theme
 
-
+; apigee custom modules
+projects[apigee_custom][type] = module
+projects[apigee_custom][subdir] = custom
+projects[apigee_custom][download][type] = 'git'
+projects[apigee_custom][download][url] = "git@github.com:apigee/apigee-drupal-custom.git"
+projects[apigee_custom][download][branch] = "master"
 
 ; apigee bootstrap module
 projects[apigee_bootstrap][type] = module
