@@ -197,13 +197,6 @@ projects[scanner][version] = "1.x-dev"
 projects[jquery_update][subdir] = 'contrib'
 projects[jquery_update][version] = "2.x-dev"
 
-
-; apigee theme
-projects[apigee][type] = "theme"
-projects[apigee][download][type] = 'git'
-projects[apigee][download][url] = "git@github.com:apigee/apigee_drupal_theme.git"
-projects[apigee][download][branch] = "7.x-1.x"
-
 ; apigee base theme
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
