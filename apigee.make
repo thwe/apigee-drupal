@@ -66,6 +66,7 @@ projects[panels][subdir] = "contrib"
 projects[pathauto][subdir] = "contrib"
 projects[rules][subdir] = "contrib"
 projects[smart_trim][subdir] = "contrib"
+projects[special_menu_items][subdir] = "contrib"
 projects[token][subdir] = "contrib"
 projects[views][subdir] = "contrib"
 projects[views_infinite_scroll][subdir] = 'contrib'
