@@ -207,7 +207,7 @@ projects[apigee][download][branch] = "7.x-1.x"
 ; apigee base theme
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
-projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
+projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_base_theme.git"
 
 ; apigee devconnect theme
 projects[apigee_devconnect][type] = "theme"
