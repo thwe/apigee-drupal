@@ -200,7 +200,8 @@ projects[jquery_update][version] = "2.x-dev"
 ; apigee base theme
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
-projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_base_theme.git"
+projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
+projects[apigee_base][download][branch] = "devconnect"
 
 ; apigee devconnect theme
 projects[apigee_devconnect][type] = "theme"
