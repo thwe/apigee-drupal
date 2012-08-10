@@ -69,6 +69,7 @@ projects[smart_trim][subdir] = "contrib"
 projects[special_menu_items][subdir] = "contrib"
 projects[token][subdir] = "contrib"
 projects[views][subdir] = "contrib"
+projects[views_bulk_operations][subdir] = "contrib"
 projects[views_infinite_scroll][subdir] = 'contrib'
 projects[views_slideshow][subdir] = "contrib"
 projects[webform][subdir] = "contrib"
