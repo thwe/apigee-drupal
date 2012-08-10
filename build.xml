@@ -67,7 +67,7 @@
 			<then>
 				<copy todir="webapp/sites" >
 				  <fileset dir="drupal-settings/sites">
-				    <include name="**/**" />
+				    <include name="dc-dev/**" />
 				    <include name="sites.php" />
 				  </fileset>
 				</copy>
@@ -106,7 +106,7 @@
 			<then>
 				<copy todir="webapp/sites" >
 				  <fileset dir="drupal-settings/sites">
-				    <include name="docs-*/**/**" />
+				    <include name="docs-dev/**/**" />
 				    <include name="sites.php" />
 				  </fileset>
 				</copy>
