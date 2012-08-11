@@ -380,3 +380,7 @@ libraries[jquery_selectlist][download][url] = "http://odyniec.net/projects/selec
 libraries[jquery_selectlist][directory_name] = "jquery.selectlist"
 libraries[jquery_selectlist][destination] = "libraries"
 
+libraries[s3-php5-curl][download][type] = "get"
+libraries[s3-php5-curl][download][url] = "http://amazon-s3-php-class.googlecode.com/files/s3-php5-curl_0.4.0.tar.gz"
+libraries[s3-php5-curl][directory_name] = "s3-php5-curl"
+libraries[s3-php5-curl][destination] = "libraries"
