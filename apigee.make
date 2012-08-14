@@ -10,6 +10,8 @@ projects[drupal][download][url] = "http://git.drupal.org/project/drupal.git"
 ;Contrib projects
 projects[admin_menu][subdir] = "contrib"
 projects[apachesolr][subdir] = "contrib"
+projects[awssdk][subdir] = "contrib"
+projects[amazons3][subdir] = "contrib"
 projects[apachesolr_autocomplete][subdir] = "contrib"
 projects[backup_migrate][subdir] = "contrib"
 projects[bean][subdir] = "contrib"
