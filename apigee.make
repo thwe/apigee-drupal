@@ -4,7 +4,7 @@ api = 2
 ;core
 projects[drupal][type] = "core"
 projects[drupal][download][type] = "git"
-projects[drupal][download][tag] = "7.14"
+projects[drupal][download][tag] = "7.15"
 projects[drupal][download][url] = "http://git.drupal.org/project/drupal.git"
 
 ;Contrib projects 
@@ -247,25 +247,11 @@ projects[apigee_search][download][type] = 'git'
 projects[apigee_search][download][url] = "git@github.com:apigee/apigee_search.git"
 projects[apigee_search][download][branch] = "7.x-1.x"
 
-; work in progress for the WADL=>entity
-;projects[objective_forms][type] = module
-;projects[objective_forms][subdir]= custom
-;projects[objective_forms][download][type] = 'git'
-;projects[objective_forms][download][url] = git@github.com:stovak/objective_forms
-;projects[objective_forms][download][branch] = "7.x"
-
-;projects[php_lib][type] = module
-;projects[php_lib][subdir]= custom
-;projects[php_lib][download][type] = 'git'
-;projects[php_lib][download][url] = git@github.com:stovak/php_lib
-;projects[php_lib][download][branch] = "7.x"
-
-;Objective Forms
-;projects[xml_forms][type] = module
-;projects[xml_forms][subdir]= custom
-;projects[xml_forms][download][type] = 'git'
-;projects[xml_forms][download][url] = git@github.com:stovak/xml_forms.git
-;projects[xml_forms][download][branch] = "7.x"
+projects[shiva][type] = module
+projects[shiva][subdir] = custom
+projects[shiva][download][type] = 'git'
+projects[shiva][download][url] = "git@github.com:apigee/shiva.git"
+projects[shiva][download][branch] = "master"
 
 
 ; devconnect mods
