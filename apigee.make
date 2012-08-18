@@ -101,6 +101,12 @@ projects[apigee_sso][subdir] = custom
 projects[apigee_sso][download][type] = 'git'
 projects[apigee_sso][download][url] = "git@github.com:apigee/apigee_drupal_sso.git"
 
+; apigee Custom modules
+projects[apigee_custom][type] = module
+projects[apigee_custom][subdir] = custom
+projects[apigee_custom][download][type] = 'git'
+projects[apigee_custom][download][url] = "git@github.com:apigee/apigee-drupal-custom.git"
+
 ; Libraries
 ; ------------------------------------------------------------------
 ; unfortunately, we can't link directly to a /download/latest
