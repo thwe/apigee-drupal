@@ -78,6 +78,7 @@ projects[rules][subdir] = "contrib"
 projects[smart_trim][subdir] = "contrib"
 projects[special_menu_items][subdir] = "contrib"
 projects[token][subdir] = "contrib"
+projects[twitter][subdir] = "contrib"
 projects[views][subdir] = "contrib"
 projects[views_bulk_operations][subdir] = "contrib"
 projects[views_infinite_scroll][subdir] = 'contrib'
@@ -132,3 +133,9 @@ libraries[codemirror][download][type] = "get"
 libraries[codemirror][download][url] = "http://codemirror.net/codemirror.zip"
 libraries[codemirror][directory_name] = "codemirror"
 libraries[codemirror][destination] = "libraries"
+
+libraries[jquery_jcarousel][download][type] = "get"
+libraries[jquery_jcarousel][download][url] = "http://sorgalla.com/projects/download.php?jcarousel"
+libraries[jquery_jcarousel][directory_name] = "jquery.jcarousel"
+libraries[jquery_jcarousel][destination] = "libraries"
+
