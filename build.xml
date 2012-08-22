@@ -86,7 +86,7 @@
 			<property name="name" value="${blog.dev.name}" />
 		</phing>
 		<echo> ===> Moving files </echo>
-		<exec command="/sbin/service httpd stop" />
+		<exec command="sudo /sbin/service httpd stop" />
 		<if>
 			<available file="${blog.dev.root}" />
 			<then>
@@ -102,7 +102,7 @@
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="name" value="${blog.dev.name}" />
 		</phing>
-		<exec command="/sbin/service httpd start" />
+		<exec command="sudo /sbin/service httpd start" />
 		<echo> ===> Copy sites/blog-dit/files down from storage </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" value="${blog.dev.exec}" />
@@ -143,7 +143,7 @@
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
 		</phing>
-		<exec command="/sbin/service httpd stop" logoutput="true" />
+		<exec command="sudo /sbin/service httpd stop" logoutput="true" />
 		<echo> ===> Moving files </echo>
 		<if>
 			<available file="${mktg.dev.root}" />
@@ -161,7 +161,7 @@
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
 		</phing>
-		<exec command="/sbin/service httpd start" />
+		<exec command="sudo /sbin/service httpd start" />
 		<echo> ===> Copy sites/mktg-dev/files down from dit storage </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" value="${mktg.dev.exec}" />
