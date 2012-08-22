@@ -90,12 +90,12 @@
 		<if>
 			<available file="${blog.dev.root}" />
 			<then>
-				<echo> sudo mv ${blog.dev.root} /tmp/blog-build-scraps-${BUILD_ID}</echo>
-				<exec command="sudo mv ${blog.dev.root} /tmp/blog-build-scraps-${BUILD_ID}" logoutput="true" />
+				<echo> sudo mv '${blog.dev.root}' '/tmp/blog-build-scraps-${BUILD_ID}'</echo>
+				<exec command="sudo mv '${blog.dev.root}' '/tmp/blog-build-scraps-${BUILD_ID}'" logoutput="true" />
 			</then>
 		</if>
-		<echo>sudo mv ${WORKSPACE}/webapp ${blog.dev.container}</echo>
-		<exec command="sudo mv ${WORKSPACE}/webapp ${blog.dev.container}" logoutput="true" />
+		<echo>sudo mv '${WORKSPACE}/webapp' '${blog.dev.container}'</echo>
+		<exec command="sudo mv '${WORKSPACE}/webapp' '${blog.dev.container}'" logoutput="true" />
 		<echo> ===> Fix permissions on new build </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${blog.dev.root}" />
