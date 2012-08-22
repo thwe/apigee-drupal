@@ -19,6 +19,7 @@ projects[bean][patch][] = "http://drupal.org/files/bean-extra-field-support-1534
 projects[block_class][subdir] = "contrib"
 projects[ckeditor][subdir] = "contrib"
 projects[content_access][subdir] = "contrib"
+projects[cdn][subdir] = "contrib"
 projects[context][subdir] = "contrib"
 projects[cpn][subdir] = "contrib"
 projects[ctools][subdir] = "contrib"
@@ -39,6 +40,7 @@ projects[feeds][download][url] = "http://git.drupal.org/project/feeds.git"
 projects[feeds][download][revision] = "3eb5a48643e1ae848ac03fbfc060492c507a9a42"
 projects[feeds_comment_processor][subdir] = "contrib"
 projects[feeds_crawler][subdir] = "contrib"
+projects[feeds_spider][subdir] = "contrib"
 projects[feeds_tamper][subdir] = "contrib"
 projects[feeds_xpathparser][subdir] = "contrib"
 projects[field_collection][subdir] = "contrib"
@@ -63,13 +65,20 @@ projects[media_youtube][subdir] = "contrib"
 projects[metatag][subdir] = "contrib"
 projects[nagios][subdir] = "contrib"
 projects[node_export][subdir] = "contrib"
+projects[nodequeue][subdir] = "contrib"
+projects[nodequeue][type] = "module"
+projects[nodequeue][download][type] = "git"
+projects[nodequeue][download][url] = "http://git.drupal.org/project/nodequeue.git"
+projects[nodequeue][download][revision] = "9572de50a048c28fdff9e3d34a018a676f4ca338"
 projects[oembed][subdir] = "contrib"
 projects[panels][subdir] = "contrib"
 projects[pathauto][subdir] = "contrib"
+projects[redirect][subdir] = "contrib"
 projects[rules][subdir] = "contrib"
 projects[smart_trim][subdir] = "contrib"
 projects[special_menu_items][subdir] = "contrib"
 projects[token][subdir] = "contrib"
+projects[twitter][subdir] = "contrib"
 projects[views][subdir] = "contrib"
 projects[views_bulk_operations][subdir] = "contrib"
 projects[views_infinite_scroll][subdir] = 'contrib'
@@ -98,6 +107,12 @@ projects[apigee_sso][subdir] = custom
 projects[apigee_sso][download][type] = 'git'
 projects[apigee_sso][download][url] = "git@github.com:apigee/apigee_drupal_sso.git"
 
+; apigee Custom modules
+projects[apigee_custom][type] = module
+projects[apigee_custom][subdir] = custom
+projects[apigee_custom][download][type] = 'git'
+projects[apigee_custom][download][url] = "git@github.com:apigee/apigee-drupal-custom.git"
+
 ; Libraries
 ; ------------------------------------------------------------------
 ; unfortunately, we can't link directly to a /download/latest
@@ -118,3 +133,9 @@ libraries[codemirror][download][type] = "get"
 libraries[codemirror][download][url] = "http://codemirror.net/codemirror.zip"
 libraries[codemirror][directory_name] = "codemirror"
 libraries[codemirror][destination] = "libraries"
+
+libraries[jquery_jcarousel][download][type] = "get"
+libraries[jquery_jcarousel][download][url] = "http://sorgalla.com/projects/download.php?jcarousel"
+libraries[jquery_jcarousel][directory_name] = "jquery.jcarousel"
+libraries[jquery_jcarousel][destination] = "libraries"
+
