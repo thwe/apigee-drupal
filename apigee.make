@@ -203,12 +203,17 @@ projects[jquery_update][version] = "2.x-dev"
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
 projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
-projects[apigee_base][download][branch] = "devconnect"
+projects[apigee_base][download][branch] = "master"
 
 ; apigee devconnect theme
 projects[apigee_devconnect][type] = "theme"
 projects[apigee_devconnect][download][type] = 'git'
 projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
+
+; apigee mktg theme
+projects[apigee_mktg][type] = "theme"
+projects[apigee_mktg][download][type] = 'git'
+projects[apigee_mktg][download][url] = "git@github.com:apigee/apigee_drupal_mktg_theme.git"
 
 ; apigee docs theme
 projects[apigee_docs][type] = "theme"
