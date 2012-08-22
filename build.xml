@@ -86,20 +86,23 @@
 			<property name="name" value="${blog.dev.name}" />
 		</phing>
 		<echo> ===> Moving files </echo>
+		<exec command="/sbin/service httpd stop" />
 		<if>
 			<available file="${blog.dev.root}" />
 			<then>
-				<move file="${blog.dev.root}" todir="/tmp/blog-build-scraps-${BUILD_ID}" includeemptydirs="true" />
+				<echo> sudo mv ${blog.dev.root} /tmp/blog-build-scraps-${BUILD_ID}</echo>
+				<exec command="sudo mv ${blog.dev.root} /tmp/blog-build-scraps-${BUILD_ID}" logoutput="true" />
 			</then>
 		</if>
-
-		<move file="${WORKSPACE}/webapp" todir="${blog.dev.container}" includeemptydirs="true" />
+		<echo>sudo mv ${WORKSPACE}/webapp ${blog.dev.container}</echo>
+		<exec command="sudo mv ${WORKSPACE}/webapp ${blog.dev.container}" logoutput="true" />
 		<echo> ===> Fix permissions on new build </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${blog.dev.root}" />
 			<property name="exec" value="${blog.dev.exec}" />
 			<property name="name" value="${blog.dev.name}" />
 		</phing>
+		<exec command="/sbin/service httpd start" />
 		<echo> ===> Copy sites/blog-dit/files down from storage </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" value="${blog.dev.exec}" />
@@ -140,21 +143,24 @@
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
 		</phing>
+		<exec command="/sbin/service httpd stop" logoutput="true" />
 		<echo> ===> Moving files </echo>
 		<if>
 			<available file="${mktg.dev.root}" />
 			<then>
-				<move file="${mktg.dev.root}" todir="/tmp/mktg-build-scraps-${BUILD_ID}" includeemptydirs="true" />
+				<echo>sudo mv ${mktg.dev.root} /tmp/mktg-build-scraps-${BUILD_ID}</echo>
+				<exec command="sudo mv ${mktg.dev.root} /tmp/mktg-build-scraps-${BUILD_ID}" logoutput="true" />
 			</then>
 		</if>
-		<move file="${WORKSPACE}/webapp" todir="${mktg.dev.container}" includeemptydirs="true" />
-		<exec command="mv '${mktg.dev.container}/webapp' '${mktg.dev.container}/about' " />		
+		<echo>sudo mv ${WORKSPACE}/webapp ${mktg.dev.container}/about</echo>
+		<exec command="sudo mv ${WORKSPACE}/webapp ${mktg.dev.container}/about" logoutput="true" />
 		<echo> ===> Fix permissions on new build </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
 			<property name="exec" value="${mktg.dev.exec}" />
 			<property name="name" value="${mktg.dev.name}" />
 		</phing>
+		<exec command="/sbin/service httpd start" />
 		<echo> ===> Copy sites/mktg-dev/files down from dit storage </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="restore-files-folder">
 			<property name="exec" value="${mktg.dev.exec}" />
