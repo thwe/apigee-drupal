@@ -152,8 +152,9 @@
 				<exec command="sudo mv ${mktg.dev.root} /tmp/mktg-build-scraps-${BUILD_ID}" logoutput="true" />
 			</then>
 		</if>
-		<echo>sudo mv ${WORKSPACE}/webapp ${mktg.dev.container}/about</echo>
-		<exec command="sudo mv ${WORKSPACE}/webapp ${mktg.dev.container}/about" logoutput="true" />
+		<echo>sudo mv '${WORKSPACE}/webapp' '${mktg.dev.container}'</echo>
+		<exec command="sudo mv '${WORKSPACE}/webapp' '${mktg.dev.container}'" logoutput="true" />
+		<exec command="sudo mv '${mktg.dev.container}/webapp' '${mktg.dev.container}/about'" logoutput="true" />
 		<echo> ===> Fix permissions on new build </echo>
 		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
 			<property name="root" value="${mktg.dev.root}" />
