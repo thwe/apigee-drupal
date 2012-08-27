@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="apigee-drupal-project" default="apigee-drupal" description="Apigee Drupal Build">
+<project name="apigee-drupal-project" default="shiva-build" description="Apigee Drupal Build">
 	
 	<!--
 	
@@ -61,43 +61,19 @@
 		</drush>
 	</target>
 	
-	<target name="dc-dev-build">
+	<target name="shiva-build">
+		<phingcall target="apigee-drupal" />
 		<if>
 			<equals arg1="${build.type}" arg2="internal" />
 			<then>
 				<copy todir="webapp/sites" >
 				  <fileset dir="drupal-settings/sites">
-				    <include name="dc-dev/**" />
+				    <include name="*shiva*/**" />
 				    <include name="sites.php" />
 				  </fileset>
 				</copy>
 			</then>
 		</if>
-		<property prefix="dc.dev" file="drupal-settings/properties/dc.dev.properties" />
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
-		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
-			<property name="root" value="${dc.dev.root}" />
-			<property name="exec" value="${dc.dev.exec}" />
-			<property name="name" value="${dc.dev.name}" />
-		</phing>
-		<echo> ===> Moving files </echo>
-		<exec command="sudo chown -R jenkins.jenkins ${dc.dev.root}" />
-		<move file="${dc.dev.root}" 
-			todir="/tmp/dc-build-scraps-${BUILD_ID}" 
-			includeemptydirs="true" 
-			haltonerror="false" />
-		<move file="${WORKSPACE}/webapp" 
-			todir="${dc.dev.container}" 
-			includeemptydirs="true" />
-		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
-			<property name="root" value="${dc.dev.root}" />
-			<property name="exec" value="${dc.dev.exec}" />
-			<property name="name" value="${dc.dev.name}" />
-		</phing>
-		<echo> ===> Removing PHP Module </echo>
-		<delete dir="${dc.dev.root}/modules/php" />
 	</target>
 
 

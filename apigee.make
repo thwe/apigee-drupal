@@ -202,6 +202,8 @@ projects[views_queue][subdir] = 'contrib'
 projects[views_queue][version] = "1.x-dev"
 
 
+
+
 ; apigee base theme
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
@@ -211,6 +213,8 @@ projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base
 projects[apigee_mktg][type] = "theme"
 projects[apigee_mktg][download][type] = 'git'
 projects[apigee_mktg][download][url] = "git@github.com:apigee/apigee_drupal_mktg_theme"
+projects[apigee_base][download][branch] = "master"
+
 
 ; development seed's admin theme
 projects[tao][type]=theme
