@@ -198,22 +198,19 @@ projects[scanner][subdir]="contrib"
 projects[scanner][version] = "1.x-dev"
 projects[jquery_update][subdir] = 'contrib'
 projects[jquery_update][version] = "2.x-dev"
+projects[views_queue][subdir] = 'contrib'
+projects[views_queue][version] = "1.x-dev"
+
 
 ; apigee base theme
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
 projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
-projects[apigee_base][download][branch] = "devconnect"
 
-; apigee devconnect theme
-projects[apigee_devconnect][type] = "theme"
-projects[apigee_devconnect][download][type] = 'git'
-projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
-
-; apigee docs theme
-projects[apigee_docs][type] = "theme"
-projects[apigee_docs][download][type] = 'git'
-projects[apigee_docs][download][url] = "git@github.com:apigee/apigee_drupal_docs_theme.git"
+; apigee marketing theme
+projects[apigee_mktg][type] = "theme"
+projects[apigee_mktg][download][type] = 'git'
+projects[apigee_mktg][download][url] = "git@github.com:apigee/apigee_drupal_mktg_theme"
 
 ; development seed's admin theme
 projects[tao][type]=theme
