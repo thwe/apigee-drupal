@@ -75,6 +75,11 @@
 				</copy>
 			</then>
 		</if>
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+			<property name="root" value="${shiva.dev.root}" />
+			<property name="exec" value="${shiva.dev.exec}" />
+			<property name="name" value="${shiva.dev.name}" />
+		</phing>
 		<echo> ===> Moving files </echo>
 		<exec command="sudo chown -R jenkins.jenkins ${shiva.dev.root}" />
 		<move file="${shiva.dev.root}" 
@@ -84,6 +89,11 @@
 		<move file="${WORKSPACE}/webapp" 
 			todir="${shiva.dev.container}" 
 			includeemptydirs="true" />
+		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+			<property name="root" value="${shiva.dev.root}" />
+			<property name="exec" value="${shiva.dev.exec}" />
+			<property name="name" value="${shiva.dev.name}" />
+		</phing>
 	</target>
 
 
