@@ -63,6 +63,7 @@
 	
 	<target name="shiva-build">
 		<phingcall target="apigee-drupal" />
+		<property prefix="shiva.dev" file="drupal-settings/properties/shiva.dev.properties" />
 		<if>
 			<equals arg1="${build.type}" arg2="internal" />
 			<then>
@@ -74,6 +75,15 @@
 				</copy>
 			</then>
 		</if>
+		<echo> ===> Moving files </echo>
+		<exec command="sudo chown -R jenkins.jenkins ${shiva.dev.root}" />
+		<move file="${shiva.dev.root}" 
+			todir="/tmp/shiva-build-scraps-${BUILD_ID}" 
+			includeemptydirs="true" 
+			haltonerror="false" />
+		<move file="${WORKSPACE}/webapp" 
+			todir="${shiva.dev.container}" 
+			includeemptydirs="true" />
 	</target>
 
 

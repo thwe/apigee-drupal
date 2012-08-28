@@ -202,8 +202,6 @@ projects[views_queue][subdir] = 'contrib'
 projects[views_queue][version] = "1.x-dev"
 
 
-
-
 ; apigee base theme
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
