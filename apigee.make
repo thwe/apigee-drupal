@@ -200,7 +200,8 @@ projects[jquery_update][subdir] = 'contrib'
 projects[jquery_update][version] = "2.x-dev"
 projects[views_queue][subdir] = 'contrib'
 projects[views_queue][version] = "1.x-dev"
-
+projects[views_php][subdir] = 'contrib'
+projects[views_php][version] = "1.x-dev"
 
 ; apigee base theme
 projects[apigee_base][type] = "theme"
