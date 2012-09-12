@@ -11,145 +11,145 @@ projects[drupal][download][url] = "http://git.drupal.org/project/drupal.git"
 ; CONTRIB MODULES
 ; ------------------------------------------------------------------
 projects[accordion_menu][subdir]="contrib"
-projects[accordion_menu][version]="1.1"
+projects[accordion_menu][version]="1"
 
 projects[acl][subdir] = "contrib"
-projects[acl][version] = "1.0"
+projects[acl][version] = "1"
 
 projects[addressfield][subdir] = "contrib"
-projects[addressfield][version] = "1.0-beta3"
+projects[addressfield][version] = "1"
 
 projects[admin][subdir] = "contrib"
-projects[admin][version] = "2.0-beta3"
+projects[admin][version] = "2"
 
 projects[admin_menu][subdir] = "contrib"
-projects[admin_menu][version] = "3.0-rc3"
+projects[admin_menu][version] = "3"
 
 projects[advanced_forum][subdir] = "contrib"
-projects[advanced_forum][version] = "2.0"
+projects[advanced_forum][version] = "2"
 
 projects[amazons3][subdir] = "contrib"
-projects[amazons3][version] = "1.0-beta7"
+projects[amazons3][version] = "1"
 
 projects[autologout][subdir] = "contrib"
-projects[autologout][version] = "2.x-dev"
+projects[autologout][version] = "2"
 
 projects[awssdk][subdir] = "contrib"
-projects[awssdk][version] = "5.4"
+projects[awssdk][version] = "5"
 
 projects[apachesolr][subdir] = "contrib"
-projects[apachesolr][version] = "1.0-rc3"
+projects[apachesolr][version] = "1"
 
 projects[apachesolr_autocomplete][subdir] = "contrib"
-projects[apachesolr_autocomplete][version] = "1.3"
+projects[apachesolr_autocomplete][version] = "1"
 
 projects[appbar][subdir] = "contrib"
-projects[appbar][subdir] = "2.0"
+projects[appbar][subdir] = "2"
 
 projects[author_pane][subdir] = "contrib"
-projects[author_pane][subdir] = "2.0-beta1"
+projects[author_pane][subdir] = "2"
 
 projects[backbone][subdir] = "contrib"
-projects[backbone][subdir] = "1.x-dev"
+projects[backbone][subdir] = "1"
 
 projects[backup_migrate][subdir] = "contrib"
-projects[backup_migrate][subdir] = "2.4"
+projects[backup_migrate][subdir] = "2"
 
 projects[back_to_top][subdir] = "contrib"
-projects[back_to_top][version] = "1.3"
+projects[back_to_top][version] = "1"
 
 projects[block_class][subdir] = "contrib"
-projects[block_class][version] = "1.1"
+projects[block_class][version] = "1"
 
 projects[captcha][subdir] = "contrib"
-projects[captcha][version] = "1.0-beta2"
+projects[captcha][version] = "1"
 
 projects[cck_phone][subdir] = "contrib"
-projects[cck_phone][version] = "1.x-dev"
+projects[cck_phone][version] = "1"
 
 projects[cdn][subdir] = "contrib"
-projects[cdn][version] = "2.5"
+projects[cdn][version] = "2"
 
 projects[chart][subdir] = "contrib"
-projects[chart][version] = "1.1"
+projects[chart][version] = "1"
 
 projects[ckeditor][subdir] = "contrib"
-projects[ckeditor][version] = "1.9"
+projects[ckeditor][version] = "1"
 
 projects[commerce][subdir] = "contrib"
-projects[commerce][version] = "1.3"
+projects[commerce][version] = "1"
 
 projects[commerce_custom_line_items][subdir] = "contrib"
-projects[commerce_custom_line_items][version] = '1.x-dev'
+projects[commerce_custom_line_items][version] = '1'
 
 projects[connector][subdir] = "contrib"
-projects[connector][version] = "1.x-dev"
+projects[connector][version] = "1"
 
 projects[content_access][subdir] = "contrib"
-projects[content_access][version] = "1.2-beta1"
+projects[content_access][version] = "1"
 
 projects[contentapi][subdir] = "contrib"
-projects[contentapi][version] = "1.0-alpha3"
+projects[contentapi][version] = "1"
 
 projects[context][subdir] = "contrib"
-projects[context][version] = "3.0-beta4"
+projects[context][version] = "3"
 
 projects[cnr][subdir] = "contrib"
-projects[cnr][version] = "4.22"
+projects[cnr][version] = "4"
 
 projects[cpn][subdir] = "contrib"
-projects[cpn][version] = "1.4"
+projects[cpn][version] = "1"
 
 projects[ctools][subdir] = "contrib"
-projects[ctools][subdir] = "1.2"
+projects[ctools][subdir] = "1"
 
 projects[custom_breadcrumbs][subdir] = "contrib"
-projects[custom_breadcrumbs][version] = "1.0-alpha1"
+projects[custom_breadcrumbs][version] = "1"
 
 projects[deploy][subdir] = "contrib"
-projects[deploy][version] = "2.x-dev"
+projects[deploy][version] = "2"
 
 projects[devel][subdir] = "contrib"
-projects[devel][version] = "1.3"
+projects[devel][version] = "1"
 
 projects[diff][subdir] = "contrib"
-projects[diff][version] = "2.0"
+projects[diff][version] = "2"
 
 projects[domain][subdir] = "contrib"
-projects[domain][version] = "3.4"
+projects[domain][version] = "3"
 
 projects[domain_ctools][subdir] = "contrib"
-projects[domain_ctools][version] = "1.3"
+projects[domain_ctools][version] = "1"
 
 projects[domain_views][subdir] = "contrib"
-projects[domain_views][version] = "1.4"
+projects[domain_views][version] = "1"
 
 projects[download_file][subdir] = "contrib"
-projects[download_file][version] = "1.1"
+projects[download_file][version] = "1"
 
 projects[ds][subdir] = "contrib"
-projects[ds][version] = "1.5"
+projects[ds][version] = "1"
 
 projects[entity][subdir] = "contrib"
-projects[entity][version] = "1.0-rc3"
+projects[entity][version] = "1"
 
 projects[entityreference][subdir] = "contrib"
-projects[entityreference][version] = "1.0-rc3"
+projects[entityreference][version] = "1"
 
 projects[entity_dependency][subdir] = "contrib"
-projects[entity_dependency][version] = "1.0-alpha1"
+projects[entity_dependency][version] = "1"
 
 projects[facetapi][subdir] = "contrib"
-projects[facetapi][version] = "1.1"
+projects[facetapi][version] = "1"
 
 projects[fape][subdir] = "contrib"
-projects[fape][version] = "1.1"
+projects[fape][version] = "1"
 
 projects[faq][subdir] = "contrib"
-projects[faq][version] = "1.0-rc2"
+projects[faq][version] = "1"
 
 projects[features][subdir] = "contrib"
-projects[features][version] = "1.0"
+projects[features][version] = "1"
 
 projects[feeds][subdir] = "contrib"
 projects[feeds][type] = "module"
@@ -158,328 +158,328 @@ projects[feeds][download][url] = "http://git.drupal.org/project/feeds.git"
 projects[feeds][download][revision] = "3eb5a48643e1ae848ac03fbfc060492c507a9a42"
 
 projects[feeds_tamper][subdir] = "contrib"
-projects[feeds_tamper][version] = "1.0-beta3"
+projects[feeds_tamper][version] = "1"
 
 projects[feeds_xpathparser][subdir] = "contrib"
-projects[feeds_xpathparser][version] = "1.0-beta3"
+projects[feeds_xpathparser][version] = "1"
 
 projects[field_group][subdir] = "contrib"
-projects[field_group][version] = "1.1"
+projects[field_group][version] = "1"
 
 projects[fivestar][subdir] = "contrib"
-projects[fivestar][version] = "2.0-alpha2"
+projects[fivestar][version] = "2"
 
 projects[flood_control][subdir] = "contrib"
-projects[flood_control][version] = "1.0"
+projects[flood_control][version] = "1"
 
 projects[fontyourface][subdir] = "contrib"
-projects[fontyourface][version] = "2.4"
+projects[fontyourface][version] = "2"
 
 projects[footermap][subdir] = "contrib"
-projects[footermap][version] = "1.0"
+projects[footermap][version] = "1"
 
 projects[gist_filter][subdir] = "contrib"
-projects[gist_filter][version] = "1.2"
+projects[gist_filter][version] = "1"
 
 projects[github_connect][subdir] = "contrib"
-projects[github_connect][version] = "1.1"
+projects[github_connect][version] = "1"
 
 projects[git_deploy][subdir] = "contrib"
-projects[git_deploy][version] = "2.2"
+projects[git_deploy][version] = "2"
 
 projects[gmap][subdir] = "contrib"
-projects[gmap][version] = "1.x-dev"
+projects[gmap][version] = "1"
 
 projects[google_analytics][subdir] = "contrib"
-projects[google_analytics][version] = "1.2"
+projects[google_analytics][version] = "1"
 
 projects[google_analytics_reports][subdir] = "contrib"
-projects[google_analytics_reports][version] = "1.3"
+projects[google_analytics_reports][version] = "1"
 
 projects[gravatar][subdir] = "contrib"
-projects[gravatar][version] = "1.1"
+projects[gravatar][version] = "1"
 
 projects[hansel][subdir] = "contrib"
-projects[hansel][version] = "1.3"
+projects[hansel][version] = "1"
 
 projects[highcharts][subdir] = "contrib"
-projects[highcharts][version] = "1.0-alpha6"
+projects[highcharts][version] = "1"
 
 projects[http_client][subdir] = "contrib"
-projects[http_client][version] = "2.4"
+projects[http_client][version] = "2"
 
 projects[imagemagick][subdir] = "contrib"
-projects[imagemagick][version] = "1.0-alpha2"
+projects[imagemagick][version] = "1"
 
 projects[imce][subdir] = "contrib"
-projects[imce][version] = "1.5"
+projects[imce][version] = "1"
 
 projects[imce_mkdir][subdir] = "contrib"
-projects[imce_mkdir][version] = "1.0"
+projects[imce_mkdir][version] = "1"
 
 projects[imce_tools][subdir] = "contrib"
-projects[imce_tools][version] = "1.0"
+projects[imce_tools][version] = "1"
 
 projects[imce_wysiwyg][subdir] = "contrib"
-projects[imce_wysiwyg][version] = "1.0"
+projects[imce_wysiwyg][version] = "1"
 
 projects[itoggle][subdir] = "contrib"
-projects[itoggle][version] = "2.3"
+projects[itoggle][version] = "2"
 
 projects[jcarousel][subdir] = "contrib"
-projects[jcarousel][version] = "2.6"
+projects[jcarousel][version] = "2"
 
 projects[jquerymobile][subdir] = "contrib"
-projects[jquerymobile][version] = "2.0-beta1"
+projects[jquerymobile][version] = "2"
 
 projects[jquery_colorpicker][subdir] = "contrib"
-projects[jquery_colorpicker][version] = "1.0-rc1"
+projects[jquery_colorpicker][version] = "1"
 
 projects[jquery_update][subdir] = "contrib"
-projects[jquery_update][version] = "2.x-dev"
+projects[jquery_update][version] = "2"
 
 projects[job_scheduler][subdir] = "contrib"
-projects[job_scheduler][version] = '2.0-alpha2'
+projects[job_scheduler][version] = '2'
 
 projects[ldap][subdir] = "contrib"
-projects[ldap][version] = "1.0-beta12"
+projects[ldap][version] = "1"
 
 projects[legal][subdir] = "contrib"
-projects[legal][version] = "1.2"
+projects[legal][version] = "1"
 
 projects[libraries][subdir] = "contrib"
-projects[libraries][version] = "2.0"
+projects[libraries][version] = "2"
 
 projects[linkchecker][subdir] = "contrib"
-projects[linkchecker][version] = "1.0-beta1"
+projects[linkchecker][version] = "1"
 
 projects[link][subdir] = "contrib"
-projects[link][version] = "1.0"
+projects[link][version] = "1"
 
 projects[link_node][subdir] = "contrib"
-projects[link_node][version] = "1.0"
+projects[link_node][version] = "1"
 
 projects[location][subdir] = "contrib"
-projects[location][version] = "3.0-alpha1"
+projects[location][version] = "3"
 
 projects[login_destination][subdir] = "contrib"
-projects[login_destination][version] = "1.0"
+projects[login_destination][version] = "1"
 
 projects[logintoboggan][subdir] = "contrib"
-projects[logintoboggan][version] = "1.3"
+projects[logintoboggan][version] = "1"
 
 projects[markdown][subdir] = "contrib"
-projects[markdown][version] = "1.0"
+projects[markdown][version] = "1"
 
 projects[mass_contact][subdir] = "contrib"
-projects[mass_contact][version] = "1.0-alpha5"
+projects[mass_contact][version] = "1"
 
 projects[mediaelement][subdir] = "contrib"
-projects[mediaelement][subdir] = "1.2"
+projects[mediaelement][subdir] = "1"
 
 projects[media][subdir] = "contrib"
-projects[media][version] = "1.2"
+projects[media][version] = "1"
 
 projects[media_youtube][subdir] = "contrib"
-projects[media_youtube][version] ="1.x-dev"
+projects[media_youtube][version] ="1"
 
 projects[memcache][subdir] = "contrib"
-projects[memcache][version] = "1.0"
+projects[memcache][version] = "1"
 
 projects[metatag][subdir] = "contrib"
-projects[metatag][version] = "1.0-alpha8"
+projects[metatag][version] = "1"
 
 projects[metatags_quick][subdir] = "contrib"
-projects[metatags_quick][version] = "2.5"
+projects[metatags_quick][version] = "2"
 
 projects[me][subdir] = "contrib"
-projects[me][version] = "1.1"
+projects[me][version] = "1"
 
 projects[migrate][subdir] = "contrib"
-projects[migrate][version] = "2.4"
+projects[migrate][version] = "2"
 
 projects[multiblock][subdir] = "contrib"
-projects[multiblock][version] = "1.x-dev"
+projects[multiblock][version] = "1"
 
 projects[nagios][subdir] = "contrib"
-projects[nagios][version] = "1.2"
+projects[nagios][version] = "1"
 
 projects[node_embed][subdir]="contrib"
-projects[node_embed][version] = "1.0-rc2"
+projects[node_embed][version] = "1"
 
 projects[node_export][subdir] = "contrib"
-projects[node_export][version] = "3.0"
+projects[node_export][version] = "3"
 
 projects[oauth][subdir] = "contrib"
-projects[oauth][version] = "3.0"
+projects[oauth][version] = "3"
 
 projects[oauthconnector][subdir] = "contrib"
-projects[oauthconnector][version] = "1.x-dev"
+projects[oauthconnector][version] = "1"
 
 projects[og][subdir] = "contrib"
-projects[og][version] = "1.4"
+projects[og][version] = "1"
 
 projects[page_title][subdir] = "contrib"
-projects[page_title][version] = "2.7"
+projects[page_title][version] = "2"
 
 projects[panelizer][subdir] = "contrib"
-projects[panelizer][version] = "2.0"
+projects[panelizer][version] = "2"
 
 projects[panels][subdir] = "contrib"
-projects[panels][version] = "3.3"
+projects[panels][version] = "3"
 
 projects[panels_everywhere][subdir] = "contrib"
-projects[panels_everywhere][version] = "1.0-rc1"
+projects[panels_everywhere][version] = "1"
 
 projects[password_policy][subdir] = "contrib"
-projects[password_policy][version] = "1.2"
+projects[password_policy][version] = "1"
 
 projects[pathauto][subdir] = "contrib"
-projects[pathauto][version] = "1.2"
+projects[pathauto][version] = "1"
 
 projects[persistent_login][subdir] = "contrib"
-projects[persistent_login][version] = "1.x-dev"
+projects[persistent_login][version] = "1"
 
 projects[querypath][subdir] = "contrib"
-projects[querypath][version] = "2.1"
+projects[querypath][version] = "2"
 
 projects[readonlymode][subdir] = "contrib"
-projects[readonlymode][version] = "1.0-beta1"
+projects[readonlymode][version] = "1"
 
 projects[recaptcha][subdir] = "contrib"
-projects[recaptcha][version] = "1.7"
+projects[recaptcha][version] = "1"
 
 projects[redirect][subdir] = "contrib"
-projects[redirect][version] = "1.0-beta4"
+projects[redirect][version] = "1"
 
 projects[references][subdir] = "contrib"
-projects[references][version] = "2.0"
+projects[references][version] = "2"
 
 projects[rules][subdir] = "contrib"
-projects[rules][version] = "2.2"
+projects[rules][version] = "2"
 
 projects[sass][subdir] = "contrib"
-projects[sass][version] = "2.0"
+projects[sass][version] = "2"
 
 projects[search_api][subdir] = "contrib"
-projects[search_api][version] = "1.2"
+projects[search_api][version] = "1"
 
 projects[search_api_ajax][subdir] = "contrib"
-projects[search_api_ajax][version] = "1.0"
+projects[search_api_ajax][version] = "1"
 
 projects[search_api_attachments][subdir] = "contrib"
-projects[search_api_attachments][version] = "1.2"
+projects[search_api_attachments][version] = "1"
 
 projects[search_api_autocomplete][subdir] = "contrib"
-projects[search_api_autocomplete][version] = "1.0-beta2"
+projects[search_api_autocomplete][version] = "1"
 
 projects[search_api_facets_paths][subdir] = "contrib"
-projects[search_api_facets_paths][version] = "1.9"
+projects[search_api_facets_paths][version] = "1"
 
 projects[search_api_live_results][subdir] = "contrib"
-projects[search_api_live_results][version] = "1.x-dev"
+projects[search_api_live_results][version] = "1"
 
 projects[search_api_location][subdir] = "contrib"
-projects[search_api_location][version] = "2.x-dev"
+projects[search_api_location][version] = "2"
 
 projects[search_api_multi][subdir] = "contrib"
-projects[search_api_multi][subdir] = "1.0-beta3"
+projects[search_api_multi][subdir] = "1"
 
 projects[search_api_page][subdir] = "contrib"
-projects[search_api_page][version] = "1.0-beta2"
+projects[search_api_page][version] = "1"
 
 projects[search_api_ranges][subdir] = "contrib"
-projects[search_api_ranges][version] = "1.3"
+projects[search_api_ranges][version] = "1"
 
 projects[search_api_solr][subdir] = "contrib"
-projects[search_api_solr][version] = "1.0-rc2"
+projects[search_api_solr][version] = "1"
 
 projects[search_api_sorts][subdir] = "contrib"
-projects[search_api_sorts][version] = "1.2"
+projects[search_api_sorts][version] = "1"
 
 projects[securelogin][subdir] = "contrib"
-projects[securelogin][version] = "1.3"
+projects[securelogin][version] = "1"
 
 projects[selenium][subdir] = "contrib"
-projects[selenium][version] = "2.0-beta2"
+projects[selenium][version] = "2"
 
 projects[services][subdir] = "contrib"
-projects[services][version] = "3.x-dev"
+projects[services][version] = "3"
 
 projects[services_views][subdir] = "contrib"
-projects[services_views][version] = "1.0-beta2"
+projects[services_views][version] = "1"
 
 projects[service_links][subdir] = "contrib"
-projects[service_links][version] = "2.1"
+projects[service_links][version] = "2"
 
 projects[scanner][subdir]="contrib"
-projects[scanner][version] = "1.x-dev"
+projects[scanner][version] = "1"
 
 projects[smtp][subdir] = "contrib"
-projects[smtp][version] = "1.0-beta1"
+projects[smtp][version] = "1"
 
 projects[strongarm][subdir] = "contrib"
-projects[strongarm][version] = "2.0"
+projects[strongarm][version] = "2"
 
 projects[styles][subdir] = "contrib"
-projects[styles][version] = "2.0-alpha8"
+projects[styles][version] = "2"
 
 projects[taxonomy_access][subdir] = "contrib"
-projects[taxonomy_access][version] = "1.0-rc1"
+projects[taxonomy_access][version] = "1"
 
 projects[textformatter][subdir] = "contrib"
-projects[textformatter][version] = "1.3"
+projects[textformatter][version] = "1"
 
 projects[toc_filter][subdir] = "contrib"
-projects[toc_filter][version] = "1.1"
+projects[toc_filter][version] = "1"
 
 projects[token][subdir] = "contrib"
-projects[token][version] = "1.3"
+projects[token][version] = "1"
 
 projects[twitter][subdir] = "contrib"
-projects[twitter][version] = "3.2"
+projects[twitter][version] = "3"
 
 projects[util][subdir] = "contrib"
-projects[util][version] = "1.0-rc1"
+projects[util][version] = "1"
 
 projects[uuid][subdir] = "contrib"
-projects[uuid][version] = "1.0-alpha3"
+projects[uuid][version] = "1"
 
 projects[variable][subdir] = "contrib"
-projects[variable][version] = "2.1"
+projects[variable][version] = "2"
 
 projects[views][subdir] = "contrib"
-projects[views][version] = "3.5"
+projects[views][version] = "3"
 
 projects[views_accordion][subdir] = "contrib"
-projects[views_accordion][version] = "1.0-rc2"
+projects[views_accordion][version] = "1"
 
 projects[views_bulk_operations][subdir] = "contrib"
-projects[views_bulk_operations][version] = "3.0-rc1"
+projects[views_bulk_operations][version] = "3"
 
 projects[views_slideshow][subdir] = "contrib"
-projects[views_slideshow][version] = "3.0"
+projects[views_slideshow][version] = "3"
 
 projects[votingapi][subdir] = "contrib"
-projects[votingapi][version] = "2.6"
+projects[votingapi][version] = "2"
 
 projects[webform][subdir] = "contrib"
-projects[webform][version] = "3.18"
+projects[webform][version] = "3"
 
 projects[weight][subdir] = "contrib"
-projects[weight][version] = "2.1"
+projects[weight][version] = "2"
 
 projects[workbench][subdir] = "contrib"
-projects[workbench][version] = "1.1"
+projects[workbench][version] = "1"
 
 projects[workflow][subdir] = "contrib"
-projects[workflow][version] = "1.0"
+projects[workflow][version] = "1"
 
 projects[wysiwyg][subdir] = "contrib"
-projects[wysiwyg][version] = "2.1"
+projects[wysiwyg][version] = "2"
 
 projects[XHProf][subdir] = "contrib"
-projects[XHProf][version] = "1.0-beta2"
+projects[XHProf][version] = "1"
 
 
 ; THEMES
