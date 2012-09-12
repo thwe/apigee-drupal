@@ -236,7 +236,7 @@ projects[jquery_colorpicker][subdir] = "contrib"
 projects[jquery_colorpicker][version] = "1"
 
 projects[jquery_update][subdir] = "contrib"
-projects[jquery_update][version] = "2"
+projects[jquery_update][version] = "2.x-dev"
 
 projects[job_scheduler][subdir] = "contrib"
 projects[job_scheduler][version] = '2'
