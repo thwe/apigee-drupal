@@ -44,16 +44,16 @@ projects[apachesolr_autocomplete][subdir] = "contrib"
 projects[apachesolr_autocomplete][version] = "1"
 
 projects[appbar][subdir] = "contrib"
-projects[appbar][subdir] = "2"
+projects[appbar][version] = "2"
 
 projects[author_pane][subdir] = "contrib"
-projects[author_pane][subdir] = "2"
+projects[author_pane][version] = "2"
 
 projects[backbone][subdir] = "contrib"
-projects[backbone][subdir] = "1"
+projects[backbone][version] = "1"
 
 projects[backup_migrate][subdir] = "contrib"
-projects[backup_migrate][subdir] = "2"
+projects[backup_migrate][version] = "2"
 
 projects[back_to_top][subdir] = "contrib"
 projects[back_to_top][version] = "1"
@@ -101,7 +101,7 @@ projects[cpn][subdir] = "contrib"
 projects[cpn][version] = "1"
 
 projects[ctools][subdir] = "contrib"
-projects[ctools][subdir] = "1"
+projects[ctools][version] = "1"
 
 projects[custom_breadcrumbs][subdir] = "contrib"
 projects[custom_breadcrumbs][version] = "1"
@@ -275,7 +275,7 @@ projects[mass_contact][subdir] = "contrib"
 projects[mass_contact][version] = "1"
 
 projects[mediaelement][subdir] = "contrib"
-projects[mediaelement][subdir] = "1"
+projects[mediaelement][version] = "1"
 
 projects[media][subdir] = "contrib"
 projects[media][version] = "1"
@@ -383,7 +383,7 @@ projects[search_api_location][subdir] = "contrib"
 projects[search_api_location][version] = "2"
 
 projects[search_api_multi][subdir] = "contrib"
-projects[search_api_multi][subdir] = "1"
+projects[search_api_multi][version] = "1"
 
 projects[search_api_page][subdir] = "contrib"
 projects[search_api_page][version] = "1"
