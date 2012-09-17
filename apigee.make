@@ -207,12 +207,13 @@ projects[views_php][version] = "1.x-dev"
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = 'git'
 projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
+projects[apigee_base][download][branch] = "master"
 
 ; apigee marketing theme
 projects[apigee_mktg][type] = "theme"
 projects[apigee_mktg][download][type] = 'git'
-projects[apigee_mktg][download][url] = "git@github.com:apigee/apigee_drupal_mktg_theme"
-projects[apigee_base][download][branch] = "master"
+projects[apigee_mktg][download][url] = "git@github.com:apigee/apigee_drupal_mktg_theme.git"
+projects[apigee_mktg][download][branch] = "7.x-1.x-shiva"
 
 
 ; development seed's admin theme
