@@ -507,33 +507,6 @@ projects[rubik][type]=theme
 
 ; CUSTOM MODULES
 ; ------------------------------------------------------------------
-;apigee custom modules
-projects[apigee_custom][type] = module
-projects[apigee_custom][subdir] = custom
-projects[apigee_custom][download][type] = 'git'
-projects[apigee_custom][download][url] = "git@github.com:apigee/apigee-drupal-custom.git"
-projects[apigee_custom][download][branch] = "master"
-
-;apigee bootstrap module
-projects[apigee_bootstrap][type] = module
-projects[apigee_bootstrap][subdir] = custom
-projects[apigee_bootstrap][download][type] = 'git'
-projects[apigee_bootstrap][download][url] = "git@github.com:apigee/apigee_drupal_bootstrap.git"
-projects[apigee_bootstrap][download][branch] = "7.x-1.x"
-
-;apigee breadcrumbs module
-projects[apigee_breadcrumbs][type] = module
-projects[apigee_breadcrumbs][subdir] = custom
-projects[apigee_breadcrumbs][download][type] = 'git'
-projects[apigee_breadcrumbs][download][url] = "git@github.com:apigee/apigee_breadcrumbs.git"
-projects[apigee_breadcrumbs][download][branch] = "7.x-1.x"
-
-;apigee search module
-projects[apigee_search][type] = module
-projects[apigee_search][subdir] = custom
-projects[apigee_search][download][type] = 'git'
-projects[apigee_search][download][url] = "git@github.com:apigee/apigee_search.git"
-projects[apigee_search][download][branch] = "7.x-1.x"
 
 ;work in progress for the WADL=>entity
 ;projects[objective_forms][type] = module
