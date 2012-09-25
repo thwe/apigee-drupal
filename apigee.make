@@ -43,6 +43,9 @@ projects[apachesolr][version] = "1"
 projects[apachesolr_autocomplete][subdir] = "contrib"
 projects[apachesolr_autocomplete][version] = "1"
 
+projects[apachesolr_stats][subdir] = "contrib"
+projects[apachesolr_stats][version] = "1"
+
 projects[appbar][subdir] = "contrib"
 projects[appbar][version] = "2"
 
