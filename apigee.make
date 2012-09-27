@@ -572,8 +572,8 @@ libraries[json2][download][url] = "git://github.com/douglascrockford/JSON-js.git
 libraries[json2][directory_name] = "json2"
 libraries[json2][destination] = "libraries"
 
-libraries[ckeditor][download][type] = "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.4/ckeditor_3.6.4.zip"
+libraries[ckeditor][download][type] = "svn"
+libraries[ckeditor][download][url] = "http://svn.ckeditor.com/CKEditor/releases/stable/"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
