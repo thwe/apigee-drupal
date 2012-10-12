@@ -4,4 +4,5 @@
 
 drush make --prepare-install --working-copy --no-gitinfofile --no-cache -y --force-complete apigee.make webapp
 git clone git@github.com:apigee/drupal-settings.git ../drupal-settings
-cp -R ../drupal-settings/sites/* sites
+cp -R ../drupal-settings/sites/* webapp/sites
+cp libraries.php webapp/sites/default/
