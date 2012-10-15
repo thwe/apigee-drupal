@@ -73,6 +73,7 @@
 				</copy>
 			</then>
 		</if>
+		<copy file="${WORKSPACE}/libraries.php" tofile="${WORKSPACE}/webapp/sites/default/libraries.php" />
 		<property prefix="dc.dev" file="drupal-settings/properties/dc.dev.properties" />
 		<drush command="cc">
 			<param>drush</param>
