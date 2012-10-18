@@ -28,5 +28,6 @@ $libraries_info = array(
   'codemirror' => 'http://codemirror.net/codemirror.zip',
   'jquery.selectlist' => 'http://odyniec.net/projects/selectlist/jquery.selectlist-0.5.zip',
   's3-php5-curl' => 'http://amazon-s3-php-class.googlecode.com/files/s3-php5-curl_0.4.0.tar.gz',
-  'awssdk' => 'http://pear.amazonwebservices.com/get/sdk-latest.zip'
+  'awssdk' => 'http://pear.amazonwebservices.com/get/sdk-latest.zip',
+  'oauth-php' => 'http://oauth-php.googlecode.com/files/oauth-php-175.tar.gz',
 );
