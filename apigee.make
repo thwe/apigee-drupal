@@ -5,7 +5,7 @@ CORE
 ; ------------------------------------------------------------------
 projects[drupal][type] = "core"
 projects[drupal][download][type] = "git"
-projects[drupal][download][tag] = "7.15"
+projects[drupal][download][tag] = "7.16"
 projects[drupal][download][url] = "http://git.drupal.org/project/drupal.git"
 
 ; CONTRIB MODULES
