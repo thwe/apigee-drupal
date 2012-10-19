@@ -129,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "8c0184404825f0311d429f32949535a2de4696c4"
+projects[devconnect][download][revision] = "29e0a68e4be3c4601a4f9b63ae852dc86ce6b18a"
 projects[devconnect][subdir] = "custom"
 
 projects[devel][subdir] = "contrib"
@@ -385,7 +385,7 @@ projects[scanner][subdir] = "contrib"
 projects[scanner][version] = "1.x-dev"
 
 projects[search_api][subdir] = "contrib"
-projects[search_api][version] = "1.2"
+projects[search_api][version] = "1.3"
 
 projects[search_api_ajax][subdir] = "contrib"
 projects[search_api_ajax][version] = "1.0"
@@ -524,12 +524,12 @@ projects[apigee_base][download][revision] = "f8546cebe3605924d4de1ffcf385a65ffc5
 projects[apigee_devconnect][type] = "theme"
 projects[apigee_devconnect][download][type] = "git"
 projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
-projects[apigee_devconnect][download][revision] = "d4c562c337b57ccc7c9be4d7c188a17be899c34f"
+projects[apigee_devconnect][download][revision] = "6cf1ea9bc32b7a5037681fa2d9431c7d0ddf1fd9"
 
 projects[apigee_docs][type] = "theme"
 projects[apigee_docs][download][type] = "git"
 projects[apigee_docs][download][url] = "git@github.com:apigee/apigee_drupal_docs_theme.git"
-projects[apigee_docs][download][revision] = "1b15995905fdae2dbbe177f1ce94ec2378108e92"
+projects[apigee_docs][download][revision] = "28937e2b17a475e7ffbf14ba3860273a97df1a1a"
 
 ; Libraries
 libraries[backbone][directory_name] = "backbone"
