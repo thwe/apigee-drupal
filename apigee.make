@@ -4,9 +4,7 @@ api = 2
 CORE
 ; ------------------------------------------------------------------
 projects[drupal][type] = "core"
-projects[drupal][download][type] = "git"
-projects[drupal][download][tag] = "7.16"
-projects[drupal][download][url] = "http://git.drupal.org/project/drupal.git"
+projects[drupal][version] = "7.16"
 
 ; CONTRIB MODULES
 ; ------------------------------------------------------------------
@@ -300,6 +298,9 @@ projects[me][version] = "1"
 
 projects[migrate][subdir] = "contrib"
 projects[migrate][version] = "2"
+
+projects[module_filter][subdir] = "contrib"
+projects[module_filter][version] = "1"
 
 projects[multiblock][subdir] = "contrib"
 projects[multiblock][version] = "1"
