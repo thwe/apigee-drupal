@@ -129,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "29e0a68e4be3c4601a4f9b63ae852dc86ce6b18a"
+projects[devconnect][download][revision] = "286f253e97d1a5062b5ab4747236c97ac1197796"
 projects[devconnect][subdir] = "custom"
 
 projects[devel][subdir] = "contrib"
@@ -307,7 +307,7 @@ projects[memcache][subdir] = "contrib"
 projects[memcache][version] = "1.0"
 
 projects[metatag][subdir] = "contrib"
-projects[metatag][version] = "1.0-alpha8"
+projects[metatag][version] = "1.0-beta1"
 
 projects[metatags_quick][subdir] = "contrib"
 projects[metatags_quick][version] = "2.5"
