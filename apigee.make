@@ -315,6 +315,9 @@ projects[metatags_quick][version] = "2.5"
 projects[migrate][subdir] = "contrib"
 projects[migrate][version] = "2.4"
 
+projects[module_filter][subdir] = "contrib"
+projects[module_filter][version] = "1.7"
+
 projects[multiblock][subdir] = "contrib"
 projects[multiblock][version] = "1.1"
 
