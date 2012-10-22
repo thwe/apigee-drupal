@@ -226,6 +226,9 @@ projects[imce_tools][version] = "1"
 projects[imce_wysiwyg][subdir] = "contrib"
 projects[imce_wysiwyg][version] = "1"
 
+projects[import_html][subdir] = "contrib"
+projects[import_html][version] = "1"
+
 projects[itoggle][subdir] = "contrib"
 projects[itoggle][version] = "2"
 
