@@ -97,8 +97,9 @@
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
 		</phing>
-		<echo> ===> Removing PHP Module </echo>
+		<echo> ===> Removing PHP & UPDATE Module </echo>
 		<delete dir="${dc.dev.root}/modules/php" />
+		<delete dir="${dc.dev.root}/modules/update" />
 	</target>
 
 
