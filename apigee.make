@@ -93,7 +93,7 @@ projects[ckeditor][subdir] = "contrib"
 projects[ckeditor][version] = "1.9"
 
 projects[commerce][subdir] = "contrib"
-projects[commerce][version] = "1.3"
+projects[commerce][version] = "1.4"
 
 projects[commerce_custom_line_items][subdir] = "contrib"
 projects[commerce_custom_line_items][version] = "1.x-dev"
@@ -129,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "286f253e97d1a5062b5ab4747236c97ac1197796"
+projects[devconnect][download][revision] = "1c94a25ace0f056a8ff02469ed4359ddae6182bc"
 projects[devconnect][subdir] = "custom"
 
 projects[devel][subdir] = "contrib"
@@ -243,6 +243,9 @@ projects[imce_mkdir][version] = "1.0"
 
 projects[imce_wysiwyg][subdir] = "contrib"
 projects[imce_wysiwyg][version] = "1.0"
+
+projects[import_html][subdir] = "contrib"
+projects[import_html][version] = "1.x-dev"
 
 projects[itoggle][subdir] = "contrib"
 projects[itoggle][version] = "2.3"
@@ -391,7 +394,7 @@ projects[search_api][subdir] = "contrib"
 projects[search_api][version] = "1.3"
 
 projects[search_api_ajax][subdir] = "contrib"
-projects[search_api_ajax][version] = "1.0"
+projects[search_api_ajax][version] = "1.1"
 
 projects[search_api_attachments][subdir] = "contrib"
 projects[search_api_attachments][version] = "1.2"
@@ -415,13 +418,13 @@ projects[search_api_page][subdir] = "contrib"
 projects[search_api_page][version] = "1.0-beta2"
 
 projects[search_api_ranges][subdir] = "contrib"
-projects[search_api_ranges][version] = "1.3"
+projects[search_api_ranges][version] = "1.4"
 
 projects[search_api_solr][subdir] = "contrib"
 projects[search_api_solr][version] = "1.0-rc2"
 
 projects[search_api_sorts][subdir] = "contrib"
-projects[search_api_sorts][version] = "1.2"
+projects[search_api_sorts][version] = "1.3"
 
 projects[securelogin][subdir] = "contrib"
 projects[securelogin][version] = "1.3"
