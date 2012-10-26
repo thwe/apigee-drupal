@@ -129,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "8a2e5777815a64eaa6e9ed3c574d07ef110dc456"
+projects[devconnect][download][revision] = "3d24b9a3a6fae0a66a942efe150fb22f23b59e05"
 projects[devconnect][subdir] = "custom"
 
 projects[devconnect_content_admin][type] = "module"
@@ -534,7 +534,7 @@ projects[apigee_base][download][revision] = "f8546cebe3605924d4de1ffcf385a65ffc5
 projects[apigee_devconnect][type] = "theme"
 projects[apigee_devconnect][download][type] = "git"
 projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
-projects[apigee_devconnect][download][revision] = "6cf1ea9bc32b7a5037681fa2d9431c7d0ddf1fd9"
+projects[apigee_devconnect][download][revision] = "5597fc03a767cac0b5c3a6a1e51ca2ff16b18f6a"
 
 projects[apigee_docs][type] = "theme"
 projects[apigee_docs][download][type] = "git"
