@@ -129,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "3d24b9a3a6fae0a66a942efe150fb22f23b59e05"
+projects[devconnect][download][revision] = "9df4873ec2bc1ba2f8026d25d29fa3bbb9e81d47"
 projects[devconnect][subdir] = "custom"
 
 projects[devconnect_content_admin][type] = "module"
@@ -458,7 +458,7 @@ projects[token][subdir] = "contrib"
 projects[token][version] = "1.4"
 
 projects[twitter][subdir] = "contrib"
-projects[twitter][version] = "3.2"
+projects[twitter][version] = "3.3"
 
 projects[uuid][subdir] = "contrib"
 projects[uuid][version] = "1.0-alpha3"
