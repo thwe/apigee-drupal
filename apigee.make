@@ -239,7 +239,7 @@ projects[imagemagick][version] = "1.0-alpha2"
 projects[imce][subdir] = "contrib"
 projects[imce][version] = "1.5"
 
-projects[imce_tools][version] = "1.0"
+projects[imce_tools][version] = "1.1"
 projects[imce_tools][subdir] = "contrib"
 
 projects[imce_mkdir][subdir] = "contrib"
@@ -314,7 +314,7 @@ projects[memcache][subdir] = "contrib"
 projects[memcache][version] = "1.0"
 
 projects[metatag][subdir] = "contrib"
-projects[metatag][version] = "1.0-beta1"
+projects[metatag][version] = "1.0-beta2"
 
 projects[metatags_quick][subdir] = "contrib"
 projects[metatags_quick][version] = "2.5"
@@ -362,7 +362,7 @@ projects[panels_everywhere][subdir] = "contrib"
 projects[panels_everywhere][version] = "1.0-rc1"
 
 projects[password_policy][subdir] = "contrib"
-projects[password_policy][version] = "1.2"
+projects[password_policy][version] = "1.3"
 
 projects[pathauto][subdir] = "contrib"
 projects[pathauto][version] = "1.2"
@@ -416,7 +416,7 @@ projects[search_api_location][subdir] = "contrib"
 projects[search_api_location][version] = "2.x-dev"
 
 projects[search_api_multi][subdir] = "contrib"
-projects[search_api_multi][version] = "1.0-beta3"
+projects[search_api_multi][version] = "1.0-rc1"
 
 projects[search_api_page][subdir] = "contrib"
 projects[search_api_page][version] = "1.0-beta2"
@@ -461,7 +461,7 @@ projects[twitter][subdir] = "contrib"
 projects[twitter][version] = "3.3"
 
 projects[uuid][subdir] = "contrib"
-projects[uuid][version] = "1.0-alpha3"
+projects[uuid][version] = "1.0-alpha3+47-dev"
 
 projects[variable][subdir] = "contrib"
 projects[variable][version] = "2.1"
