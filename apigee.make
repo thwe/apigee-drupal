@@ -450,7 +450,7 @@ projects[util][subdir] = "contrib"
 projects[util][version] = "1"
 
 projects[uuid][subdir] = "contrib"
-projects[uuid][version] = "1"
+projects[uuid][version] = "1.x-dev"
 
 projects[variable][subdir] = "contrib"
 projects[variable][version] = "2"
