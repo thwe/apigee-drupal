@@ -167,6 +167,9 @@ projects[feeds_xpathparser][version] = "1"
 projects[field_group][subdir] = "contrib"
 projects[field_group][version] = "1"
 
+projects[field_permissions][subdir] = "contrib"
+projects[field_permissions][version] = "1"
+
 projects[fivestar][subdir] = "contrib"
 projects[fivestar][version] = "2"
 
