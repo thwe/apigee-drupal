@@ -590,8 +590,8 @@ libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEd
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
-libraries[mediaelement][download][type] = "get"
-libraries[mediaelement][download][url] = 'https://nodeload.github.com/johndyer/mediaelement/zipball/master'
+libraries[mediaelement][download][type] = "git"
+libraries[mediaelement][download][url] = 'git://git@github.com:johndyer/mediaelement'
 libraries[mediaelement][directory_name] = 'mediaelement'
 libraries[mediaelement][destination] = 'libraries'
 
