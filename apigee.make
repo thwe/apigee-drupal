@@ -184,6 +184,9 @@ projects[feeds_xpathparser][version] = "1.0-beta3"
 projects[field_group][subdir] = "contrib"
 projects[field_group][version] = "1.1"
 
+projects[field_permissions][subdir] = "contrib"
+projects[field_permissions][version] = "1.0-beta2"
+
 projects[media][subdir] = "contrib"
 projects[media][version] = "1.2"
 
@@ -200,7 +203,10 @@ projects[fontyourface][subdir] = "contrib"
 projects[fontyourface][version] = "2.5"
 
 projects[footermap][subdir] = "contrib"
-projects[footermap][version] = "1.0"
+projects[footermap][version] = "1.1"
+
+projects[genpass][subdir] = "contrib"
+projects[genpass][version] = "1.0"
 
 projects[gi_content_types][type] = "module"
 projects[gi_content_types][subdir] = "custom/gi/modules"
@@ -216,13 +222,13 @@ projects[github_connect][subdir] = "contrib"
 projects[github_connect][version] = "1.1"
 
 projects[gmap][subdir] = "contrib"
-projects[gmap][version] = "1.x-dev"
+projects[gmap][version] = "1.0-beta1"
 
 projects[google_analytics_reports][subdir] = "contrib"
 projects[google_analytics_reports][version] = "1.3"
 
 projects[google_analytics][subdir] = "contrib"
-projects[google_analytics][version] = "1.2"
+projects[google_analytics][version] = "1.3"
 
 projects[gravatar][subdir] = "contrib"
 projects[gravatar][version] = "1.1"
@@ -382,6 +388,9 @@ projects[recaptcha][version] = "1.8"
 projects[redirect][subdir] = "contrib"
 projects[redirect][version] = "1.0-rc1"
 
+projects[register_preapproved][subdir] = "contrib"
+projects[register_preapproved][version] = "1.0-beta2"
+
 projects[services][subdir] = "contrib"
 projects[services][version] = "3.2"
 
@@ -461,7 +470,7 @@ projects[twitter][subdir] = "contrib"
 projects[twitter][version] = "3.3"
 
 projects[uuid][subdir] = "contrib"
-projects[uuid][version] = "1.0-alpha3+47-dev"
+projects[uuid][version] = "1.0-alpha3+51-dev"
 
 projects[variable][subdir] = "contrib"
 projects[variable][version] = "2.1"
