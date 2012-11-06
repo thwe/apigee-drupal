@@ -182,6 +182,8 @@ projects[fontyourface][version] = "2"
 projects[footermap][subdir] = "contrib"
 projects[footermap][version] = "1"
 
+projects[genpass][subdir] = "contrib"
+
 projects[gist_filter][subdir] = "contrib"
 projects[gist_filter][version] = "1"
 
@@ -272,6 +274,8 @@ projects[location][version] = "3"
 projects[login_destination][subdir] = "contrib"
 projects[login_destination][version] = "1"
 
+projects[logintoboggan]['subdir'] = "contrib"
+
 projects[logintoboggan][subdir] = "contrib"
 projects[logintoboggan][version] = "1"
 
@@ -361,6 +365,8 @@ projects[recaptcha][version] = "1"
 
 projects[redirect][subdir] = "contrib"
 projects[redirect][version] = "1"
+
+projects[register_preapproved][subdir] = "contrib"
 
 projects[references][subdir] = "contrib"
 projects[references][version] = "2"
