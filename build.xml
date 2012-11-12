@@ -83,6 +83,7 @@
 			<property name="exec" value="${dc.dev.exec}" />
 			<property name="name" value="${dc.dev.name}" />
 		</phing>
+		<phingcall target="remove-extra-libraries-mod" />
 		<echo> ===> Moving files </echo>
 		<exec command="sudo chown -R jenkins.jenkins ${dc.dev.root}" />
 		<move file="${dc.dev.root}" 
@@ -113,7 +114,18 @@
 		</copy>
 	</target>
 
-
+  <target name="remove-extra-libraries-mod">
+    <if>
+      <available file="${project.basedir}/webapp/sites/all/modules/libraries" type="dir" />
+      <then>
+        <delete 
+          dir="${project.basedir}/webapp/sites/all/modules/libraries" 
+          verbose="true" 
+          failonerror="true" 
+          includeemptydirs="true" />
+      </then>
+    </if>
+  </target>
 
 
 </project>
