@@ -170,6 +170,9 @@ projects[feeds_xpathparser][version] = "1"
 projects[field_group][subdir] = "contrib"
 projects[field_group][version] = "1"
 
+projects[field_permissions][subdir] = "contrib"
+projects[field_permissions][version] = "1"
+
 projects[fivestar][subdir] = "contrib"
 projects[fivestar][version] = "2"
 
@@ -181,6 +184,8 @@ projects[fontyourface][version] = "2"
 
 projects[footermap][subdir] = "contrib"
 projects[footermap][version] = "1"
+
+projects[genpass][subdir] = "contrib"
 
 projects[gist_filter][subdir] = "contrib"
 projects[gist_filter][version] = "1"
@@ -272,6 +277,8 @@ projects[location][version] = "3"
 projects[login_destination][subdir] = "contrib"
 projects[login_destination][version] = "1"
 
+projects[logintoboggan]['subdir'] = "contrib"
+
 projects[logintoboggan][subdir] = "contrib"
 projects[logintoboggan][version] = "1"
 
@@ -361,6 +368,8 @@ projects[recaptcha][version] = "1"
 
 projects[redirect][subdir] = "contrib"
 projects[redirect][version] = "1"
+
+projects[register_preapproved][subdir] = "contrib"
 
 projects[references][subdir] = "contrib"
 projects[references][version] = "2"
@@ -453,7 +462,7 @@ projects[util][subdir] = "contrib"
 projects[util][version] = "1"
 
 projects[uuid][subdir] = "contrib"
-projects[uuid][version] = "1"
+projects[uuid][version] = "1.x-dev"
 
 projects[variable][subdir] = "contrib"
 projects[variable][version] = "2"
@@ -584,8 +593,8 @@ libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEd
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
-libraries[mediaelement][download][type] = "get"
-libraries[mediaelement][download][url] = 'https://nodeload.github.com/johndyer/mediaelement/zipball/master'
+libraries[mediaelement][download][type] = "git"
+libraries[mediaelement][download][url] = 'git://github.com/johndyer/mediaelement.git'
 libraries[mediaelement][directory_name] = 'mediaelement'
 libraries[mediaelement][destination] = 'libraries'
 
