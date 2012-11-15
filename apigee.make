@@ -77,6 +77,9 @@ projects[chart][version] = "1"
 projects[ckeditor][subdir] = "contrib"
 projects[ckeditor][version] = "1"
 
+projects[ckeditor_link][subdir] = "contrib"
+projects[ckeditor_link][version] = "2"
+
 projects[commerce][subdir] = "contrib"
 projects[commerce][version] = "1"
 
@@ -633,8 +636,8 @@ libraries[codemirror][download][url] = "http://codemirror.net/codemirror.zip"
 libraries[codemirror][directory_name] = "codemirror"
 libraries[codemirror][destination] = "libraries"
 
-libraries[jquery_selectlist][download][type] = "get"
-libraries[jquery_selectlist][download][url] = "http://odyniec.net/projects/selectlist/jquery.selectlist-0.5.zip"
+libraries[jquery_selectlist][download][type] = "git"
+libraries[jquery_selectlist][download][url] = "git://github.com/odyniec/selectlist.git"
 libraries[jquery_selectlist][directory_name] = "jquery.selectlist"
 libraries[jquery_selectlist][destination] = "libraries"
 
