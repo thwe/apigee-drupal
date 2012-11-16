@@ -143,6 +143,9 @@ projects[entityreference][version] = "1"
 projects[entity_dependency][subdir] = "contrib"
 projects[entity_dependency][version] = "1"
 
+projects[encset][subdir] = "contrib"
+projects[encset][version] = 1
+
 projects[facetapi][subdir] = "contrib"
 projects[facetapi][version] = "1"
 
