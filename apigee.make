@@ -360,6 +360,9 @@ projects[pathauto][version] = "1"
 projects[persistent_login][subdir] = "contrib"
 projects[persistent_login][version] = "1"
 
+projects[permission_grid][subdir] = "contrib"
+projects[permission_grid][version] = "1"
+
 projects[querypath][subdir] = "contrib"
 projects[querypath][version] = "2"
 
