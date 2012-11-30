@@ -4,7 +4,7 @@ api = 2
 CORE
 ; ------------------------------------------------------------------
 projects[drupal][type] = "core"
-projects[drupal][version] = "7.16"
+projects[drupal][version] = "7.17"
 
 ; CONTRIB MODULES
 ; ------------------------------------------------------------------
