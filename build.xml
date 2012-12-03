@@ -47,7 +47,7 @@
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<delete dir="${WORKSPACE}/webapp" 
+		<delete dir="${project.basedir}/webapp" 
 			verbose="true" 
 			failonerror="true" 
 			includeemptydirs="true" />
@@ -73,34 +73,36 @@
 				</copy>
 			</then>
 		</if>
-		<copy file="${WORKSPACE}/libraries.php" tofile="${WORKSPACE}/webapp/sites/default/libraries.php" />
+		<copy file="${project.basedir}/libraries.php" tofile="${project.basedir}/webapp/sites/default/libraries.php" />
 		<property prefix="dc.dev" file="drupal-settings/properties/dc.dev.properties" />
 		<drush command="cc">
 			<param>drush</param>
 		</drush>
-		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
-			<property name="root" value="${dc.dev.root}" />
-			<property name="exec" value="${dc.dev.exec}" />
-			<property name="name" value="${dc.dev.name}" />
-		</phing>
 		<phingcall target="remove-extra-libraries-mod" />
-		<echo> ===> Moving files </echo>
-		<exec command="sudo chown -R jenkins.jenkins ${dc.dev.root}" />
-		<move file="${dc.dev.root}" 
-			todir="/tmp/dc-build-scraps-${BUILD_ID}" 
-			includeemptydirs="true" 
-			haltonerror="false" />
-		<move file="${WORKSPACE}/webapp" 
-			todir="${dc.dev.container}" 
-			includeemptydirs="true" />
-		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
-			<property name="root" value="${dc.dev.root}" />
-			<property name="exec" value="${dc.dev.exec}" />
-			<property name="name" value="${dc.dev.name}" />
-		</phing>
-		<echo> ===> Removing PHP &amp; UPDATE Module </echo>
-		<delete dir="${dc.dev.root}/modules/php" />
-		<delete dir="${dc.dev.root}/modules/update" />
+    <if>
+      <available file="/disk2/www" type="dir" />
+      <then>
+    		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+    			<property name="root" value="${dc.dev.root}" />
+    			<property name="exec" value="${dc.dev.exec}" />
+    			<property name="name" value="${dc.dev.name}" />
+    		</phing>
+    		<echo> ===> Moving files </echo>
+    		<exec command="sudo chown -R jenkins.jenkins ${dc.dev.root}" />
+    		<move file="${dc.dev.root}" 
+    			todir="/tmp/dc-build-scraps-${BUILD_ID}" 
+    			includeemptydirs="true" 
+    			haltonerror="false" />
+    		<move file="${project.basedir}/webapp" 
+    			todir="${dc.dev.container}" 
+    			includeemptydirs="true" />
+    		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
+    			<property name="root" value="${dc.dev.root}" />
+    			<property name="exec" value="${dc.dev.exec}" />
+    			<property name="name" value="${dc.dev.name}" />
+    		</phing>
+      </then>
+    </if>
 	</target>
 
 
@@ -120,6 +122,21 @@
       <then>
         <delete 
           dir="${project.basedir}/webapp/sites/all/modules/libraries" 
+          verbose="true" 
+          failonerror="true" 
+          includeemptydirs="true" />
+      </then>
+    </if>
+    <if>
+      <available file="${project.basedir}/webapp/sites/modules/php" type="dir" />
+      <then>
+        <delete 
+          dir="${project.basedir}/webapp/sites/modules/php" 
+          verbose="true" 
+          failonerror="true" 
+          includeemptydirs="true" />
+        <delete 
+          dir="${project.basedir}/webapp/sites/modules/update" 
           verbose="true" 
           failonerror="true" 
           includeemptydirs="true" />
