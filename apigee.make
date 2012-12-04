@@ -514,11 +514,6 @@ projects[apigee_devconnect][type] = "theme"
 projects[apigee_devconnect][download][type] = 'git'
 projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
 
-; apigee docs theme
-projects[apigee_docs][type] = "theme"
-projects[apigee_docs][download][type] = 'git'
-projects[apigee_docs][download][url] = "git@github.com:apigee/apigee_drupal_docs_theme.git"
-
 ; development seed's admin theme
 projects[tao][type]=theme
 projects[rubik][type]=theme
