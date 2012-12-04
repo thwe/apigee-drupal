@@ -126,7 +126,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "f02bce3a76f38c976e68107ab2a9d551c2e3fb76"
+projects[devconnect][download][revision] = "6f46156b4b2bd655c7a887f69803b5199fc8b1c3"
 projects[devconnect][subdir] = "custom"
 
 projects[devconnect_content_admin][type] = "module"

@@ -128,15 +128,15 @@
       </then>
     </if>
     <if>
-      <available file="${project.basedir}/webapp/sites/modules/php" type="dir" />
+      <available file="${project.basedir}/webapp/modules/php" type="dir" />
       <then>
         <delete 
-          dir="${project.basedir}/webapp/sites/modules/php" 
+          dir="${project.basedir}/webapp/modules/php" 
           verbose="true" 
           failonerror="true" 
           includeemptydirs="true" />
         <delete 
-          dir="${project.basedir}/webapp/sites/modules/update" 
+          dir="${project.basedir}/webapp/modules/update" 
           verbose="true" 
           failonerror="true" 
           includeemptydirs="true" />
