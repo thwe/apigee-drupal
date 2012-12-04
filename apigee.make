@@ -4,7 +4,7 @@ api = 2
 CORE
 ; ------------------------------------------------------------------
 projects[drupal][type] = "core"
-projects[drupal][version] = "7.16"
+projects[drupal][version] = "7.17"
 
 ; CONTRIB MODULES
 ; ------------------------------------------------------------------
@@ -142,6 +142,9 @@ projects[entityreference][version] = "1"
 
 projects[entity_dependency][subdir] = "contrib"
 projects[entity_dependency][version] = "1"
+
+projects[encset][subdir] = "contrib"
+projects[encset][version] = 1
 
 projects[facetapi][subdir] = "contrib"
 projects[facetapi][version] = "1"
@@ -356,6 +359,9 @@ projects[pathauto][version] = "1"
 
 projects[persistent_login][subdir] = "contrib"
 projects[persistent_login][version] = "1"
+
+projects[permission_grid][subdir] = "contrib"
+projects[permission_grid][version] = "1"
 
 projects[querypath][subdir] = "contrib"
 projects[querypath][version] = "2"
