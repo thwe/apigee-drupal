@@ -49,7 +49,7 @@
 		</drush>
 		<delete dir="${project.basedir}/webapp" 
 			verbose="true" 
-			failonerror="true" 
+			failonerror="false" 
 			includeemptydirs="true" />
 	    <drush command="make" assume="yes">
 			<option name="prepare-install" />
