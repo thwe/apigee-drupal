@@ -87,6 +87,8 @@ The Apigee Drupal team's goal is to verify a Drupal point release within 15 days
   `phing -f build.xml -Dbuild.type=internal` 
   
   This build requires access to our in-house Drupal-Settings repo. Only Apigee employees and contractors should have access to this so don't worry if you don't. This will get you the drupal-settings folder and then copy them to the correct place.
+  
+  _NOTE_: The Phing build completely removes the core "PHP Filter" and "Update" modules from Drupal. This is intended behavior. They will not be on any server you deploy to. Putting PHP in a node is a security risk and should not be a part of your development pattern. All updates will be done by our scripts and automated.
 
 1. Permissions
 
