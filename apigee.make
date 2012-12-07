@@ -303,6 +303,9 @@ projects[media_youtube][version] ="1"
 projects[memcache][subdir] = "contrib"
 projects[memcache][version] = "1"
 
+projects[message][subdir] = "contrib"
+projects[message][version] = "1"
+
 projects[metatag][subdir] = "contrib"
 projects[metatag][version] = "1"
 
