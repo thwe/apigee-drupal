@@ -110,6 +110,9 @@ projects[ctools][version] = "1"
 projects[custom_breadcrumbs][subdir] = "contrib"
 projects[custom_breadcrumbs][version] = "1"
 
+projects[date][subdir] = "contrib"
+projects[date][version] = "2"
+
 projects[deploy][subdir] = "contrib"
 projects[deploy][version] = "2"
 
