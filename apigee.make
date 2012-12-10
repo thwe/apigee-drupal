@@ -512,6 +512,8 @@ projects[wysiwyg][version] = "2"
 projects[XHProf][subdir] = "contrib"
 projects[XHProf][version] = "1"
 
+projects[xautoload][subdir] = "contrib"
+projects[xautoload][version] = "2"
 
 ; THEMES
 ; ------------------------------------------------------------------
