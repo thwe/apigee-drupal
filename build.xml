@@ -74,6 +74,7 @@
 			</then>
 		</if>
 		<copy file="${project.basedir}/libraries.php" tofile="${project.basedir}/webapp/sites/default/libraries.php" />
+    <delete file="${project.basedir}/webapp/install.php" quiet="true" />
 		<property prefix="dc.dev" file="drupal-settings/properties/dc.dev.properties" />
 		<drush command="cc">
 			<param>drush</param>
