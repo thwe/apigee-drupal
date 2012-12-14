@@ -84,7 +84,7 @@ projects[chart][subdir] = "contrib"
 projects[chart][version] = "1.1"
 
 projects[ckeditor][subdir] = "contrib"
-projects[ckeditor][version] = "1.9"
+projects[ckeditor][version] = "1.11"
 
 projects[ckeditor_link][subdir] = "contrib"
 projects[ckeditor_link][version] = "2.2"
@@ -105,7 +105,7 @@ projects[contentapi][subdir] = "contrib"
 projects[contentapi][version] = "1.0-alpha3"
 
 projects[context][subdir] = "contrib"
-projects[context][version] = "3.0-beta4"
+projects[context][version] = "3.0-beta5"
 
 projects[cnr][subdir] = "contrib"
 projects[cnr][version] = "4.22"
@@ -119,6 +119,9 @@ projects[facetapi][version] = "1.2"
 projects[custom_breadcrumbs][subdir] = "contrib"
 projects[custom_breadcrumbs][version] = "1.0-alpha1"
 
+projects[date][subdir] = "contrib"
+projects[date][version] = "2.6"
+
 projects[deploy][subdir] = "contrib"
 projects[deploy][version] = "2.x-dev"
 
@@ -126,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "6f46156b4b2bd655c7a887f69803b5199fc8b1c3"
+projects[devconnect][download][revision] = "73018babad4c2b7d4e1ae008d1d930e67efca018"
 projects[devconnect][subdir] = "custom"
 
 projects[devconnect_content_admin][type] = "module"
@@ -140,7 +143,7 @@ projects[diff][subdir] = "contrib"
 projects[diff][version] = "2.0"
 
 projects[domain][subdir] = "contrib"
-projects[domain][version] = "3.5"
+projects[domain][version] = "3.6"
 
 projects[domain_ctools][subdir] = "contrib"
 projects[domain_ctools][version] = "1.3"
@@ -319,6 +322,9 @@ projects[mediaelement][version] = "1.2"
 
 projects[memcache][subdir] = "contrib"
 projects[memcache][version] = "1.0"
+
+projects[message][subdir] = "contrib"
+projects[message][version] = "1.7"
 
 projects[metatag][subdir] = "contrib"
 projects[metatag][version] = "1.0-beta4"
@@ -509,6 +515,9 @@ projects[workflow][version] = "1.0"
 projects[wysiwyg][subdir] = "contrib"
 projects[wysiwyg][version] = "2.2"
 
+projects[xautoload][subdir] = "contrib"
+projects[xautoload][version] = "2.7"
+
 projects[XHProf][subdir] = "contrib"
 projects[XHProf][version] = "1.0-beta2"
 
@@ -521,7 +530,7 @@ projects[tao][version] = "3.0-beta4"
 projects[apigee_sso][type] = "module"
 projects[apigee_sso][download][type] = "git"
 projects[apigee_sso][download][url] = "git@github.com:apigee/apigee_drupal_sso.git"
-projects[apigee_sso][download][revision] = "865fd1b6b56d7cbd8d4faf7c89d3f52d9947f6be"
+projects[apigee_sso][download][revision] = "dce50904d9846becd5ec6fc2bbfdf14332dcaf9e"
 projects[apigee_sso][subdir] = "custom"
 
 projects[feeds][type] = "module"
@@ -553,12 +562,7 @@ projects[apigee_base][download][revision] = "f8546cebe3605924d4de1ffcf385a65ffc5
 projects[apigee_devconnect][type] = "theme"
 projects[apigee_devconnect][download][type] = "git"
 projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
-projects[apigee_devconnect][download][revision] = "40ce2ea94ac517cbeae696f10d18d26bdfdc5626"
-
-projects[apigee_docs][type] = "theme"
-projects[apigee_docs][download][type] = "git"
-projects[apigee_docs][download][url] = "git@github.com:apigee/apigee_drupal_docs_theme.git"
-projects[apigee_docs][download][revision] = "c805bb9a29725f50f0de2bc470c3c8c1f8f3d523"
+projects[apigee_devconnect][download][revision] = "36617ccfc7a753cce64bd44f11a8b08dcb92308d"
 
 ; Libraries
 libraries[backbone][directory_name] = "backbone"
