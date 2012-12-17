@@ -110,6 +110,9 @@ projects[ctools][version]                     = "1"
 projects[custom_breadcrumbs][subdir]          = "contrib"
 projects[custom_breadcrumbs][version]         = "1"
 
+projects[date][subdir]                        = "contrib"
+projects[date][version]                       = "2"
+
 projects[deploy][subdir]                      = "contrib"
 projects[deploy][version]                     = "2"
 
@@ -302,6 +305,9 @@ projects[media_youtube][version]              = "1"
 
 projects[memcache][subdir]                    = "contrib"
 projects[memcache][version]                   = "1"
+
+projects[message][subdir]                     = "contrib"
+projects[message][version]                    = "1"
 
 projects[metatag][subdir]                     = "contrib"
 projects[metatag][version]                    = "1"
@@ -506,6 +512,8 @@ projects[wysiwyg][version]                    = "2"
 projects[XHProf][subdir]                      = "contrib"
 projects[XHProf][version]                     = "1"
 
+projects[xautoload][subdir]                   = "contrib"
+projects[xautoload][version]                  = "2"
 
 ; THEMES
 ; ------------------------------------------------------------------
@@ -655,3 +663,4 @@ libraries[s3-php5-curl][download][type]       = "get"
 libraries[s3-php5-curl][download][url]        = "http://amazon-s3-php-class.googlecode.com/files/s3-php5-curl_0.4.0.tar.gz"
 libraries[s3-php5-curl][directory_name]       = "s3-php5-curl"
 libraries[s3-php5-curl][destination]          = "libraries"
+
