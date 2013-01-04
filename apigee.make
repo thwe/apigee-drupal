@@ -532,7 +532,6 @@ projects[apigee_devconnect][download][url]    					= "git@github.com:apigee/apig
 projects[apigee_base_responsive][type] 									= "theme"
 projects[apigee_base_responsive][download][type] 				= 'git'
 projects[apigee_base_responsive][download][url] 				= "git@github.com:apigee/drupal-responsive-base-theme.git"
-projects[apigee_base_responsive][download][branch] 			= "devconnect"
 
 ; apigee devconnect theme - responsive
 projects[apigee_devconnect_responsive][type] 						= "theme"
