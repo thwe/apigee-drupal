@@ -518,26 +518,15 @@ projects[xautoload][version]                  = "2"
 ; THEMES
 ; ------------------------------------------------------------------
 ; apigee base theme
-projects[apigee_base][type]                   					= "theme"
-projects[apigee_base][download][type]         					= 'git'
-projects[apigee_base][download][url]          					= "git@github.com:apigee/apigee_drupal_base_theme.git"
-projects[apigee_base][download][branch]       					= "devconnect"
+projects[apigee_base][type]                   = "theme"
+projects[apigee_base][download][type]         = 'git'
+projects[apigee_base][download][url]          = "git@github.com:apigee/apigee_drupal_base_theme.git"
+projects[apigee_base][download][branch]       = "devconnect"
 
 ; apigee devconnect theme
-projects[apigee_devconnect][type]             					= "theme"
-projects[apigee_devconnect][download][type]   					= 'git'
-projects[apigee_devconnect][download][url]    					= "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
-
-; apigee base theme - responsive
-projects[apigee_base_responsive][type] 									= "theme"
-projects[apigee_base_responsive][download][type] 				= 'git'
-projects[apigee_base_responsive][download][url] 				= "git@github.com:apigee/drupal-responsive-base-theme.git"
-projects[apigee_base_responsive][download][branch] 			= "devconnect"
-
-; apigee devconnect theme - responsive
-projects[apigee_devconnect_responsive][type] 						= "theme"
-projects[apigee_devconnect_responsive][download][type] 	= 'git'
-projects[apigee_devconnect_responsive][download][url] 	= "git@github.com:apigee/drupal-responsive-devconnect-theme.git"
+projects[apigee_devconnect][type]             = "theme"
+projects[apigee_devconnect][download][type]   = 'git'
+projects[apigee_devconnect][download][url]    = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
 
 ; development seed's admin theme
 projects[tao][type]                           = theme
