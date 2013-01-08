@@ -6,7 +6,7 @@ projects[drupal][version] = "7.17"
 
 ; Modules
 projects[accordion_menu][subdir] = "contrib"
-projects[accordion_menu][version] = "1.1"
+projects[accordion_menu][version] = "1.2"
 
 projects[acl][subdir] = "contrib"
 projects[acl][version] = "1.0"
@@ -129,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "630dfbf320b3833c29af4763194a0135d97bebbc"
+projects[devconnect][download][revision] = "da3cbe6070000fe499b6f8c668b93d5aeff82855"
 projects[devconnect][subdir] = "custom"
 
 projects[devconnect_content_admin][type] = "module"
@@ -143,7 +143,7 @@ projects[diff][subdir] = "contrib"
 projects[diff][version] = "2.0"
 
 projects[domain][subdir] = "contrib"
-projects[domain][version] = "3.6"
+projects[domain][version] = "3.7"
 
 projects[domain_ctools][subdir] = "contrib"
 projects[domain_ctools][version] = "1.3"
@@ -330,7 +330,7 @@ projects[metatag][subdir] = "contrib"
 projects[metatag][version] = "1.0-beta4"
 
 projects[metatags_quick][subdir] = "contrib"
-projects[metatags_quick][version] = "2.6"
+projects[metatags_quick][version] = "2.7"
 
 projects[migrate][subdir] = "contrib"
 projects[migrate][version] = "2.5"
@@ -444,7 +444,7 @@ projects[search_api_ranges][subdir] = "contrib"
 projects[search_api_ranges][version] = "1.4"
 
 projects[search_api_solr][subdir] = "contrib"
-projects[search_api_solr][version] = "1.0-rc2"
+projects[search_api_solr][version] = "1.0-rc3"
 
 projects[search_api_sorts][subdir] = "contrib"
 projects[search_api_sorts][version] = "1.3"
@@ -559,10 +559,20 @@ projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base
 projects[apigee_base][download][branch] = "devconnect"
 projects[apigee_base][download][revision] = "48ba34665c50a9212993d74e5893f223cf49c83c"
 
+projects[apigee_base_responsive][type] = "theme"
+projects[apigee_base_responsive][download][type] = "git"
+projects[apigee_base_responsive][download][url] = "git@github.com:apigee/drupal-responsive-base-theme.git"
+projects[apigee_base_responsive][download][revision] = "5ee013642e1937904c7beee094ff2f63f995d100"
+
 projects[apigee_devconnect][type] = "theme"
 projects[apigee_devconnect][download][type] = "git"
 projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
 projects[apigee_devconnect][download][revision] = "85417535e200c19fb534a8f7cf62baa6b77c6a68"
+
+projects[apigee_devconnect_responsive][type] = "theme"
+projects[apigee_devconnect_responsive][download][type] = "git"
+projects[apigee_devconnect_responsive][download][url] = "git@github.com:apigee/drupal-responsive-devconnect-theme.git"
+projects[apigee_devconnect_responsive][download][revision] = "5619599b359462571d001b06ebd404cf52aff036"
 
 ; Libraries
 libraries[backbone][directory_name] = "backbone"
