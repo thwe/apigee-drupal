@@ -626,7 +626,7 @@ libraries[tinymce][destination] = "libraries"
 
 libraries[mediaelement][directory_name] = "mediaelement"
 libraries[mediaelement][type] = "library"
-libraries[mediaelement][download][url] = "https://nodeload.github.com/johndyer/mediaelement/zipball/master"
+libraries[mediaelement][download][url] = "https://nodeload.github.com/johndyer/mediaelement/zip/master"
 libraries[mediaelement][download][type] = "get"
 libraries[mediaelement][destination] = "libraries"
 
