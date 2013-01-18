@@ -449,6 +449,10 @@ projects[scanner][version]                    = "1"
 projects[smtp][subdir]                        = "contrib"
 projects[smtp][version]                       = "1"
 
+projects[statsd][subdir]                      = "contrib"
+projects[statsd][version]                     = 1
+
+
 projects[strongarm][subdir]                   = "contrib"
 projects[strongarm][version]                  = "2"
 
