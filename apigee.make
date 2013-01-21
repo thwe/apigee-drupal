@@ -4,7 +4,7 @@ api                                           = 2
 CORE
 ; ------------------------------------------------------------------
 projects[drupal][type]                        = "core"
-projects[drupal][version]                     = "7.17"
+projects[drupal][version]                     = "7.19"
 
 ; CONTRIB MODULES
 ; ------------------------------------------------------------------
@@ -449,6 +449,9 @@ projects[scanner][version]                    = "1"
 projects[smtp][subdir]                        = "contrib"
 projects[smtp][version]                       = "1"
 
+projects[statsd][subdir]                      = "contrib"
+projects[statsd][version]                     = 1
+
 projects[strongarm][subdir]                   = "contrib"
 projects[strongarm][version]                  = "2"
 
@@ -561,7 +564,7 @@ projects[devconnect][type]                    = module
 projects[devconnect][subdir]                  = custom
 projects[devconnect][download][type]          = 'git'
 projects[devconnect][download][url]           = "git@github.com:apigee/devconnect.git"
-projects[devconnect][download][branch]        = "7.x-4.0-dev"
+projects[devconnect][download][branch]        = "7.x-4.21"
 
 ; apigee SSO module
 projects[apigee_sso][type]                    = module
