@@ -76,9 +76,6 @@
 		</if>
 		<copy file="${project.basedir}/libraries.php" tofile="${project.basedir}/webapp/sites/default/libraries.php" />
     <delete file="${project.basedir}/webapp/install.php" quiet="true" />
-		<drush command="cc">
-			<param>drush</param>
-		</drush>
 		<phingcall target="remove-extra-libraries-mod" />
     <if>
       <available file="/disk2/www" type="dir" />
