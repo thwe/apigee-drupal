@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="apigee-drupal-project" default="apigee-drupal" description="Apigee Drupal Build">
+<project name="apigee-drupal-project" default="dc-dev-build" description="Apigee Drupal Build">
 
 	<!--
 
@@ -7,7 +7,14 @@
 	External builds are those who do not. Default is an external build. Internal builds will have ${build.type} = internal
 	in their Jenkins default properties.
 
-	From the command line: phing apigee-drupal -Dbuild.type=internal
+  ============== To Install Phing  ======================
+  to install phing: sudo sh ./pear-installs.sh
+
+
+  ============== FOR LOCAL DEVELOPMENT  ======================
+	From the command line: phing apigee-drupal -Dbuild.type=local
+
+
 
 	-->
 
@@ -28,7 +35,10 @@
 		<gitbranch repository="tasks/drush" branchname="7.x-1.x" />
 		<gitclone repository="git@github.com:AntonStoeckl/Phing-Additions.git" targetPath="tasks/additions" />
 		<if>
-			<equals arg1="${build.type}" arg2="internal" />
+      <or>
+       <equals arg1="${build.type}" arg2="jenkins" />
+       <equals arg1="${build.type}" arg2="internal" />
+      </or>
 			<then>
 				<gitclone repository="git@github.com:apigee/drupal-settings" targetPath="drupal-settings" />
 			</then>
@@ -41,7 +51,6 @@
 		<echo>-------------------------------------------------</echo>
 		<echo> +++++ Running Phing/Drush build </echo>
 		<echo>-------------------------------------------------</echo>
-		<phingcall target="init" />
 		<includepath classpath="tasks" />
 		<taskdef name="drush" classname="drush.DrushTask" />
 		<drush command="cc">
@@ -64,10 +73,14 @@
 	<target name="dc-dev-build" depends="apigee-drupal">
     <property prefix="dc.dev" file="${project.basedir}/drupal-settings/properties/${PROPERTIES_FILE}" />
 		<if>
-			<equals arg1="${build.type}" arg2="internal" />
+      <or>
+       <equals arg1="${build.type}" arg2="jenkins" />
+			 <equals arg1="${build.type}" arg2="internal" />
+      </or>
 			<then>
-				<copy todir="${project.basedir}/webapp/sites" >
-				  <fileset dir="drupal-settings/sites">
+				<copy todir="${project.basedir}/webapp/sites" includeemptydirs="true">
+				  <fileset dir="{project.basedir}/drupal-settings/sites">
+            <include name="${dc.dev.sites_pattern}" />
 				    <include name="${dc.dev.sites_pattern}/**" />
 				    <include name="sites.php" />
 				  </fileset>
@@ -78,7 +91,7 @@
     <delete file="${project.basedir}/webapp/install.php" quiet="true" />
 		<phingcall target="remove-extra-libraries-mod" />
     <if>
-      <available file="/disk2/www" type="dir" />
+       <equals arg1="${build.type}" arg2="jenkins" />
       <then>
     		<phing phingfile="drupal-settings/apigee-storage.xml" target="fix-perms">
     			<property name="root" value="${dc.dev.root}" />
