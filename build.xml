@@ -80,8 +80,7 @@
 			<then>
 				<copy todir="${project.basedir}/webapp/sites" includeemptydirs="true">
 				  <fileset dir="${project.basedir}/drupal-settings/sites">
-            <include name="${dc.dev.sites_pattern}" />
-				    <include name="${dc.dev.sites_pattern}/**" />
+            <include name="dc-*/**/**" />
 				    <include name="sites.php" />
 				  </fileset>
 				</copy>
