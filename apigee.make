@@ -572,17 +572,17 @@ projects[apigee_sso][subdir]                  = custom
 projects[apigee_sso][download][type]          = 'git'
 projects[apigee_sso][download][url]           = "git@github.com:apigee/apigee_drupal_sso.git"
 
-projects[rst][type]                           = module
-projects[rst][subdir]                         = custom
-projects[rst][download][type]                 = 'git'
-projects[rst][download][url]                  = 'http://git.drupal.org/sandbox/stovak/1455522.git'
+;projects[rst][type]                           = module
+;projects[rst][subdir]                         = custom
+;projects[rst][download][type]                 = 'git'
+;projects[rst][download][url]                  = 'http://git.drupal.org/sandbox/stovak/1455522.git'
 
 
-projects[gi][type]                            = module
-projects[gi][subdir]                          = custom
-projects[gi][download][type]                  = 'git'
-projects[gi][download][url]                   = 'http://git.drupal.org/sandbox/stovak/1470710.git'
-projects[gi][download][branch]                = "7.x-1.x"
+;projects[gi][type]                            = module
+;projects[gi][subdir]                          = custom
+;projects[gi][download][type]                  = 'git'
+;projects[gi][download][url]                   = 'http://git.drupal.org/sandbox/stovak/1470710.git'
+;projects[gi][download][branch]                = "7.x-1.x"
 
 ; Libraries
 ; ------------------------------------------------------------------
@@ -601,7 +601,7 @@ libraries[json2][directory_name]              = "json2"
 libraries[json2][destination]                 = "libraries"
 
 libraries[ckeditor][download][type]           = "get"
-libraries[ckeditor][download][url]            = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.4/ckeditor_3.6.4.zip"
+libraries[ckeditor][download][url]            = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6/ckeditor_3.6.6.zip"
 libraries[ckeditor][directory_name]           = "ckeditor"
 libraries[ckeditor][destination]              = "libraries"
 
@@ -611,7 +611,7 @@ libraries[mediaelement][directory_name]       = 'mediaelement'
 libraries[mediaelement][destination]          = 'libraries'
 
 libraries[tinymce][download][type]            = "get"
-libraries[tinymce][download][url]             = "http://cloud.github.com/downloads/tinymce/tinymce/tinymce_3.4.7.zip"
+libraries[tinymce][download][url]             = "http://cloud.github.com/downloads/tinymce/tinymce/tinymce_3.4.9.zip"
 libraries[tinymce][directory_name]            = "tinymce"
 libraries[tinymce][destination]               = 'libraries'
 
