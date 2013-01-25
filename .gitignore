@@ -1,1 +1,4 @@
 .DS_Store
+/drupal-settings/
+/tasks/
+/webapp/

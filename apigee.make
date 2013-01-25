@@ -259,6 +259,9 @@ projects[jquery_update][version]              = "2.x-dev"
 projects[job_scheduler][subdir]               = "contrib"
 projects[job_scheduler][version]              = '2'
 
+projects[journal][subdir]                     = "contrib"
+projects[journal][version]                    = '1'
+
 projects[ldap][subdir]                        = "contrib"
 projects[ldap][version]                       = "1"
 
@@ -666,4 +669,3 @@ libraries[s3-php5-curl][download][type]       = "get"
 libraries[s3-php5-curl][download][url]        = "http://amazon-s3-php-class.googlecode.com/files/s3-php5-curl_0.4.0.tar.gz"
 libraries[s3-php5-curl][directory_name]       = "s3-php5-curl"
 libraries[s3-php5-curl][destination]          = "libraries"
-
