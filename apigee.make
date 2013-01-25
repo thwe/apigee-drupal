@@ -4,7 +4,7 @@ api                                           = 2
 CORE
 ; ------------------------------------------------------------------
 projects[drupal][type]                        = "core"
-projects[drupal][version]                     = "7.17"
+projects[drupal][version]                     = "7.19"
 
 ; CONTRIB MODULES
 ; ------------------------------------------------------------------
@@ -259,6 +259,9 @@ projects[jquery_update][version]              = "2.x-dev"
 projects[job_scheduler][subdir]               = "contrib"
 projects[job_scheduler][version]              = '2'
 
+projects[journal][subdir]                     = "contrib"
+projects[journal][version]                    = '1'
+
 projects[ldap][subdir]                        = "contrib"
 projects[ldap][version]                       = "1"
 
@@ -449,6 +452,9 @@ projects[scanner][version]                    = "1"
 projects[smtp][subdir]                        = "contrib"
 projects[smtp][version]                       = "1"
 
+projects[statsd][subdir]                      = "contrib"
+projects[statsd][version]                     = 1
+
 projects[strongarm][subdir]                   = "contrib"
 projects[strongarm][version]                  = "2"
 
@@ -579,17 +585,17 @@ projects[apigee_sso][subdir]                  = custom
 projects[apigee_sso][download][type]          = 'git'
 projects[apigee_sso][download][url]           = "git@github.com:apigee/apigee_drupal_sso.git"
 
-projects[rst][type]                           = module
-projects[rst][subdir]                         = custom
-projects[rst][download][type]                 = 'git'
-projects[rst][download][url]                  = 'http://git.drupal.org/sandbox/stovak/1455522.git'
+;projects[rst][type]                           = module
+;projects[rst][subdir]                         = custom
+;projects[rst][download][type]                 = 'git'
+;projects[rst][download][url]                  = 'http://git.drupal.org/sandbox/stovak/1455522.git'
 
 
-projects[gi][type]                            = module
-projects[gi][subdir]                          = custom
-projects[gi][download][type]                  = 'git'
-projects[gi][download][url]                   = 'http://git.drupal.org/sandbox/stovak/1470710.git'
-projects[gi][download][branch]                = "7.x-1.x"
+;projects[gi][type]                            = module
+;projects[gi][subdir]                          = custom
+;projects[gi][download][type]                  = 'git'
+;projects[gi][download][url]                   = 'http://git.drupal.org/sandbox/stovak/1470710.git'
+;projects[gi][download][branch]                = "7.x-1.x"
 
 ; Libraries
 ; ------------------------------------------------------------------
@@ -608,7 +614,7 @@ libraries[json2][directory_name]              = "json2"
 libraries[json2][destination]                 = "libraries"
 
 libraries[ckeditor][download][type]           = "get"
-libraries[ckeditor][download][url]            = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.4/ckeditor_3.6.4.zip"
+libraries[ckeditor][download][url]            = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6/ckeditor_3.6.6.zip"
 libraries[ckeditor][directory_name]           = "ckeditor"
 libraries[ckeditor][destination]              = "libraries"
 
@@ -618,7 +624,7 @@ libraries[mediaelement][directory_name]       = 'mediaelement'
 libraries[mediaelement][destination]          = 'libraries'
 
 libraries[tinymce][download][type]            = "get"
-libraries[tinymce][download][url]             = "http://cloud.github.com/downloads/tinymce/tinymce/tinymce_3.4.7.zip"
+libraries[tinymce][download][url]             = "http://cloud.github.com/downloads/tinymce/tinymce/tinymce_3.4.9.zip"
 libraries[tinymce][directory_name]            = "tinymce"
 libraries[tinymce][destination]               = 'libraries'
 
@@ -673,4 +679,3 @@ libraries[s3-php5-curl][download][type]       = "get"
 libraries[s3-php5-curl][download][url]        = "http://amazon-s3-php-class.googlecode.com/files/s3-php5-curl_0.4.0.tar.gz"
 libraries[s3-php5-curl][directory_name]       = "s3-php5-curl"
 libraries[s3-php5-curl][destination]          = "libraries"
-
