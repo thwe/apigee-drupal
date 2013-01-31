@@ -375,6 +375,10 @@ projects[permission_grid][version]            = "1"
 projects[querypath][subdir]                   = "contrib"
 projects[querypath][version]                  = "2"
 
+projects[rate][patch][1903262] 								= "http://drupal.org/files/rate-change_1903262_1.patch"
+projects[rate][subdir] 												= "contrib"
+projects[rate][version] 											= "1"
+
 projects[readonlymode][subdir]                = "contrib"
 projects[readonlymode][version]               = "1"
 
