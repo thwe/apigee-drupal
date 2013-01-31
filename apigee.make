@@ -607,79 +607,69 @@ projects[apigee_sso][download][url]           = "git@github.com:apigee/apigee_dr
 ; for some and the URL's will need to be updated
 ; by hand when security updates are posted
 
-libraries[jquery_cycle][download][type]       = "get"
-libraries[jquery_cycle][download][url]        = "http://www.malsup.com/jquery/cycle/release/jquery.cycle.zip?v2.86"
-libraries[jquery_cycle][directory_name]       = "jquery.cycle"
-libraries[jquery_cycle][destination]          = "libraries"
 
-libraries[json2][download][type]              = "git"
-libraries[json2][download][url]               = "git://github.com/douglascrockford/JSON-js.git"
-libraries[json2][directory_name]              = "json2"
-libraries[json2][destination]                 = "libraries"
-
-libraries[ckeditor][download][type]           = "get"
-libraries[ckeditor][download][url]            = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6/ckeditor_3.6.6.zip"
-libraries[ckeditor][directory_name]           = "ckeditor"
-libraries[ckeditor][destination]              = "libraries"
-
-libraries[mediaelement][download][type]       = "git"
-libraries[mediaelement][download][url]        = 'git://github.com/johndyer/mediaelement.git'
-libraries[mediaelement][directory_name]       = 'mediaelement'
-libraries[mediaelement][destination]          = 'libraries'
-
-libraries[tinymce][download][type]            = "get"
-libraries[tinymce][download][url]             = "http://cloud.github.com/downloads/tinymce/tinymce/tinymce_3.4.9.zip"
-libraries[tinymce][directory_name]            = "tinymce"
-libraries[tinymce][destination]               = 'libraries'
-
-libraries[glip][download][type]               = "git"
-libraries[glip][download][url]                = "git://github.com/halstead/glip.git"
-libraries[glip][directory_name]               = "glip"
-libraries[glip][destination]                  = 'libraries'
-
-libraries[spyc][download][type]               = 'get'
-libraries[spyc][download][url]                = 'http://spyc.googlecode.com/files/spyc-0.5.zip'
-libraries[spyc][directory_name]               = "spyc"
-libraries[spyc][destination]                  = 'libraries'
-
-libraries[lessphp][download][type]            = "git"
-libraries[lessphp][download][url]             = 'git://github.com/leafo/lessphp.git'
-libraries[lessphp][directory_name]            = "lessphp"
-libraries[lessphp][destination]               = 'libraries'
-
-libraries[colorpicker][download][type]        = 'get'
-libraries[colorpicker][download][url]         = 'http://www.eyecon.ro/colorpicker/colorpicker.zip'
-libraries[colorpicker][directory_name]        = "colorpicker"
-libraries[colorpicker][destination]           = "libraries"
-
-libraries[SolrPhpClient][download][type]      = "get"
-libraries[SolrPhpClient][download][url]       = "http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.zip"
-libraries[SolrPhpClient][directory_name]      = "SolrPhpClient"
-libraries[SolrPhpClient][destination]         = "libraries"
-
+libraries[backbone][destination]              = "libraries"
+libraries[backbone][directory_name]           = "backbone"
+libraries[backbone][download][tag]            = "0.9.2"
 libraries[backbone][download][type]           = "git"
 libraries[backbone][download][url]            = "git://github.com/documentcloud/backbone.git"
-libraries[backbone][download][tag]            = "0.9.2"
-libraries[backbone][directory_name]           = "backbone"
-libraries[backbone][destination]              = "libraries"
 
-;libraries[bootstrap][download][type]         = "git"
-;libraries[bootstrap][download][url]          = "git://github.com/twitter/bootstrap.git"
-;libraries[bootstrap][download][tag]          = "v2.0.3"
-;libraries[bootstrap][directory_name]         = "bootstrap"
-;libraries[bootstrap][destination]            = "libraries"
+libraries[ckeditor][destination]              = "libraries"
+libraries[ckeditor][directory_name]           = "ckeditor"
+libraries[ckeditor][download][type]           = "get"
+libraries[ckeditor][download][url]            = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6/ckeditor_3.6.6.zip"
 
+libraries[codemirror][destination]            = "libraries"
+libraries[codemirror][directory_name]         = "codemirror"
 libraries[codemirror][download][type]         = "get"
 libraries[codemirror][download][url]          = "http://codemirror.net/codemirror.zip"
-libraries[codemirror][directory_name]         = "codemirror"
-libraries[codemirror][destination]            = "libraries"
 
+libraries[colorpicker][destination]           = "libraries"
+libraries[colorpicker][directory_name]        = "colorpicker"
+libraries[colorpicker][download][type]        = 'get'
+libraries[colorpicker][download][url]         = 'http://www.eyecon.ro/colorpicker/colorpicker.zip'
+
+libraries[glip][destination]                  = 'libraries'
+libraries[glip][directory_name]               = "glip"
+libraries[glip][download][type]               = "git"
+libraries[glip][download][url]                = "git://github.com/halstead/glip.git"
+
+libraries[jquery_cycle][destination]          = "libraries"
+libraries[jquery_cycle][directory_name]       = "jquery.cycle"
+libraries[jquery_cycle][download][type]       = "get"
+libraries[jquery_cycle][download][url]        = "http://www.malsup.com/jquery/cycle/release/jquery.cycle.zip?v2.86"
+
+libraries[jquery_selectlist][destination]     = "libraries"
+libraries[jquery_selectlist][directory_name]  = "jquery.selectlist"
 libraries[jquery_selectlist][download][type]  = "get"
 libraries[jquery_selectlist][download][url]   = "http://odyniec.net/projects/selectlist/jquery.selectlist-0.5.1.zip"
-libraries[jquery_selectlist][directory_name]  = "jquery.selectlist"
-libraries[jquery_selectlist][destination]     = "libraries"
 
+libraries[json2][destination]                 = "libraries"
+libraries[json2][directory_name]              = "json2"
+libraries[json2][download][type]              = "git"
+libraries[json2][download][url]               = "git://github.com/douglascrockford/JSON-js.git"
+
+libraries[mediaelement][destination]          = 'libraries'
+libraries[mediaelement][directory_name]       = 'mediaelement'
+libraries[mediaelement][download][type]       = "git"
+libraries[mediaelement][download][url]        = 'git://github.com/johndyer/mediaelement.git'
+
+libraries[s3-php5-curl][destination]          = "libraries"
+libraries[s3-php5-curl][directory_name]       = "s3-php5-curl"
 libraries[s3-php5-curl][download][type]       = "get"
 libraries[s3-php5-curl][download][url]        = "http://amazon-s3-php-class.googlecode.com/files/s3-php5-curl_0.4.0.tar.gz"
-libraries[s3-php5-curl][directory_name]       = "s3-php5-curl"
-libraries[s3-php5-curl][destination]          = "libraries"
+
+libraries[SolrPhpClient][destination]         = "libraries"
+libraries[SolrPhpClient][directory_name]      = "SolrPhpClient"
+libraries[SolrPhpClient][download][type]      = "get"
+libraries[SolrPhpClient][download][url]       = "http://solr-php-client.googlecode.com/files/SolrPhpClient.r60.2011-05-04.zip"
+
+libraries[spyc][destination]                  = 'libraries'
+libraries[spyc][directory_name]               = "spyc"
+libraries[spyc][download][type]               = 'get'
+libraries[spyc][download][url]                = 'http://spyc.googlecode.com/files/spyc-0.5.zip'
+
+libraries[tinymce][destination]               = 'libraries'
+libraries[tinymce][directory_name]            = "tinymce"
+libraries[tinymce][download][type]            = "get"
+libraries[tinymce][download][url]             = "http://cloud.github.com/downloads/tinymce/tinymce/tinymce_3.4.9.zip"
