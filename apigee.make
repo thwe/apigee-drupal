@@ -140,6 +140,9 @@ projects[ds][version]                         = "1"
 projects[entity][subdir]                      = "contrib"
 projects[entity][version]                     = "1"
 
+projects[eck][subdir]                         = "contrib"
+projects[eck][version]                        = "2"
+
 projects[entityreference][subdir]             = "contrib"
 projects[entityreference][version]            = "1"
 
@@ -569,18 +572,6 @@ projects[apigee_sso][type]                    = module
 projects[apigee_sso][subdir]                  = custom
 projects[apigee_sso][download][type]          = 'git'
 projects[apigee_sso][download][url]           = "git@github.com:apigee/apigee_drupal_sso.git"
-
-;projects[rst][type]                           = module
-;projects[rst][subdir]                         = custom
-;projects[rst][download][type]                 = 'git'
-;projects[rst][download][url]                  = 'http://git.drupal.org/sandbox/stovak/1455522.git'
-
-
-;projects[gi][type]                            = module
-;projects[gi][subdir]                          = custom
-;projects[gi][download][type]                  = 'git'
-;projects[gi][download][url]                   = 'http://git.drupal.org/sandbox/stovak/1470710.git'
-;projects[gi][download][branch]                = "7.x-1.x"
 
 ; Libraries
 ; ------------------------------------------------------------------
