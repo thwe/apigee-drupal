@@ -205,6 +205,9 @@ projects[github_connect][version]             = "1"
 projects[git_deploy][subdir]                  = "contrib"
 projects[git_deploy][version]                 = "2"
 
+projects[github_connect][subdir]              = "contrib"
+projects[github_connect][version]             = "2"
+
 projects[gmap][subdir]                        = "contrib"
 projects[gmap][version]                       = "1"
 
