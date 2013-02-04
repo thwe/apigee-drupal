@@ -556,25 +556,6 @@ projects[rubik][type]                         					= theme
 ; CUSTOM MODULES
 ; ------------------------------------------------------------------
 
-;work in progress for the WADL                =>entity
-;projects[objective_forms][type]              = module
-;projects[objective_forms][subdir]            = custom
-;projects[objective_forms][download][type]    = 'git'
-;projects[objective_forms][download][url]     = git@github.com:stovak/objective_forms
-;projects[objective_forms][download][branch]  = "7.x"
-
-;projects[php_lib][type]                      = module
-;projects[php_lib][subdir]                    = custom
-;projects[php_lib][download][type]            = 'git'
-;projects[php_lib][download][url]             = git@github.com:stovak/php_lib
-;projects[php_lib][download][branch]          = "7.x"
-
-;objective forms
-;projects[xml_forms][type]                    = module
-;projects[xml_forms][subdir]                  = custom
-;projects[xml_forms][download][type]          = 'git'
-;projects[xml_forms][download][url]           = git@github.com:stovak/xml_forms.git
-;projects[xml_forms][download][branch]        = "7.x"
 
 ;devconnect
 projects[devconnect][type]                    = module
