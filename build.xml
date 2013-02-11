@@ -22,21 +22,28 @@
     <echo>-------------------------------------------------</echo>
     <echo>=&gt; cloning latest drupal settings</echo>
     <echo>-------------------------------------------------</echo>
+    <exec command="which git" outputProperty="git-binary" />
     <delete dir="drupal-settings" quiet="true" />
     <delete dir="tasks" quiet="true" />
     <mkdir dir="tasks" />
-    <gitclone repository="http://git.drupal.org/project/phingdrushtask.git" targetPath="tasks/drush" />
+    <gitclone repository="http://git.drupal.org/project/phingdrushtask.git" targetPath="tasks/drush" gitPath="${git-binary}"/>
     <gitbranch repository="tasks/drush" branchname="7.x-1.x" />
-    <gitclone repository="git@github.com:AntonStoeckl/Phing-Additions.git" targetPath="tasks/additions" />
+    <gitclone repository="git@github.com:AntonStoeckl/Phing-Additions.git" targetPath="tasks/additions"  gitPath="${git-binary}" />
     <if>
       <or>
         <equals arg1="${build.type}" arg2="jenkins" />
         <equals arg1="${build.type}" arg2="internal" />
       </or>
       <then>
-        <gitclone repository="git@github.com:apigee/drupal-settings" targetPath="drupal-settings" />
+        <gitclone repository="git@github.com:apigee/drupal-settings" targetPath="drupal-settings"  gitPath="${git-binary}" />
       </then>
     </if>
+    <delete quiet="true" >
+      <fileset dir="${user.home}/.drush">
+        <include name="*alias*" />
+        <include name="cache/**" />
+      </fileset>
+    </delete>
   </target>
   <target name="apigee-drupal" depends="init">
     <echo>-------------------------------------------------</echo>
