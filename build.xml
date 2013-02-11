@@ -27,7 +27,7 @@
     <delete dir="tasks" quiet="true" />
     <mkdir dir="tasks" />
     <gitclone repository="http://git.drupal.org/project/phingdrushtask.git" targetPath="tasks/drush" gitPath="${git-binary}"/>
-    <gitbranch repository="tasks/drush" branchname="7.x-1.x" />
+    <gitbranch repository="tasks/drush" branchname="7.x-1.x"  gitPath="${git-binary}" />
     <gitclone repository="git@github.com:AntonStoeckl/Phing-Additions.git" targetPath="tasks/additions"  gitPath="${git-binary}" />
     <if>
       <or>
