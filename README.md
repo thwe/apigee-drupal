@@ -64,9 +64,17 @@ The Apigee Drupal team's goal is to verify a Drupal point release within 15 days
  
 1. A word about Versioning
 
-  If you already have an instance of the portal on [Apigee&lsquo;s](https://apigee.com) servers, You can find out which version of the portal is running by [navigating to the build info file](http://<PORTAL-URL>/buildInfo). This page should give you a version number that looks something like this: 4.20.23. The first number is the version of the Apigee backend with which this is compatible. Four is the latest version of the Apigee backend and will be so for the foreseeable future. Twenty is the current "rocket" that the development of the portal is in. It's probably irrelevant to you, but we need it internally. The third number is the important one to you. It tells what build number is published to your portal. In the master branch of this repo, builds are tagged with their respective build numbers by our  [Jenkins](http://jenkins-ci.org) build server. You can reproduce a build exactly by checking out the tag of your build from the master and then running Phing from the root directory of that checkout.
+  If you already have an instance of the portal on [Apigee&lsquo;s](https://apigee.com) servers, You can find out which version of the portal is running by [navigating to the build info file](http://default.apiportal.apigee.com/buildInfo). It should look something like this:
+  
+  `Version: dev-4.20.57`
+  
+  `Build Timestamp: 20130108.0000`
+  
+  `SCM Revision: 07b538d06d0f9a4160432c519968e4c1372e0ec2`
+  
+  The first number is the version of the Apigee backend with which this is compatible. Four is the latest version of the Apigee backend and will be so for the foreseeable future. Twenty is the current "rocket" that the development of the portal is in. It's probably irrelevant to you, but we need it internally. The third number is the important one to you. It tells what build number is published to your portal. In the master branch of this repo, builds are tagged with their respective build numbers by our  [Jenkins](http://jenkins-ci.org) build server. You can reproduce a build exactly by checking out the tag of your build from the master and then running Phing from the root directory of that checkout.
 
-  `git checkout dev-4.20.55`
+  `git checkout dev-4.20.57`
 
   This would get you the 4.20.55 release makefile. Running phing on that makefile will include the modules that went into that release, even if newer code from that module has been checked in after the build was made. In the makefile the modules are referenced with specific commits and exact versions of contrib modules are referenced. Those exact versions download when drush make is run on the makefile.
 
