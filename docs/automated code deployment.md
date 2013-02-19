@@ -29,7 +29,7 @@ Beginning March 15, 2013 we will be integrating automated deployment into the po
   1. If the test branch does not exist, create it from the current *devl* branch by typing 'git branch test' then 'push origin test'. 
 
 
-1. Once github has the commit, it will push the commit to a "holding space" while puppet runs code checks checking for lack of syntax errors, coding formatting, and what's called a "mess detector" to check for infinite loops, etc. Once these code checks are complete, puppet will push the code out to all the servers that run your instance of the portal.
+1. Once github has the commit, Puppet will poll the repo's test branch and then deploy the new commit to a "holding space" while it runs code checks checking for lack of syntax errors, coding formatting, and what's called a "mess detector" to check for infinite loops, etc. Once these code checks are complete, puppet will push the code out to all the servers that run your instance of the portal.
 
 1. Follow the same process with production for the production branch, with one exception. Once the commit has been pushed to the *prod* branch, you will need the github SHA of your commit. A form will be provided for you to request a push of that code to production. Ops will be one last stop to keep unwanted and/or untested code from getting into production. Understand that pushing to the branch is a commit to moving the code to production. You have the ability to take down your site. You want to make sure your code is thoroughly tested before merging it into the production branch. 
 
