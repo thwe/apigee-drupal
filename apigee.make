@@ -2,7 +2,7 @@
 core = 7.x
 
 api = 2
-projects[drupal][version] = "7.17"
+projects[drupal][version] = "7.19"
 
 ; Modules
 projects[accordion_menu][subdir] = "contrib"
@@ -21,7 +21,7 @@ projects[admin][subdir] = "contrib"
 projects[admin][version] = "2.0-beta3"
 
 projects[admin_menu][subdir] = "contrib"
-projects[admin_menu][version] = "3.0-rc3"
+projects[admin_menu][version] = "3.0-rc4"
 
 projects[util][subdir] = "contrib"
 projects[util][version] = "1.0-rc1"
@@ -87,10 +87,10 @@ projects[ckeditor][subdir] = "contrib"
 projects[ckeditor][version] = "1.12"
 
 projects[ckeditor_link][subdir] = "contrib"
-projects[ckeditor_link][version] = "2.2"
+projects[ckeditor_link][version] = "2.3"
 
 projects[commerce][subdir] = "contrib"
-projects[commerce][version] = "1.4"
+projects[commerce][version] = "1.5"
 
 projects[commerce_custom_line_items][subdir] = "contrib"
 projects[commerce_custom_line_items][version] = "1.x-dev"
@@ -128,13 +128,17 @@ projects[deploy][version] = "2.x-dev"
 projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
-projects[devconnect][download][branch] = "7.x-4.0-dev"
-projects[devconnect][download][revision] = "da3cbe6070000fe499b6f8c668b93d5aeff82855"
+projects[devconnect][download][branch] = "7.x-4.21"
+projects[devconnect][download][revision] = "398ad9afbdb03633044cc35159f42e881697022f"
 projects[devconnect][subdir] = "custom"
 
 projects[devconnect_content_admin][type] = "module"
 projects[devconnect_content_admin][subdir] = "custom/devconnect"
 projects[devconnect_content_admin][version] = "1.0"
+
+projects[devconnect_download][type] = "module"
+projects[devconnect_download][subdir] = "custom/devconnect"
+projects[devconnect_download][version] = "1.0"
 
 projects[devel][subdir] = "contrib"
 projects[devel][version] = "1.3"
@@ -143,7 +147,7 @@ projects[diff][subdir] = "contrib"
 projects[diff][version] = "2.0"
 
 projects[domain][subdir] = "contrib"
-projects[domain][version] = "3.7"
+projects[domain][version] = "3.8"
 
 projects[domain_ctools][subdir] = "contrib"
 projects[domain_ctools][version] = "1.3"
@@ -157,8 +161,11 @@ projects[download_file][version] = "1.1"
 projects[ds][subdir] = "contrib"
 projects[ds][version] = "1.6"
 
+projects[eck][subdir] = "contrib"
+projects[eck][version] = "2.0-rc1"
+
 projects[fontyourface][subdir] = "contrib"
-projects[fontyourface][version] = "2.6"
+projects[fontyourface][version] = "2.7"
 
 projects[encset][subdir] = "contrib"
 projects[encset][version] = "1.3"
@@ -211,10 +218,6 @@ projects[footermap][version] = "1.1"
 projects[genpass][subdir] = "contrib"
 projects[genpass][version] = "1.0"
 
-projects[gi_content_types][type] = "module"
-projects[gi_content_types][subdir] = "custom/gi/modules"
-projects[gi_content_types][version] = "1.0"
-
 projects[gist_filter][subdir] = "contrib"
 projects[gist_filter][version] = "1.2"
 
@@ -225,7 +228,7 @@ projects[github_connect][subdir] = "contrib"
 projects[github_connect][version] = "1.1"
 
 projects[gmap][subdir] = "contrib"
-projects[gmap][version] = "1.0-beta1"
+projects[gmap][version] = "1.1-beta1"
 
 projects[google_analytics_reports][subdir] = "contrib"
 projects[google_analytics_reports][version] = "1.3"
@@ -246,7 +249,7 @@ projects[imagemagick][subdir] = "contrib"
 projects[imagemagick][version] = "1.0-alpha2"
 
 projects[imce][subdir] = "contrib"
-projects[imce][version] = "1.6"
+projects[imce][version] = "1.7"
 
 projects[imce_tools][version] = "1.1"
 projects[imce_tools][subdir] = "contrib"
@@ -269,8 +272,11 @@ projects[jcarousel][version] = "2.6"
 projects[job_scheduler][subdir] = "contrib"
 projects[job_scheduler][version] = "2.0-alpha3"
 
+projects[journal][subdir] = "contrib"
+projects[journal][version] = "1.0"
+
 projects[jquery_colorpicker][subdir] = "contrib"
-projects[jquery_colorpicker][version] = "1.0-rc1"
+projects[jquery_colorpicker][version] = "1.0-rc2"
 
 projects[jquery_update][subdir] = "contrib"
 projects[jquery_update][version] = "2.3-alpha1+0-dev"
@@ -288,13 +294,13 @@ projects[libraries][subdir] = "contrib"
 projects[libraries][version] = "2.0"
 
 projects[link][subdir] = "contrib"
-projects[link][version] = "1.0"
+projects[link][version] = "1.1"
 
 projects[link_node][subdir] = "contrib"
 projects[link_node][version] = "1.0"
 
 projects[linkchecker][subdir] = "contrib"
-projects[linkchecker][version] = "1.0"
+projects[linkchecker][version] = "1.1"
 
 projects[location][subdir] = "contrib"
 projects[location][version] = "3.0-alpha1"
@@ -309,7 +315,7 @@ projects[markdown][subdir] = "contrib"
 projects[markdown][version] = "1.1"
 
 projects[mass_contact][subdir] = "contrib"
-projects[mass_contact][version] = "1.0-alpha6"
+projects[mass_contact][version] = "1.0-beta1"
 
 projects[me][subdir] = "contrib"
 projects[me][version] = "1.1"
@@ -351,13 +357,13 @@ projects[node_export][subdir] = "contrib"
 projects[node_export][version] = "3.0"
 
 projects[references][subdir] = "contrib"
-projects[references][version] = "2.0"
+projects[references][version] = "2.1"
 
 projects[oauthconnector][subdir] = "contrib"
 projects[oauthconnector][version] = "1.0-beta1"
 
 projects[oauth][subdir] = "contrib"
-projects[oauth][version] = "3.0"
+projects[oauth][version] = "3.1"
 
 projects[og][subdir] = "contrib"
 projects[og][version] = "1.5"
@@ -389,11 +395,15 @@ projects[persistent_login][version] = "1.0-beta1"
 projects[querypath][subdir] = "contrib"
 projects[querypath][version] = "2.1"
 
+projects[rate][subdir] = "contrib"
+projects[rate][version] = "1.6"
+projects[rate][patches][] = "http://drupal.org/files/rate-change_1903262_1.patch"
+
 projects[readonlymode][subdir] = "contrib"
-projects[readonlymode][version] = "1.0"
+projects[readonlymode][version] = "1.1"
 
 projects[recaptcha][subdir] = "contrib"
-projects[recaptcha][version] = "1.8"
+projects[recaptcha][version] = "1.9"
 
 projects[redirect][subdir] = "contrib"
 projects[redirect][version] = "1.0-rc1"
@@ -414,7 +424,7 @@ projects[scanner][subdir] = "contrib"
 projects[scanner][version] = "1.x-dev"
 
 projects[search_api][subdir] = "contrib"
-projects[search_api][version] = "1.3"
+projects[search_api][version] = "1.4"
 
 projects[search_api_ajax][subdir] = "contrib"
 projects[search_api_ajax][version] = "1.1"
@@ -447,10 +457,10 @@ projects[search_api_solr][subdir] = "contrib"
 projects[search_api_solr][version] = "1.0-rc3"
 
 projects[search_api_sorts][subdir] = "contrib"
-projects[search_api_sorts][version] = "1.3"
+projects[search_api_sorts][version] = "1.4"
 
 projects[securelogin][subdir] = "contrib"
-projects[securelogin][version] = "1.3"
+projects[securelogin][version] = "1.4"
 
 projects[selenium][subdir] = "contrib"
 projects[selenium][version] = "2.0-beta2"
@@ -459,7 +469,10 @@ projects[services_views][subdir] = "contrib"
 projects[services_views][version] = "1.0-beta2"
 
 projects[smtp][subdir] = "contrib"
-projects[smtp][version] = "1.0-beta2"
+projects[smtp][version] = "1.0"
+
+projects[statsd][subdir] = "contrib"
+projects[statsd][version] = "1.0"
 
 projects[strongarm][subdir] = "contrib"
 projects[strongarm][version] = "2.0"
@@ -471,7 +484,7 @@ projects[textformatter][subdir] = "contrib"
 projects[textformatter][version] = "1.3"
 
 projects[toc_filter][subdir] = "contrib"
-projects[toc_filter][version] = "1.1"
+projects[toc_filter][version] = "1.2"
 
 projects[token][subdir] = "contrib"
 projects[token][version] = "1.4"
@@ -480,10 +493,10 @@ projects[twitter][subdir] = "contrib"
 projects[twitter][version] = "3.3"
 
 projects[uuid][subdir] = "contrib"
-projects[uuid][version] = "1.0-alpha3+51-dev"
+projects[uuid][version] = "1.0-alpha3+52-dev"
 
 projects[variable][subdir] = "contrib"
-projects[variable][version] = "2.1"
+projects[variable][version] = "2.2"
 
 projects[views][subdir] = "contrib"
 projects[views][version] = "3.5"
@@ -504,10 +517,10 @@ projects[webform][subdir] = "contrib"
 projects[webform][version] = "3.18"
 
 projects[weight][subdir] = "contrib"
-projects[weight][version] = "2.1"
+projects[weight][version] = "2.2"
 
 projects[workbench][subdir] = "contrib"
-projects[workbench][version] = "1.1"
+projects[workbench][version] = "1.2"
 
 projects[workflow][subdir] = "contrib"
 projects[workflow][version] = "1.0"
@@ -539,40 +552,27 @@ projects[feeds][download][url] = "http://git.drupal.org/project/feeds.git"
 projects[feeds][download][branch] = "(no branch)"
 projects[feeds][download][revision] = "3eb5a48643e1ae848ac03fbfc060492c507a9a42"
 
-projects[gi][type] = "module"
-projects[gi][download][type] = "git"
-projects[gi][download][url] = "http://git.drupal.org/sandbox/stovak/1470710.git"
-projects[gi][download][branch] = "7.x-1.x"
-projects[gi][download][revision] = "53a66b1762a4108eb4b3786f546cd4b5db27869b"
-projects[gi][subdir] = "custom"
-
-projects[rst][type] = "module"
-projects[rst][download][type] = "git"
-projects[rst][download][url] = "http://git.drupal.org/sandbox/stovak/1455522.git"
-projects[rst][download][revision] = "ae7ca127657227777d74c8005217deffe6fcb44d"
-projects[rst][subdir] = "custom"
-
 ; Themes
 projects[apigee_base][type] = "theme"
 projects[apigee_base][download][type] = "git"
 projects[apigee_base][download][url] = "git@github.com:apigee/apigee_drupal_base_theme.git"
 projects[apigee_base][download][branch] = "devconnect"
-projects[apigee_base][download][revision] = "48ba34665c50a9212993d74e5893f223cf49c83c"
+projects[apigee_base][download][revision] = "0131ea205ded08bd12ff41f7020c07786899e209"
 
 projects[apigee_base_responsive][type] = "theme"
 projects[apigee_base_responsive][download][type] = "git"
 projects[apigee_base_responsive][download][url] = "git@github.com:apigee/drupal-responsive-base-theme.git"
-projects[apigee_base_responsive][download][revision] = "5ee013642e1937904c7beee094ff2f63f995d100"
+projects[apigee_base_responsive][download][revision] = "c258aed49308eb251a315eaffb599e267cdb55fe"
 
 projects[apigee_devconnect][type] = "theme"
 projects[apigee_devconnect][download][type] = "git"
 projects[apigee_devconnect][download][url] = "git@github.com:apigee/apigee_drupal_devconnect_theme.git"
-projects[apigee_devconnect][download][revision] = "85417535e200c19fb534a8f7cf62baa6b77c6a68"
+projects[apigee_devconnect][download][revision] = "62ef06ff491a329eb07e5b4e477819259a33572a"
 
 projects[apigee_devconnect_responsive][type] = "theme"
 projects[apigee_devconnect_responsive][download][type] = "git"
 projects[apigee_devconnect_responsive][download][url] = "git@github.com:apigee/drupal-responsive-devconnect-theme.git"
-projects[apigee_devconnect_responsive][download][revision] = "5619599b359462571d001b06ebd404cf52aff036"
+projects[apigee_devconnect_responsive][download][revision] = "797dc676aeb658b84997661ecbaa5b08359ef92f"
 
 ; Libraries
 libraries[backbone][directory_name] = "backbone"
@@ -626,7 +626,7 @@ libraries[tinymce][destination] = "libraries"
 
 libraries[mediaelement][directory_name] = "mediaelement"
 libraries[mediaelement][type] = "library"
-libraries[mediaelement][download][url] = "https://nodeload.github.com/johndyer/mediaelement/zip/master"
+libraries[mediaelement][download][url] = "https://nodeload.github.com/johndyer/mediaelement/zipball/master"
 libraries[mediaelement][download][type] = "get"
 libraries[mediaelement][destination] = "libraries"
 
@@ -641,12 +641,6 @@ libraries[codemirror][type] = "library"
 libraries[codemirror][download][url] = "http://codemirror.net/codemirror.zip"
 libraries[codemirror][download][type] = "get"
 libraries[codemirror][destination] = "libraries"
-
-libraries[lessphp][directory_name] = "lessphp"
-libraries[lessphp][type] = "library"
-libraries[lessphp][download][url] = "git://github.com/leafo/lessphp.git"
-libraries[lessphp][download][type] = "git"
-libraries[lessphp][destination] = "libraries"
 
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][type] = "library"
