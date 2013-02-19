@@ -8,6 +8,7 @@ Beginning March 15, 2013 we will be integrating automated deployment into the po
 
   1. themes folder
 
+
 1. Clone the repo locally and create a *devl* branch. 
 
 1. Primary development should take place in the *devl* branch. if you have features that should not be deployed until development has completed please create a branch for each feature, then merge the features back into the *devl* branch.
@@ -25,6 +26,7 @@ Beginning March 15, 2013 we will be integrating automated deployment into the po
   1. push the test branch to origin (push origin devl).
 
   1. If the test branch does not exist, create it from the current *devl* branch by typing 'git branch test' then 'push origin test'. 
+
 
 1. Once github has the commit, it will push the commit to a "holding space" while puppet runs code checks checking for lack of syntax errors, coding formatting, and what's called a "mess detector" to check for infinite loops, etc. Once these code checks are complete, puppet will push the code out to all the servers that run your instance of the portal.
 
