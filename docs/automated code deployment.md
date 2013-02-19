@@ -1,6 +1,6 @@
 Beginning March 15, 2013 we will be integrating automated deployment into the portal customization workflow. The following is a guide to help you deploy your code automagically by pushing your commits back to the github repo.
 
-1. A github repo will be created for you. It will be forked from a template. Any repo not forked from this template most likely will have issues with deployment. Please don't change the root directory structure of the repo. It will most likely include several folders (and maybe a few more):
+1. A github repo will be created for you by ops when the portal is created. It will be forked from a template. Any repo not forked from this template most likely will have issues with deployment. Please don't change the root directory structure of the repo. It will most likely include several folders (and maybe a few more):
 
   1. modules folder
 
@@ -30,6 +30,6 @@ Beginning March 15, 2013 we will be integrating automated deployment into the po
 
 1. Once github has the commit, it will push the commit to a "holding space" while puppet runs code checks checking for lack of syntax errors, coding formatting, and what's called a "mess detector" to check for infinite loops, etc. Once these code checks are complete, puppet will push the code out to all the servers that run your instance of the portal.
 
-1. Follow the same process with production for the production branch. Once the commit has been pushed to the *prod* branch, it will deploy automatically. Understand that pushing to the branch is a commit to moving the code to production. You have the ability to take down your site. You want to make sure your code is thoroughly tested before merging it into the production branch. 
+1. Follow the same process with production for the production branch, with one exception. Once the commit has been pushed to the *prod* branch, you will need the github SHA of your commit. A form will be provided for you to request a push of that code to production. Ops will be one last stop to keep unwanted and/or untested code from getting into production. Understand that pushing to the branch is a commit to moving the code to production. You have the ability to take down your site. You want to make sure your code is thoroughly tested before merging it into the production branch. 
 
 
