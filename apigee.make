@@ -27,7 +27,7 @@ projects[util][subdir] = "contrib"
 projects[util][version] = "1.0-rc1"
 
 projects[advanced_forum][subdir] = "contrib"
-projects[advanced_forum][version] = "2.0"
+projects[advanced_forum][version] = "2.1"
 
 projects[amazons3][subdir] = "contrib"
 projects[amazons3][version] = "1.0-beta7"
@@ -129,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.21"
-projects[devconnect][download][revision] = "398ad9afbdb03633044cc35159f42e881697022f"
+projects[devconnect][download][revision] = "4292d84735b15beebf8be8846e93c71566609a94"
 projects[devconnect][subdir] = "custom"
 
 projects[devconnect_content_admin][type] = "module"
