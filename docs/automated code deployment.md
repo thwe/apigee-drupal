@@ -2,11 +2,11 @@ Beginning March 15, 2013 we will be integrating automated deployment into the po
 
 1. A github repo will be created for you by ops when the portal is created. It will be forked from a template. Any repo not forked from this template most likely will have issues with deployment. Please don't change the root directory structure of the repo. It will most likely include several folders (and maybe a few more):
 
-  *. modules folder
+  * modules folder
 
-  *. libraries folder
+  * libraries folder
 
-  *. themes folder
+  * themes folder
 
 1. Clone the repo locally and create a *devl* branch. 
 
