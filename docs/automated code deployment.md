@@ -12,7 +12,9 @@ Beginning March 15, 2013 we will be integrating automated deployment into the po
 
 1. Primary development should take place in the *devl* branch. if you have features that should not be deployed until development has completed please create a branch for each feature, then merge the features back into the *devl* branch. 
 
-![A Successful Git Branching Model](./Git-branching-model_sm.png)
+[![A Successful Git Branching Model](./Git-branching-model_sm.png)](http://nvie.com/posts/a-successful-git-branching-model/)
+
+[link](http://nvie.com/posts/a-successful-git-branching-model/) to original article.
 
 1. When development is complete and the code is bug-free locally, please merge the *devl* branch into the *test* branch. 
 
