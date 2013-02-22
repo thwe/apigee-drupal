@@ -1,0 +1,11 @@
+name = Devconnect Apigee API
+description = "Class Libraries to contact and communicate with Apigee v4 product (Fountainhead)"
+package = "DevConnect"
+core = "7.x"
+version = "7.x-1.19"
+
+files[] = devconnect_apigee.inc
+files[] = devconnect_apigee_developer.inc
+files[] = devconnect_apigee_developer_app.inc
+
+files[] = tests/devconnect_apigee.test

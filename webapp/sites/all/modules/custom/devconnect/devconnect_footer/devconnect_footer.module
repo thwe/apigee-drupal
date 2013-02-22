@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the DevConnect Footer feature.
+ */
+
+include_once 'devconnect_footer.features.inc';

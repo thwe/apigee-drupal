@@ -1,0 +1,24 @@
+name = Apigee Docs Theme
+description = ..
+core = 7.x
+base theme = apigee_base
+
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[bottom]         = 'Bottom'
+regions[footer]         = 'Footer'
+
+stylesheets[all][] = css/bootstrap-reset.css
+stylesheets[all][] = css/apigee_docs.css
+
+scripts[] = js/global.js
+
+settings[toggle_name] = 0
+settings[toggle_search] = 1
+
+; Panels layouts. You can place multiple layouts under the "layouts" folder.
+plugins[panels][layouts] = layouts

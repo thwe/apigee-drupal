@@ -1,0 +1,12 @@
+name = Apigee SSO
+description = Slingshot to google apps to verify identity
+version = VERSION
+core = 7.x
+package = "apigee.com"
+
+
+; Information added by drush on 2012-06-01
+version = "unknown"
+project = "apigee_sso"
+datestamp = "1338585287"
+

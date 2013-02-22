@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the devconnect_forum_views feature.
+ */
+
+include_once('devconnect_forum_views.features.inc');

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GI Content Types feature.
+ */
+
+include_once 'gi_content_types.features.inc';

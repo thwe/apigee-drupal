@@ -1,0 +1,6 @@
+name = "Devconnect Oauth Client"
+description = "Experimental module to make Oauth-based API calls"
+core = "7.x"
+package = "DevConnect"
+version = "7.x-4.19"
+project = "devconnect"

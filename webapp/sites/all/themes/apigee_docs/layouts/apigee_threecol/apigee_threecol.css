@@ -1,0 +1,45 @@
+
+.apigee-threecol {
+/*  overflow: hidden;  */
+}
+
+.apigee-threecol .panel-col-top,
+.apigee-threecol .panel-col-bottom {
+  width: 100%;
+  clear: both;
+}
+
+.apigee-threecol .panel-col-top .inside {
+  margin-bottom: 1em;
+}
+
+.apigee-threecol .panel-col-first {
+  float: left;
+  width: 33%;
+}
+
+.apigee-threecol .panel-col-first .inside {
+  margin: 0 .5em 1em 0;
+}
+
+.apigee-threecol .panel-col {
+  float: left;
+  width: 33%;
+}
+
+.apigee-threecol .panel-col .inside {
+  margin: 0 .5em 1em .5em;
+}
+
+.apigee-threecol .panel-col-last {
+  float: left;
+  width: 33%;
+}
+
+.apigee-threecol .panel-col-last .inside {
+  margin: 0 0 1em .5em;
+}
+
+.apigee-threecol .panel-separator {
+  margin: 0 0 1em 0;
+}

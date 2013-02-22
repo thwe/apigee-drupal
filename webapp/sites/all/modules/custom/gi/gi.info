@@ -1,0 +1,17 @@
+name = Github Importer
+description = Pull files from a github repo
+core = 7x
+package = "Github Importer"
+version = "7.x-1.0"
+core = "7.x"
+
+dependencies[] = gi_content_types
+
+files[] = gi.install
+files[] = gi.module
+files[] = gi.pages.inc
+files[] = classes/GIGithubItem.inc
+files[] = classes/GIGithubRepo.inc
+files[] = classes/GIGithubCommit.inc
+files[] = classes/GIGithubBlob.inc
+files[] = classes/GIGithubTree.inc

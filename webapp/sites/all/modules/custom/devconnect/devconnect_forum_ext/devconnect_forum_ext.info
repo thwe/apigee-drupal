@@ -1,0 +1,28 @@
+name = DevConnect Forum Extension
+description = "Enables the look and feel of forum content view page and adds prev, next post links in forum content pages."
+package = "DevConnect"
+dependencies[] = forum
+core = 7.x
+
+; Information added by drupal.org packaging script on 2009-07-01
+version = "7.x-1.1"
+core = "7.x"
+project = "devconnect_forum_ext"
+datestamp = "1246479323"
+
+
+
+; Information added by drush on 2012-05-31
+version = "7.x-4.0-dev-dev"
+core = "7.x"
+project = "devconnect"
+datestamp = "1338474976"
+
+
+
+; Information added by drush on 2012-06-01
+version = "7.x-4.0-dev-dev"
+core = "7.x"
+project = "devconnect"
+datestamp = "1338585287"
+

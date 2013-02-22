@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Enhance the look and feel of other popular forum software.
+ */
+
+/*
+ * todo: Implement hook_node_view() and use it to inject the CSS file currently added in the node--forum template.
+ *
+ * todo: Implement hook_theme() for theming next_node and previous_node. This eliminates much of the obscure magic
+ *       currently done by hook_theme_registry_alter.
+ *
+ * todo: Investigate whether there is some better way of altering the forum node display other than a rewritten node template.
+ */
+
+/**
+ * Implements hook_views_post_render().
+ *
+ * For "most recent posts" views, replaces zeroes with n/a for "Total Views" and "Replies".
+ *
+ * @param $view
+ * @param $output
+ * @param $cache
+ */
+function devconnect_forum_ext_views_post_render(&$view, &$output, &$cache) {
+  if ($view->name == 'most_recent_posts' || $view->name == 'most_recent_posts_view_all') {
+    $output = preg_replace('!(<td class="views-field views-field-(total|comment-)count"\s*>)\s*0\s*(</td>)!m', '$1n/a$3', $output);
+  }
+}
+
+function devconnect_forum_ext_get_node_sibling($node, $next_or_prev) {
+  $compare_op = ($next_or_prev == 'previous' ? '<' : '>');
+  $direction = ($next_or_prev == 'previous' ? 'DESC' : 'ASC');
+  $target_node = db_select('node', 'n')
+    ->fields('n', array('nid', 'title'))
+    ->condition('n.nid', $node->nid, $compare_op)
+    ->condition('n.status', 1)
+    ->condition('n.type', $node->type)
+    ->orderBy('n.created', $direction)
+    ->range(0, 1)
+    ->execute()
+    ->fetchObject();
+  if (!$target_node) {
+    return NULL;
+  }
+  $options = array(
+    'title' => "Go to the $next_or_prev post \"" . $target_node->title . "\"",
+    'class' => 'goto-previous-node'
+  );
+  return l($target_node->title, 'node/' . $target_node->nid, $options);
+}
+
+/**
+ * Implements hook_theme_registry_alter()
+ **/
+function devconnect_forum_ext_theme_registry_alter(&$theme_registry) {
+  $mod_path = drupal_get_path('module', 'devconnect_forum_ext');
+  $theme_registry_copy = $theme_registry; // munge on a copy
+  _theme_process_registry($theme_registry_copy, 'phptemplate', 'theme_engine', 'pow', $mod_path);
+  $theme_registry += array_diff_key($theme_registry_copy, $theme_registry);
+  _devconnect_forum_ext_insert_after_first_element($theme_registry['node--forum']['theme paths'], $mod_path);
+}
+
+/**
+ * Helper function for re-ordering arrays (needed by theme_registry_alter)
+ */
+function _devconnect_forum_ext_insert_after_first_element(&$a, $element) {
+  if (is_array($a)) {
+    $first_element = array_shift($a);
+    array_unshift($a, $first_element, $element);
+  }
+}

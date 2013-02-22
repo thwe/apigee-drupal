@@ -1,0 +1,34 @@
+name = "devconnect_forum_views"
+description = "Views that are integrated with Forum"
+core = "7.x"
+package = "DevConnect"
+version = "7.x-1.0"
+project = "devconnect_forum_views"
+dependencies[] = "ctools"
+dependencies[] = "views"
+features[ctools][] = "views:views_default:3.0"
+features[views_view][] = "current_forum_topics"
+features[views_view][] = "home_featured_forum_posts"
+features[views_view][] = "most_popular_topics"
+features[views_view][] = "most_popular_topics_view_all"
+features[views_view][] = "most_recent_posts"
+features[views_view][] = "most_recent_posts_view_all"
+features[views_view][] = "most_recent_topics"
+features[views_view][] = "most_recent_topics_view_all"
+features[views_view][] = "your_recent_forum_posts"
+
+
+; Information added by drush on 2012-05-31
+version = "7.x-4.0-dev-dev"
+core = "7.x"
+project = "devconnect"
+datestamp = "1338474976"
+
+
+
+; Information added by drush on 2012-06-01
+version = "7.x-4.0-dev-dev"
+core = "7.x"
+project = "devconnect"
+datestamp = "1338585287"
+

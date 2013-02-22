@@ -1,0 +1,160 @@
+<?php
+
+/**
+ * @file
+ * Devconnect_apigee main module file
+ */
+
+define('DEVCONNECT_APIGEE_CRYPT_KEY', hash('SHA256', 'w3-Love_ap|s', TRUE));
+
+define('DEVCONNECT_APIGEE_DEFAULT_USER', 'guest');
+define('DEVCONNECT_APIGEE_DEFAULT_PASSWORD', 'fnt996QUJucOlMGEkYOp5wGwcwNGdfcOX3dZutRJCfDQ=='); // "secret" encrypted
+define('DEVCONNECT_APIGEE_DEFAULT_ENDPOINT', 'http://api.apigeng.com/v2');
+define('DEVCONNECT_APIGEE_DEFAULT_ORG', 'apigee-pmux');
+
+/**
+ * Implements hook_theme().
+ *
+ * @return array
+ */
+function devconnect_apigee_theme() {
+  $items = array();
+  $items['devconnect_apigee_api_product_description'] = array(
+    'path' => drupal_get_path('module', 'devconnect_apigee') . '/templates',
+    'template' => 'devconnect_apigee_api_product_description',
+    'variables' => array('display_name' => NULL, 'description' => NULL),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_variable_info().
+ *
+ * @param array $options
+ *
+ * @return array
+ */
+function devconnect_apigee_variable_info($options) {
+  $variables['devconnect_org'] = array(
+    'type' => 'string',
+    'title' => t("Devconnect Organization"),
+    'default' => DEVCONNECT_APIGEE_DEFAULT_ORG,
+    'description' => t('The v4 product organization name. Changing this value could make your site not work.'),
+    'required' => TRUE,
+  );
+  $variables['devconnect_endpoint'] = array(
+    'type' => 'string',
+    'title' => t("Devconnect Endpoint"),
+    'default' => DEVCONNECT_APIGEE_DEFAULT_ENDPOINT,
+    'description' => t('Url to which to make Apigee REST calls.'),
+    'required' => TRUE,
+  );
+  $variables['devconnect_curlauth'] = array(
+    'type' => 'string',
+    'title' => t("Authentication for the Endpoint"),
+    'default' => DEVCONNECT_APIGEE_DEFAULT_USER . ':' . DEVCONNECT_APIGEE_DEFAULT_PASSWORD,
+    'description' => t('Will be used to CURL values from the endpoint. Separate the Username and Password with a colon (e.g. "guest:secret").'),
+    'required' => TRUE,
+    'format callback' => 'devconnect_apigee_format_curlauth'
+  );
+
+  $variables['devconnect_authtype'] = array(
+    'type' => 'select',
+    'title' => t("Authentication Type"),
+    'default' => CURLAUTH_BASIC,
+    'description' => t('Describes the encryption method that will be used to send the authentication to the endpoint. "Basic" sends in Clear Text.'),
+    'options' => array(
+      CURLAUTH_BASIC => t("Basic"),
+      CURLAUTH_DIGEST => t("Digest"),
+      CURLAUTH_GSSNEGOTIATE => t("GSS Negotiate"),
+      CURLAUTH_NTLM => t("NTLM"),
+      CURLAUTH_ANY => t("Any (tries all methods)"),
+      CURLAUTH_ANYSAFE => t("Any Safe (tries all encrypted methods)"),
+    ),
+    'required' => TRUE,
+  );
+
+
+  return $variables;
+}
+
+/**
+ * Format callback for the devconnect_curlauth variable.
+ *
+ * @param $variable
+ * @param $options
+ * @return string
+ */
+function devconnect_apigee_format_curlauth($variable, $options) {
+  list($username) = explode(':', $variable['value']);
+  return $username . ':[encrypted]';
+}
+
+/**
+ * Encrypts a password according to a predefined algorithm/key
+ *
+ * @param $password
+ * @return string
+ */
+function devconnect_apigee_auth_encrypt($password) {
+  srand();
+  $iv = mcrypt_create_iv(mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC), MCRYPT_RAND);
+  $iv_base64 = rtrim(base64_encode($iv), '='); // Guaranteed to be 22 char long
+  // Store password length so we can accurately trim in case of NULL-padding
+  $encrypt = strlen($password) . "\n" . $password;
+  $password_encrypted = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, DEVCONNECT_APIGEE_CRYPT_KEY, $encrypt, MCRYPT_MODE_CBC, $iv);
+  return $iv_base64 . base64_encode($password_encrypted);
+}
+
+/**
+ * Decrypts a password
+ * @param $scrambled
+ * @return string
+ */
+function devconnect_apigee_auth_decrypt($scrambled) {
+  $iv_base64 = substr($scrambled, 0, 22) . '==';
+  $password_encrypted = substr($scrambled, 22);
+
+  $iv = base64_decode($iv_base64);
+  $decrypted = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, DEVCONNECT_APIGEE_CRYPT_KEY, base64_decode($password_encrypted), MCRYPT_MODE_CBC, $iv);
+  list ($length, $password) = explode("\n", $decrypted, 2);
+  return substr($password, 0, $length);
+}
+
+function devconnect_apigee_get_curl_auth($curl_auth = NULL) {
+  static $parsed_auth = array();
+
+  if (!isset($curl_auth)) {
+    $curl_auth = variable_get('devconnect_curlauth', DEVCONNECT_APIGEE_DEFAULT_USER . ':' . DEVCONNECT_APIGEE_DEFAULT_PASSWORD);
+  }
+  if (!isset($parsed_auth[$curl_auth])) {
+    list($user, $pass_encrypted) = explode(':', $curl_auth);
+    $pass = devconnect_apigee_auth_decrypt($pass_encrypted);
+    $parsed_auth[$curl_auth] = "$user:$pass";
+  }
+  return $parsed_auth[$curl_auth];
+}
+
+function devconnect_apigee_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'variable_edit_form' && $form_state['build_info']['args'][0] == 'devconnect_curlauth') {
+    if (!user_access('administer organization settings')) {
+      $form['devconnect_curlauth']['#default_value'] = devconnect_apigee_get_curl_auth($form['devconnect_curlauth']['#default_value']);
+      if (isset($form['#validate'])) {
+        $form['#validate'] = array();
+      }
+      $form['#validate'][] = 'devconnect_apigee_encrypt_curlauth';
+    }
+    else {
+      drupal_access_denied();
+      module_invoke_all('exit');
+      exit;
+    }
+  }
+}
+
+function devconnect_apigee_encrypt_curlauth($form, &$form_state) {
+  $raw_auth = $form_state['values']['devconnect_curlauth'];
+  list($username, $raw_pass) = explode(':', $raw_auth, 2);
+  $pass = devconnect_apigee_auth_encrypt($raw_pass);
+  $form_state['values']['devconnect_curlauth'] = "$username:$pass";
+}

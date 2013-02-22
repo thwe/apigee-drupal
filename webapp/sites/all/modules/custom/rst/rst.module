@@ -1,0 +1,112 @@
+<?php
+
+// == Core hooks ===============================================================
+
+function rst_help($path = 'admin/help#rst', $arg) {
+  switch ($path) {
+    case 'admin/help#rst':
+      return t('<p>The RST filter allows you to enter content using <a href="http://docutils.sourceforge.net/rst.html">.ReSTructured Text</a>, a simple plain-text syntax that is transformed into valid XHTML.</p>');
+      break;
+  }
+}
+
+function rst_filter_info() {
+  $filters['filter_rst'] = array(
+    'title' => t('RST'),
+    'description' => t('Allows content to be submitted using ReSTructured Text Format, a simple plain-text syntax that is filtered into valid HTML.'),
+    'process callback' => '_filter_rst',
+    'settings callback' => '_filter_rst_settings',
+    'tips callback'  => '_filter_rst_tips'
+  );
+  return $filters;
+}
+
+function _filter_rst_tips($format, $long = FALSE) {
+  if ($long) {
+    return t('<a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">Quick Reference</a>');
+  }
+  else {
+    return t('<a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">Quick Reference</a>');
+  }
+}
+
+/**
+* Implements hook_block_view().
+*/
+function rst_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'rst_help':
+      $block['title'] = t('RST filter tips');
+      $block['content'] = _rst_help_block();
+      break;
+  }
+  return $block;
+}
+
+/**
+* Implements hook_block_info().
+*/
+function rst_block_info() {
+  $blocks = array();
+  $blocks['rst_help'] = array(
+    'info' => t('RST filter tips'),
+  );
+  return $blocks;
+}
+
+// == Internal functions =======================================================
+
+/**
+ * Provides content for the RST help block.
+ */
+function _rst_help_block(){
+  return '<pre>'. t("
+
+RST HELP BLOCK
+
+
+") .'</pre>';
+}
+
+/**
+ * Filter process callback.
+ */
+function _filter_rst($text, $format) {
+  if (!empty($text)) {
+    /* $html = drupal_http_request("http://api.rst2a.com/1.0/rst2/html", array(
+    	"method" => "POST",
+		"data" => "rst=".$text,
+    ));
+	$d = new DOMDocument();
+    $d->formatOutput = TRUE;
+    $d->loadHTML($html->data);
+    $xpathsearch = new DOMXPath($d);
+	$body = $xpathsearch->query("/html/body")->item(0);
+	$text = str_replace(array("<body>", "</body>"), "", $d->saveXML($body)); */
+	
+	include_once drupal_get_path('module', 'rst') .'/rst.php';
+    $text = RST($text);
+  }
+  return $text;
+}
+
+/**
+ * Filter settings callback. Just provides a version overview.
+ */
+function _filter_rst_settings($form, &$form_state, $filter, $format, $defaults) {
+  include_once drupal_get_path('module', 'rst') .'/rst.php';
+  $settings['rst_wrapper'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('ReSTructured Text'),
+  );
+  $links = array(
+    'RST PHP: <a href="http://code.google.com/p/php-restructuredtext/">.01</a>'
+  );
+  $settings['rst_wrapper']['rst_status'] = array(
+    '#title' => t('Versions'),
+    '#type' => 'item',
+    '#markup' => theme('item_list', array('items' => $links)),
+  );
+  return $settings;
+}

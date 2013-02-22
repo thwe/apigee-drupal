@@ -1,0 +1,65 @@
+<?php
+/**
+ * @file
+ * Install, uninstall and update the devconnect apigee module.
+ */
+
+/**
+ * Implements hook_requirements().
+ *
+ * Ensures that cURL and mcrypt are both present at install time.
+ *
+ * @param $phase
+ * @return array
+ */
+function devconnect_apigee_requirements($phase) {
+	$requirements = array();
+
+	if ($phase == 'install') {
+    $t = get_t();
+
+    if (!defined('CURLE_OK')) {
+	    $requirements['cURL'] = array(
+	      'description' => 'PHP must have the cURL library for DevConnect Apigee to work.',
+	      'severity' => REQUIREMENT_ERROR,
+	      'value' => $t('Please install the PHP cURL extension.'),
+	      'title' => $t('Missing library'),
+	    );
+    }
+
+    if (!defined('MCRYPT_RIJNDAEL_128')) {
+      $requirements['mcrypt'] = array(
+        'description' => 'PHP must have the mcrypt library for DevConnect Apigee to work.',
+        'severity' => REQUIREMENT_ERROR,
+        'value' => $t('Please install the PHP mcrypt extension.'),
+        'title' => $t('Missing library'),
+      );
+    }
+  }
+
+  return $requirements;
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * In cases in which the cURL authorization password was stored in plaintext,
+ * we must encrypt it and store it back.
+ *
+ * @return NULL
+ */
+function devconnect_apigee_update_7101() {
+  $auth = variable_get('devconnect_curlauth', '');
+  if (empty($auth)) {
+    return;
+  }
+  list($user, $pass) = explode(':', $auth, 2);
+  $pass_decoded = @base64_decode($pass);
+
+  // base64_decode will fail if the password is not base64-encoded.
+  // This will occur when the password is not yet encrypted.
+  // Therefore, upon such failure, we should encrypt the existing plaintext password.
+  if ($pass_decoded === FALSE) {
+    variable_set('devconnect_curlauth', $user . ':' . devconnect_apigee_auth_encrypt($pass));
+  }
+}

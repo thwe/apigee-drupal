@@ -1,0 +1,31 @@
+name = "DevConnect Footer"
+description = "Footer for the site with Terms of Use, Privacy and Contact info."
+core = "7.x"
+package = "DevConnect"
+version = "7.x-1.0-alpha1"
+project = "devconnect_footer"
+dependencies[] = "field_sql_storage"
+dependencies[] = "node_export_features"
+dependencies[] = "node"
+dependencies[] = "text"
+features[field][] = "node-page-body"
+features[node][] = "page"
+features[node_export_features][] = "42114b41-f7b8-a9e4-25f9-9f25bb486c65"
+features[node_export_features][] = "66e66b46-8383-2404-019d-a08822b566b7"
+features[node_export_features][] = "8203be7f-fc2f-7264-7d25-e6594592f089"
+
+
+; Information added by drush on 2012-05-31
+version = "7.x-4.0-dev-dev"
+core = "7.x"
+project = "devconnect"
+datestamp = "1338474976"
+
+
+
+; Information added by drush on 2012-06-01
+version = "7.x-4.0-dev-dev"
+core = "7.x"
+project = "devconnect"
+datestamp = "1338585287"
+

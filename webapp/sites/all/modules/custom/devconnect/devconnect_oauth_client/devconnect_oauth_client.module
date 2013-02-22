@@ -1,0 +1,724 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ *
+ * @return array
+ */
+function devconnect_oauth_client_menu() {
+  $items = array();
+
+  $items['user/%user/app-detail/%/oauth-test'] = array(
+    'title' => t('Test App with OAuth Policy'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('devconnect_oauth_client_request_form', 1, 3),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+  $items['user/%user/app-detail/%/oauth-response'] = array(
+    'title' => t('OAuth Test Response'),
+    'page callback' => 'devconnect_oauth_client_response',
+    'page arguments' => array(1, 3),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Menu callback to get response from OAuth API call.
+ *
+ * @param stdClass $user
+ * @param string $app_name
+ * @return array
+ */
+function devconnect_oauth_client_response($user, $app_name) {
+  if (!isset($_SESSION['oauth_client_response'])) {
+    drupal_goto('user/'  . $user->uid . '/app-detail/' . $app_name . '/oauth-test');
+  }
+  $response = $_SESSION['oauth_client_response'];
+  unset($_SESSION['oauth_client_response']);
+
+  $output = array();
+
+  $http_status = $response['code'];
+  $output['response_code'] = array(
+    '#type' => 'markup',
+    '#markup' => $http_status . (isset(DevconnectApigee::$responses[$http_status]) ? ' ' . DevconnectApigee::$responses[$http_status] : ''),
+    '#prefix' => '<h3 class="oauth-client-response-code">Response: ',
+    '#suffix' => '</h3>'
+  );
+
+  $header_html = '<dl>';
+  foreach ($response['headers'] as $name => $value) {
+    // properly capitalize header names. content-type becomes Content-Type, etc.
+    $name = ucfirst($name);
+    $name = preg_replace('!(-[a-z])!e', "strtoupper('$1')", $name);
+    $header_html .= '<dt>' . check_plain($name) . ':</dt><dd>' . check_plain($value) . '</dd>';
+  }
+  $header_html .= '</dl>';
+
+  $output['headers'] = array(
+    '#type' => 'markup',
+    '#markup' => $header_html,
+    '#prefix' => '<div class="oauth-client-response-headers"><h3>Headers:</h3>',
+    '#suffix' => '</div>'
+  );
+
+  // default to just showing body
+  $body = $response['body'];
+  //dsm($response);
+  if (strlen($body) > 0) {
+    if (isset($response['headers']['content-type'])) {
+      $content_type = trim($response['headers']['content-type']);
+      // trim off any charset detritus
+      if (strpos($content_type, ';') !== FALSE) {
+        list($content_type) = explode(';', $content_type, 2);
+      }
+      switch($content_type) {
+        case 'text/xml':
+          // pretty-print the XML
+          $body = _devconnect_oauth_client_xmlpp($body);
+          break;
+        case 'application/json':
+        // And all the crappy nonstandard MIME types as well...
+        case 'application/x-javascript':
+        case 'text/x-javascript':
+        case 'text/x-json':
+        case 'text/javascript':
+          $body = _devconnect_oauth_client_jsonpp(json_decode($body));
+          break;
+      }
+    }
+  }
+
+  $output['data'] = array(
+    '#type' => 'markup',
+    '#markup' => check_plain($body),
+    '#prefix' => '<div class="oauth-client-response-body"><h3>Payload:</h3><pre>',
+    '#suffix' => '</pre>'
+  );
+
+  return $output;
+}
+
+/**
+ * Sends an OAuth-signed request to an app's callback URL.
+ *
+ * @throws Exception
+ *
+ * @param string $key
+ * @param string $secret
+ * @param string $url
+ * @param string $method
+ * @param array $params
+ * @param string $app_name
+ * @param array $headers
+ *
+ * @return array
+ */
+function _devconnect_oauth_client_request($key, $secret, $url, $method, $params, $app_name, $headers = NULL, $auth = NULL) {
+  $lib_path = libraries_get_path('oauth-php');
+  if (!$lib_path) {
+    watchdog('devconnect_oauth_client', 'Cannot locate oauth-php library.', WATCHDOG_ERROR);
+    throw new Exception('An internal error occurred, and your request could not be processed.');
+  }
+  require_once "$lib_path/library/OAuthStore.php";
+  require_once "$lib_path/library/OAuthRequester.php";
+
+  // Prepare for two-legged OAuth
+  $options = array('consumer_key' => $key, 'consumer_secret' => $secret);
+  OAuthStore::instance('2Leg', $options);
+
+  if (empty($params)) {
+    $params = NULL;
+  }
+
+  try {
+    $curl_options = array();
+    if (!empty($headers) && is_array($headers)) {
+      $curl_options[CURLOPT_HTTPHEADER] = $headers;
+    }
+    if (!empty($auth) && is_array($auth)) {
+      $curl_options[CURLOPT_HTTPAUTH] = $auth['type'];
+      $curl_options[CURLOPT_USERPWD] = $auth['user'] . ':' . $auth['pass'];
+    }
+
+    // obtain a request object for the request we want to make
+    $request = new OAuthRequester($url, $method, $params);
+    // Sign the request, perform a cURL request and return the results.
+    // Throws OAuthException2 on an error.
+    // $result = array('code' => int, 'headers' => array, 'body' => $string
+    $result = $request->doRequest(0, $curl_options);
+  }
+  catch (OAuthException2 $e) {
+    watchdog('devconnect_oauth_client', $e->getMessage, WATCHDOG_WARNING);
+    throw new Exception('An error occurred while sending your OAuth request.');
+  }
+  $http_status = $result['code'];
+  if ($http_status > 299 && $http_status < 400 && !empty($result['headers']['location'])) {
+    $location = $result['headers']['location'];
+    $message = 'Your callback URL returned a ' . $http_status . ' redirect status '
+      . 'with a new URL of ' . $location . '. Please update your app\'s callback URL to reflect this change.';
+    watchdog('devconnect_oauth_client', 'App ' . $app_name . ' redirects URL to ' . $location, WATCHDOG_WARNING);
+    throw new Exception($message);
+  }
+  elseif ($http_status > 299) {
+    if (isset(DevConnectApigee::$responses[$http_status])) {
+      $message = 'Your callback URL returned a status of \'' . $http_status . ' ' . DevConnectApigee::$responses[$http_status] . '\'.';
+    }
+    else {
+      $message = 'Your callback URL returned a status of ' . $http_status . '.';
+    }
+    watchdog('devconnect_oauth_client', "App $app_name at URL $url using method $method returned status of $http_status");
+    throw new Exception($message);
+  }
+
+  return $result;
+
+}
+
+/**
+ * Form constructor for sending an OAuth-signed request
+ *
+ * @param $form
+ * @param $form_state
+ * @param $user
+ * @param $app_name
+ * @return array
+ */
+function devconnect_oauth_client_request_form($form, &$form_state, $user, $app_name) {
+  // Get credential information for the app.
+  if (!empty($form_state['values']['consumer_key']) && !empty($form_state['values']['consumer_secret'])) {
+    $cred = array(
+      'consumerKey' => $form_state['values']['consumer_key'],
+      'consumerSecret' => $form_state['values']['consumer_secret']
+    );
+    $url = $form_state['values']['callback_url'];
+  }
+  else {
+    try {
+      $dc = new DevConnectApigeeDeveloperApp($user);
+      $results = $dc->GetInfo($app_name);
+    }
+    catch (Exception $e) {
+      drupal_set_message('No application info found for ' . check_plain($app_name) . '.', 'error');
+      watchdog('devconnect_oauth_client', $e->getMessage, WATCHDOG_WARNING);
+      return array();
+    }
+    $data = $results['data'];
+    if (!isset($data['credentials']) || !is_array($data['credentials']) || !is_array($data['credentials'][0])) {
+      drupal_set_message('No OAuth credentials were found for your app.', 'error');
+      watchdog('devconnect_oauth_client', 'No credentials available for ' . $app_name);
+      return array();
+    }
+    $cred = end($data['credentials']);
+    //$status = $cred['status']; // TODO: verify that this is 'approved' or some such
+    $url = $data['callbackUrl'];
+    if (empty($url)) {
+      drupal_set_message('No callback URL was specified for this app.', 'error');
+      watchdog('devconnect_oauth_client', 'No Callback URL for ' . $app_name);
+      return array();
+    }
+  }
+
+  $form['consumer_key'] = array(
+    '#type' => 'value',
+    '#value' => $cred['consumerKey']
+  );
+  $form['consumer_secret'] = array(
+    '#type' => 'value',
+    '#value' => $cred['consumerSecret']
+  );
+  $form['callback_url'] = array(
+    '#type' => 'value',
+    '#value' => $url
+  );
+  $form['app_name'] = array(
+    '#type' => 'value',
+    '#value' => $app_name
+  );
+  $form['uid'] = array(
+    '#type' => 'value',
+    '#value' => $user->uid
+  );
+
+  $form['url_display'] = array(
+    '#type' => 'item',
+    '#title' => t('Callback URL'),
+    '#markup' => $url
+  );
+
+  $form['method'] = array(
+    '#type' => 'select',
+    '#title' => t('HTTP verb'),
+    '#options' => array(
+      'GET' => 'GET',
+      'POST' => 'POST',
+      'PUT' => 'PUT',
+      'DELETE' => 'DELETE'
+    ),
+    '#default_value' => (empty($form_state['values']['method']) ? 'GET' : $form_state['values']['method']),
+    '#required' => TRUE
+  );
+
+  $form['param_wrapper'] = array(
+    '#prefix' => '<fieldgroup id="oauth-client-params"><legend>' . t('Parameters') . '</legend>',
+    '#suffix' => '</fieldgroup>',
+  );
+  $form['param_wrapper']['params'] = array(
+    '#prefix' => '<div id="oauth-client-params-wrapper">',
+    '#suffix' => '</div>',
+    '#tree' => TRUE
+  );
+  if (isset($form_state['values']['params']) && is_array($form_state['values']['params'])) {
+    $params = $form_state['values']['params'];
+  }
+  else {
+    $params = array();
+  }
+  $params[] = array(
+    'name' => '',
+    'value' => ''
+  );
+  foreach ($params as $i => $param) {
+    $form['param_wrapper']['params'][$i] = array(
+      '#prefix' => '<div class="oauth-param-row">',
+      '#suffix' => '</div>',
+      'name' => array(
+        '#type' => 'textfield',
+        '#title' => t('Name'),
+        '#default_value' => $param['name'],
+        '#attributes' => array('class' => array('oauth-client-param-name')),
+      ),
+      'value' => array(
+        '#type' => 'textfield',
+        '#title' => t('Value'),
+        '#default_value' => $param['value'],
+        '#attributes' => array('class' => array('oauth-client-param-value')),
+      )
+    );
+  }
+  $form['param_wrapper']['add_params'] = array(
+    '#type' => 'button',
+    '#value' => t('Add another parameter'),
+    '#ajax' => array(
+      'callback' => 'devconnect_oauth_client_add_param',
+      'wrapper' => 'oauth-client-params-wrapper',
+      'method' => 'replace',
+      'effect' => 'none'
+    ),
+  );
+
+  $form['header_wrapper'] = array(
+    '#prefix' => '<fieldgroup id="oauth-client-headers"><legend>' . t('Headers') . '</legend>',
+    '#suffix' => '</fieldgroup>',
+  );
+  $form['header_wrapper']['headers'] = array(
+    '#prefix' => '<div id="oauth-client-headers-wrapper">',
+    '#suffix' => '</div>',
+    '#tree' => TRUE
+  );
+  if (isset($form_state['values']['headers']) && is_array($form_state['values']['headers'])) {
+    $headers = $form_state['values']['headers'];
+  }
+  else {
+    $headers = array();
+  }
+  $headers[] = array(
+    'name' => '',
+    'value' => ''
+  );
+  foreach ($headers as $i => $header) {
+    $form['header_wrapper']['headers'][$i] = array(
+      '#prefix' => '<div class="oauth-header-row">',
+      '#suffix' => '</div>',
+      'name' => array(
+        '#type' => 'textfield',
+        '#title' => t('Name'),
+        '#default_value' => $param['name'],
+        '#attributes' => array('class' => array('oauth-client-header-name')),
+      ),
+      'value' => array(
+        '#type' => 'textfield',
+        '#title' => t('Value'),
+        '#default_value' => $param['value'],
+        '#attributes' => array('class' => array('oauth-client-header-value')),
+      )
+    );
+  }
+  $form['header_wrapper']['add_header'] = array(
+    '#type' => 'button',
+    '#value' => t('Add another header'),
+    '#ajax' => array(
+      'callback' => 'devconnect_oauth_client_add_header',
+      'wrapper' => 'oauth-client-headers-wrapper',
+      'method' => 'replace',
+      'effect' => 'none'
+    ),
+  );
+
+  $form['auth'] = array(
+    '#prefix' => '<fieldset id="oauth-client-auth">',
+    '#suffix' => '</fieldset>',
+    'auth_type' => array(
+      '#type' => 'select',
+      '#title' => t('Authentication Type'),
+      '#options' => array(
+        0 => t('None'),
+        CURLAUTH_BASIC => t("Basic"),
+        CURLAUTH_DIGEST => t("Digest"),
+        CURLAUTH_GSSNEGOTIATE => t("GSS Negotiate"),
+        CURLAUTH_NTLM => t("NTLM"),
+      ),
+      '#default_value' => (isset($form_state['values']['auth_type']) ? $form_state['values']['auth_type'] : 0)
+    ),
+    'auth_name' => array(
+      '#type' => 'textfield',
+      '#title' => t('Username'),
+      '#default_value' => (isset($form_state['values']['auth_name']) ? $form_state['values']['auth_name'] : '')
+    ),
+    'auth_pass' => array(
+      '#type' => 'password',
+      '#title' => t('Password'),
+      '#default_value' => (isset($form_state['values']['auth_pass']) ? $form_state['values']['auth_pass'] : '')
+    )
+  );
+
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Execute')
+  );
+
+  return $form;
+}
+
+function devconnect_oauth_client_add_param($form, $form_state) {
+  return $form['param_wrapper']['params'];
+}
+function devconnect_oauth_client_add_header($form, $form_state) {
+  return $form['header_wrapper']['headers'];
+}
+
+/**
+ * Submit handler for the OAuth client request form.
+ *
+ * Stores the result in the $_SESSION.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function devconnect_oauth_client_request_form_submit($form, &$form_state) {
+  $key = $form_state['values']['consumer_key'];
+  $secret = $form_state['values']['consumer_secret'];
+  $url = $form_state['values']['callback_url'];
+  $method = $form_state['values']['method'];
+  $app_name = $form_state['values']['app_name'];
+  $params = array();
+  foreach ($form_state['values']['params'] as $param) {
+    $name = trim($param['name']);
+    $value = trim($param['value']);
+    if (strlen($name) > 0 && strlen($value) > 0) {
+      $params[$name] = $value;
+    }
+  }
+  $headers = array();
+  foreach ($form_state['values']['headers'] as $header) {
+    $name = trim($header['name']);
+    $value = trim($header['value']);
+    if (strlen($name) > 0 && strlen($value) > 0 && preg_match('!^[A-Za-z-]+$!', $name)) {
+      $header[$name] = $value;
+    }
+  }
+  if (!empty($form_state['values']['auth_type']) && !empty($form_state['values']['auth_user'])) {
+    $auth = array(
+      'type' => $form_state['values']['auth_type'],
+      'user' => $form_state['values']['auth_user'],
+      'pass' => $form_state['values']['auth_pass']
+    );
+  }
+  else {
+    $auth = NULL;
+  }
+
+  try {
+    $result = _devconnect_oauth_client_request($key, $secret, $url, $method, $params, $app_name, $headers, $auth);
+    $_SESSION['oauth_client_response'] = $result;
+    $form_state['redirect'] = 'user/' . $form_state['values']['uid'] . '/app-detail/' . $app_name . '/oauth-response';
+  }
+  catch (Exception $e) {
+    drupal_set_message($e->getMessage(), 'error');
+  }
+}
+
+/**
+ * Prettifies an XML string into a human-readable and indented work of art.
+ * Via http://gdatatips.blogspot.com/2008/11/xml-php-pretty-printer.html
+ *
+ * @param string $xml The XML as a string
+ * @param boolean $html_output True if the output should be escaped (for use in HTML)
+ *
+ * @return string
+ */
+function _devconnect_oauth_client_xmlpp($xml, $html_output = FALSE) {
+  $xml_obj = new SimpleXMLElement($xml);
+  $level = 4;
+  $indent = 0; // current indentation level
+  $pretty = array();
+
+  // get an array containing each XML element
+  $xml = explode("\n", preg_replace('/>\s*</', ">\n<", $xml_obj->asXML()));
+
+  // shift off opening XML tag if present
+  if (count($xml) && preg_match('/^<\?\s*xml/', $xml[0])) {
+    $pretty[] = array_shift($xml);
+  }
+
+  foreach ($xml as $el) {
+    if (preg_match('/^<([\w])+[^>\/]*>$/U', $el)) {
+      // opening tag, increase indent
+      $pretty[] = str_repeat(' ', $indent) . $el;
+      $indent += $level;
+    } else {
+      if (preg_match('/^<\/.+>$/', $el)) {
+        $indent -= $level;  // closing tag, decrease indent
+      }
+      if ($indent < 0) {
+        $indent += $level;
+      }
+      $pretty[] = str_repeat(' ', $indent) . $el;
+    }
+  }
+  $xml = implode("\n", $pretty);
+  return ($html_output) ? htmlentities($xml) : $xml;
+}
+
+/**
+ * Recursive function to pretty-print an object as JSON.
+ *
+ * If we are using PHP 5.4 or above, this function is short-circuited by using
+ * PHP's built-in JSON pretty-printer which was introduced in 5.4.0.
+ *
+ * @param mixed $obj
+ * @param int $tab_level
+ * @return string
+ */
+function _devconnect_oauth_client_jsonpp($obj, $tab_level = 0) {
+  if (defined('JSON_PRETTY_PRINT')) { // This was defined in PHP 5.4.0
+    return json_encode($obj, JSON_PRETTY_PRINT);
+  }
+
+  $tab = str_repeat(' ', $tab_level * 2);
+
+  // Look for arrays that are really objects.
+  // For JSON to treat an array as an array, it needs to have numeric keys and
+  // be non-sparse (i.e. keys are sequential and start with zero). Otherwise
+  // it needs to be an object.
+  if (is_array($obj)) {
+    $is_obj = FALSE;
+    $anticipated_key = 0;
+    foreach (array_keys($obj) as $key) {
+      if (!is_int($key) || $key != $anticipated_key) {
+        $is_obj = TRUE;
+        break;
+      }
+      $anticipated_key++;
+    }
+    if ($is_obj) {
+      $obj = (object)$obj;
+    }
+  }
+
+  if (is_object($obj)) {
+    $var_names = array_keys(get_object_vars($obj));
+    if (count($var_names) > 0) {
+      $output = "{\n";
+      foreach ($var_names as $name) {
+        $output .= "$tab  \"" . str_replace('"', '\\"', $name)  . "\": " . rtrim(_devconnect_oauth_client_jsonpp($obj->$name, $tab_level + 1), "\n") . ",\n";
+      }
+      $output = rtrim($output, ",\n ") . "\n$tab}\n";
+    }
+    else {
+      $output = "{}\n";
+    }
+  }
+  elseif (is_array($obj)) {
+    if (count($obj) > 0) {
+      $output = "[\n";
+      foreach ($obj as $value) {
+        $output .= "$tab  " . _devconnect_oauth_client_jsonpp($value, $tab_level + 1) . ",\n";
+      }
+      $output = rtrim($output, ",\n ") . "\n$tab]\n";
+    }
+    else {
+      $output = "[]\n";
+    }
+  }
+  elseif (is_numeric($obj)) {
+    $output = $obj;
+  }
+  elseif (is_bool($obj)) {
+    $output = ($obj ? 'true' : 'false');
+  }
+  else {
+    $output = '"' . str_replace('"', '\\"', $obj) . '"';
+  }
+  return $output;
+}
+
+/**
+ * Page callback for RPC. Must be requested via POST with an application/json
+ * payload.  This object should have the following structure:
+ *
+ *  {
+ *    "uid": integer,   // Required: user id of user owning the app
+ *    "app": string,    // Required: machine name of app
+ *    "method": string, // GET, POST, PUT or DELETE. If missing, assume GET
+ *    "params": [       // Optional array of parameters
+ *      param_name: param_value [, ...]
+ *    ],
+ *    "headers": [      // Optional array of headers
+ *      header_name: header_value[, ...]
+ *    ],
+ *    "auth": [ // optional. Invalid/empty values will cause no auth to be sent
+ *      "type": string, // basic, digest, gss-negotiate or ntlm
+ *      "user": string, // username
+ *      "pass": string  // password
+ *    ]
+ *  }
+ */
+function devconnect_oauth_client_rpc() {
+  drupal_add_http_header('Content-Type', 'application/json; charset=utf-8');
+  if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    devconnect_oauth_client_send_json_error(405, 'Method Not Allowed', 'HTTP method "' . $_SERVER['REQUEST_METHOD'] . '" not allowed.');
+  }
+  $content_type = drupal_get_http_header('Content-Type');
+  if (substr($content_type, 0, 16) != 'application/json') {
+    if (strlen($content_type) > 0) {
+      $longdesc = 'Content-Type "' . $content_type . '" not supported.';
+    }
+    else {
+      $longdesc =  'Content-Type header is required.';
+    }
+    devconnect_oauth_client_send_json_error(415, 'Unsupported Media Type', $longdesc);
+  }
+  $content_length = drupal_get_http_header('Content-Length');
+  if (empty($content_length)) {
+    devconnect_oauth_client_send_json_error(411, 'Length Required', 'Required Content-Length header is missing.');
+  }
+  $json = trim(file_get_contents('php://input'));
+  if (empty($json)) {
+    $content_length = 0;
+  }
+  if (empty($content_length)) {
+    devconnect_oauth_client_send_json_error(400, 'Bad Request', 'Trimmed length of HTTP payload is zero.');
+  }
+  $obj = @json_decode($json);
+  if (empty($obj)) {
+    devconnect_oauth_client_send_json_error(400, 'Bad Request', 'Invalid JSON blob.');
+  }
+
+  $field_errors = array();
+  if (empty($obj->uid)) {
+    $field_errors[] = 'Required field uid missing.';
+  }
+  if (empty($obj->app)) {
+    $field_errors[] = 'Required field app missing.';
+  }
+  if (empty($obj->method)) {
+    $obj->method = 'GET';
+  }
+  else {
+    $obj->method = strtoupper($obj->method);
+    if (!in_array($obj->method, array('GET', 'POST', 'PUT', 'DELETE'))) {
+      $field_errors[] = 'Invalid request method ' . $obj->method . '.';
+    }
+  }
+  if (count($field_errors) > 0) {
+    devconnect_oauth_client_send_json_error(400, 'Bad Request', join("\n", $field_errors));
+  }
+  $user = user_load($obj->uid);
+  if (!$user) {
+    devconnect_oauth_client_send_json_error(400, 'Bad Request', 'No user with uid of ' . $obj->uid . '.');
+  }
+
+  try {
+    $dc = new DevConnectApigeeDeveloperApp($user);
+    $results = $dc->GetInfo($obj->app);
+  }
+  catch (Exception $e) {
+    $message = 'No application info found for ' . check_plain($obj->app) . '.';
+    devconnect_oauth_client_send_json_error(400, 'Bad Request', $message);
+  }
+  $data = $results['data'];
+  if (!isset($data['credentials']) || !is_array($data['credentials']) || !is_array($data['credentials'][0])) {
+    devconnect_oauth_client_send_json_error(400, 'Bad Request', 'No credentials available for ' . $obj->app . '.');
+  }
+  $cred = end($data['credentials']);
+  $url = $data['callbackUrl'];
+  $key = $cred['consumerKey'];
+  $secret = $cred['consumerSecret'];
+
+  $params = NULL;
+  if (!empty($obj->params)) {
+    $params = (array) $obj->params;
+  }
+  $headers = NULL;
+  if (!empty($obj->headers)) {
+    $headers = (array) $obj->headers;
+  }
+  $auth = NULL;
+  if (!empty($obj->auth)) {
+    $auth = (array) $obj->auth;
+    if (empty($auth['user']) || empty($auth['pass']) || empty($auth['type'])) {
+      $auth = NULL;
+    }
+    else {
+      switch (strtolower($auth['type'])) {
+        case 'basic':
+          $auth['type'] = CURLAUTH_BASIC;
+          break;
+        case 'digest':
+          $auth['type'] = CURLAUTH_BASIC;
+          break;
+        case 'gss-negotiate':
+          $auth['type'] = CURLAUTH_GSSNEGOTIATE;
+          break;
+        case 'ntlm':
+          $auth['type'] = CURLAUTH_NTLM;
+          break;
+        default:
+          $auth = NULL;
+          break;
+      }
+    }
+  }
+
+  $result = _devconnect_oauth_client_request($key, $secret, $url, $obj->method, $params, $obj->app, $headers, $auth);
+  drupal_json_output($result);
+  module_invoke_all('exit');
+  exit;
+}
+
+/**
+ * Helper function for RPC call above. Generates error documents in JSON.
+ *
+ * @param $code
+ * @param $desc
+ * @param $msg
+ */
+function devconnect_oauth_client_send_json_error($code, $desc, $msg) {
+  $blob = array(
+    'status' => $code,
+    'desc' => $desc,
+    'message' => $msg
+  );
+  drupal_add_http_header('Status', "$code $desc");
+  drupal_json_output($blob);
+  module_invoke_all('exit');
+  exit;
+}

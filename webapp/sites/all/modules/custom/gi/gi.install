@@ -1,0 +1,62 @@
+<?php
+
+
+
+
+
+function gi_schema_alter(&$schema) {
+	foreach(_gi_base_schema() as $table => $spec) {
+		$schema[$table]['fields']['sha'] = $spec;
+	}
+}
+
+
+
+function gi_install() {
+	foreach(_gi_base_schema() as $table => $spec) {
+		if (!db_field_exists($table, "sha")) {
+			db_add_field($table, "sha", $spec);				
+		}
+	}
+}
+
+function gi_uninstall() {
+	foreach(_gi_base_schema() as $table => $spec) {
+		if (db_field_exists($table, "sha")) {
+			db_drop_field($table, "sha");				
+		}
+	}
+}
+
+
+
+
+function _gi_base_schema() {
+	return array(
+		"node" => _gi_sha_field_def(),
+		"node_revision" => _gi_sha_field_def()	
+	);
+}
+
+function _gi_sha_field_def() {
+	return array(
+			"type" => "varchar",
+			"length" => 255,
+			"description" => "Added by github importer. Used to track github node id.",
+			"default" => null,
+			"initial" => null,
+	);
+}
+
+function gi_update_7000() {
+	
+	gi_install();
+	
+	
+}
+
+function gi_update_7001() {
+	
+	db_query("update {system} set weight = 99 where name = 'gi';");
+	
+}

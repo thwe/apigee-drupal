@@ -1,0 +1,455 @@
+* {margin:0;padding:0;}
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+.master-container {
+  background: #FFFFFF;
+  height: 100%;
+  min-height: 100%;
+}
+.main-container {
+  overflow:auto;
+  padding-bottom: 245px;
+}
+.footer-container {
+  position: relative;
+  margin-top: -245px; /* negative value of footer height */
+  height: 245px;
+  clear:both;
+}
+body, p, .ui-widget {
+  font-family: "ars-maquette-web", "Myriad Pro", "Gill Sans", "Lucida Sans", Verdana, Geneva, sans-serif;
+  line-height: 1.5em;
+}
+
+.no-left-margin {
+  margin-left: 0px;
+}
+
+/* Header */
+/* Shift of master container block */
+.master-container.master-container-secondary-menu {
+  margin-top: 13px;
+}
+
+.master-container.master-container-breadcrumb {
+  margin-top: 5px;
+}
+.front .master-container.master-container-breadcrumb {
+  margin-top: 0px;
+}
+.master-container.master-container-secondary-menu.master-container-breadcrumb {
+  margin-top: 50px;
+}
+
+.breadcrumb {
+  padding: 6px 0px;
+}
+.navbar-search {
+  margin-top: 5px;
+}
+
+.navbar-inner {
+  height: 40px;
+}
+
+.navbar .navbar-text {
+  line-height: 40px;
+}
+
+.navbar-fixed-top {
+  height: 46px;
+}
+
+.navbar .divider-vertical {
+  height: 40px;
+}
+
+body {
+  padding-top: 40px;
+}
+
+.region-header {
+  margin: auto;
+  position: relative;
+}
+
+.region-header .nav {
+  padding: 0px;
+  margin: 0px;
+}
+
+.navbar.navbar-fixed-top .container {
+  height: 40px;
+}
+
+#secondary-menu li.first {
+  padding-left: 0px;
+}
+
+#secondary-menu li {
+  padding-right: 10px;
+}
+
+#secondary-menu {
+  margin: 0px;
+  vertical-align: top;
+}
+
+#secondary-menu a, #secondary-menu a:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+  display: inline-block;
+  height: 30px;
+  padding-top: 5px;
+  /*font-size: 110%;*/
+}
+
+#secondary-menu a.active,
+#secondary-menu a:hover {
+  font-weight: bolder;
+  color: white;
+}
+
+.not-front .page-content {
+  padding: 35px 0px 0px 0px;
+  border-bottom: none;
+}
+
+/* Misc */
+/* Blocks round corners */
+.round-corners {
+  border: 2px solid #E5E5E5;
+  border-radius: 4px 4px 4px 4px;
+
+  /*padding: 5px 15px 5px 15px;*/
+  padding: 10px;
+
+  background: #FFFFFF; /* for non-css3 browsers */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#F5F5F5'); /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#F5F5F5)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #FFF,  #F5F5F5); /* for firefox 3.6+ */
+}
+
+/* Back to Top */
+#backtotop {
+  bottom: 65px;
+  right: 7px;
+  z-index: 998;
+}
+
+/* Main Content */
+.region-main-content.right-border {
+  border-right: solid 1px #DDDDDD;
+  padding-right: 39px;
+  padding-bottom: 230px;
+}
+
+.region-main-content.right-border .region-main-content-wrapper {
+  padding-right: 20px;
+}
+
+/* Second Sidebar */
+.region-sidebar-second {
+  padding-left: 10px;
+}
+
+.region-sidebar-second h2 {
+  font-size: 16px;
+}
+
+/* Accordion menu */
+.block-accordion-menu { display: none; position: fixed;}
+#page .block-accordion-menu { padding-top:0px;}
+.block-accordion-menu .accordion-menu-wrapper .ui-accordion-header {
+  padding-top:5px;
+  padding-bottom:5px;
+}
+.block-accordion-menu .accordion-menu-wrapper .ui-accordion-content {
+  padding: 0px 0px 0px 5px;
+}
+.block-accordion-menu .accordion-menu-wrapper ul {
+  margin:0px 0px 0px 7px;
+  font-size:90%;
+}
+
+.block-accordion-menu .accordion-menu-wrapper a.active { font-weight:bold; }
+.ui-accordion .views-row-first .ui-accordion-header { border-top:1px #dddddd solid; }
+.ui-accordion .ui-accordion-header {
+  background:none;
+  border:0 none;
+  /*color:#0073c9;*/
+  font-weight:bold;
+  /*margin-right:15px;*/
+}
+.ui-accordion .ui-accordion-content {
+  paddding:0;
+  border:0 none;
+  border-radius:0;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-left:0 none;
+  border-right:1px #f8f8f8 solid;
+}
+.ui-accordion .views-field-body { display:inline; }
+.ui-accordion .ui-icon-triangle-1-e { background-position:-129px -192px; }
+.ui-accordion .ui-icon-triangle-1-s { background-position:-113px -192px; }
+
+.block-accordion-menu ul li a {
+  color: #137AAA;
+}
+.block-accordion-menu ul li a:hover {
+  background: none;
+  text-decoration: underline;
+}
+.ui-accordion .ui-accordion-header .ui-icon {
+  left: 0px;
+}
+.ui-accordion-icons .ui-accordion-header span.accordion-link {
+  padding-left: 1.5em;
+}
+.ui-accordion .ui-accordion-header span.accordion-link {
+  font-size: 90%;
+}
+.ui-accordion li.expanded, li.collapsed, li.leaf {
+  padding-right: 0px;
+}
+
+.region-sidebar-second .ui-accordion .ui-accordion-content,
+.region-sidebar-second .ui-accordion {
+  border: none;
+}
+
+/* Panels */
+.panel-panel tbody {
+  border: none;
+}
+
+.page-header-title {
+  height: 60px;
+}
+
+.page-header h1.title {
+  font-size: 45px;
+}
+
+.page-header {
+  padding: 20px 0 18px;
+  border-top: none;
+}
+
+.page-header .container {
+  padding: 10px 0px 10px 0px;
+}
+
+/* Frontpage panels */
+.main-sidebar-wrapper.span6 > div {
+  padding-left: 10px;
+}
+
+.region-main-content.span18 > div {
+  padding-right: 10px;
+}
+
+/*
+ * Rate module.
+ * Yes/No buttons
+**/
+.rate-yesno-btn {
+  background-image:none;
+  background-color:#сссссс;
+}
+.rate-yesno-clicked {
+  background-color: #bbbbbb;
+}
+
+.rate-yesno-title {
+  float: left;
+  margin-top: 5px;
+  margin-right: 8px;
+}
+.rate-widget-yesno {
+  margin-left: 460px;
+}
+
+/* sign up (documentation page) */
+
+.signup-table {
+width: 100%;
+border: 1px #b7c0c4 solid;
+text-align: center;
+vertical-align: top;
+}
+
+.signup-table tr td{
+color: #686868;
+font-size: 18px;
+line-height: 21px;
+padding: 30px 32px 34px 32px;
+vertical-align: top;
+}
+
+.signup-table tr:first-child td{
+padding: 69px 0 12px 0;
+background: #F0F0F0;
+}
+
+.signup-table .btn-large {
+padding:0;
+width: 170px;
+height: 38px;
+line-height: 36px;
+margin-bottom: 15px;
+font-size: 20px;
+}
+
+.signup-table tr:first-child .appservices {
+background: #f7f7f7 url('../images/appservice-icon.png') center 14px no-repeat;
+}
+
+.signup-table tr:first-child .apgplatform {
+background: #f7f7f7 url('../images/platform.png') center 10px no-repeat;
+}
+
+.signup-table tr:first-child .apiconsole {
+background: #f7f7f7 url('../images/apiconsole.png') center 12px no-repeat;
+}
+
+.signup-table td {
+width: 33%;
+}
+
+.doc-page .left-align {
+font-size: 14px;
+line-height: 18px;
+}
+
+.doc-page tr td {
+padding: 22px 23px 20px 23px;
+}
+
+.doc-page .btn-large {
+width: 100%;
+}
+.signup-table tr:first-child .appservices {
+background: #f7f7f7 url('/docs/sites/docs-dit/files/app_services_color_0.png') center 14px no-repeat;
+}
+
+.signup-table tr:first-child .apgplatform {
+background: #f7f7f7 url('/docs/sites/docs-dit/files/platform_icon1.png') center 10px no-repeat;
+}
+
+.signup-table tr:first-child .apiconsole {
+background: #f7f7f7 url('/docs/sites/docs-dit/files/consoles_color_0.png') center 12px no-repeat;
+}
+.signup-table .btn {
+  background-image: -webkit-linear-gradient(top,#00A4D7,#0197C6);
+}
+
+.signup-table td {
+  border-color: #b7c0c4;
+}
+
+.left-align {
+text-align: left;
+}
+
+/*****************
+ *Apigee API page*
+ *****************/
+#apigee-doc-tabs .tab {
+  float: left;
+}
+
+#apigee-doc-tabs {
+  margin-left: auto;
+  margin-right: auto;
+  width: 610px;
+}
+#apigee-doc-tabs .tabs {
+  position: relative;
+  min-height: 200px;
+  clear: both;
+  margin: 25px 0;
+}
+#apigee-doc-tabs .tab label {
+  background: white;
+  padding: 10px;
+  border: 0;
+  margin-left: -1px;
+  position: relative;
+  left: 1px;
+}
+#apigee-doc-tabs .tab [type=radio] {
+  display: none;
+}
+#apigee-doc-tabs .content {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 15px;
+  border: 0;
+  max-height: 130px
+  width: 568px;
+
+}
+
+#apigee-doc-tabs [type=radio]:checked ~ label{
+  display: none;
+  border: 0;
+}
+
+#apigee-doc-tabs [type=radio]:checked ~ div + div {
+  z-index: 1;
+}
+
+#tab5 {
+  margin: 11px;
+  width: 99px;
+  height: 105px;
+ background:url("../images/api_frontpage5.png") no-repeat;
+}
+
+#tab4 {
+  margin: 11px;
+  width: 99px;
+  height: 105px;
+ background:url("../images/api_frontpage4.png") no-repeat;
+}
+
+#tab3 {
+  margin: 11px;
+  width: 99px;
+  height: 105px;
+ background:url("../images/api_frontpage3.png") no-repeat;
+}
+
+#tab2 {
+  margin: 11px;
+  width: 99px;
+  height: 105px;
+ background:url("../images/api_frontpage2.png") no-repeat;
+}
+
+#tab1 {
+  margin: 11px;
+  width: 99px;
+  height: 105px;
+  background:url("../images/api_frontpage1.png") no-repeat;
+}
+h2.toc-header:before {
+  display:block;
+  content:"";
+  height:50px;
+  margin:-50px 0 0;
+}
+.jumplink{
+  display: block;
+  height: 115px;
+  margin-top: -115px;
+  visibility: hidden;
+}

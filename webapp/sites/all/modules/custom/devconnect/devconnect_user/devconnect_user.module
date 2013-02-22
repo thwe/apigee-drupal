@@ -1,0 +1,220 @@
+<?php
+/**
+ * @file
+ *  Augments Drupal's basic user functionality to handle extra
+ *  API-interfacing functionality.
+ */
+
+/**
+ * Implements hook_permission().
+ *
+ * @return array
+ */
+function devconnect_user_permission() {
+  return array(
+    "administer devconnect_user settings" => array(
+      "title" => t("Administer DevConnect Developers."),
+      "description" => t("Perform administration tasks for Apigee DevConnect Developers.")
+    )
+  );
+}
+
+/**
+ * Implements hook_menu().
+ *
+ * @return array
+ */
+function devconnect_user_menu() {
+  $items = array();
+
+  $items['admin/people/sync'] = array(
+    'title' => 'DevConnect Developer Sync',
+    'page callback' => 'devconnect_user_sync',
+    'access arguments' => array('administer users'),
+    'type' => MENU_LOCAL_TASK,
+    'menu_name' => 'api_products',
+
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function devconnect_user_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case "user_profile_form":
+      // Breadcrumb navigation
+      $breadcrumb[] = l(t('Home'), NULL);
+      $breadcrumb[] = l($form['#user']->name, 'user');
+      drupal_set_title('Edit Profile');
+      drupal_set_breadcrumb($breadcrumb);
+
+      // Add link to openid admin page
+      $form['openid'] = array(
+        '#markup' => '<div class="control-group form-openid"><div class="control-label" style="margin-bottom: 5px;">OpenID</div><div class="controls"><a href="/user/me/openid">Manage your OpenIDs</a></div></div>',
+        '#weight' => 2,
+      );
+      return $form;
+      break;
+
+    case "user_register_form":
+      drupal_add_css(drupal_get_path('module', 'devconnect_user') . '/devconnect_user.css',
+        array('group' => CSS_THEME, 'every_page' => TRUE)
+      );
+      $form['picture']['#weight'] = -99;
+      $form['field_first_name']['#weight'] = -98;
+      $form['field_last_name']['#weight'] = -97;
+      $form['field_company_name']['#weight'] = -96;
+      $form['field_terms_and_conditions']['#prefix'] = '<div id="terms-field">';
+      $form['field_terms_and_conditions']['#suffix'] = '</div>';
+      $form['field_terms_and_conditions'][LANGUAGE_NONE]['#title'] = t('I agree to the <a href="@url" target="_blank">Terms of Use</a>', array('@url' => url('basic-page/terms-use')));
+      break;
+  }
+}
+
+/**
+ * Implements hook_user_presave().
+ *
+ * @param $edit
+ * @param $account
+ * @param $category
+ */
+function devconnect_user_user_presave(&$edit, $account, $category) {
+
+  if (!module_exists('devconnect_apigee')) {
+    return;
+  }
+  if ($account->is_new) {
+    $g4_username = NULL;
+    $action = 'create';
+  }
+  else {
+    $g4_username = $account->mail;
+    $action = 'update';
+  }
+  $updated_fields = (object) $edit;
+
+  $dev = new DevConnectApigeeDeveloper($g4_username);
+  $results = NULL;
+  try {
+    $results = $dev->$action($updated_fields);
+  }
+  catch (Exception $e) {
+    watchdog('devconnect_user', print_r($results, TRUE), array(), WATCHDOG_ERROR);
+
+    $error = '<h4>STATUS: ' . $results['code'] . ' ' . $results['code_status'] . '; '
+           . 'Communication with the Apigee endpoint is compromised. Cannot ' . $action . ' user.</h4>';
+    if (user_access('administer users')) {
+      if (function_exists('kpr')) {
+        $error .= kpr($results, TRUE);
+      }
+      else {
+        $error .= '<pre>' . print_r($results, TRUE) . '</pre>';
+      }
+    }
+    print $error;
+
+
+    module_invoke_all('exit');
+    exit;
+  }
+
+  foreach (module_implements('devconnect_user_save') as $module) {
+    $function = $module . '_devconnect_user_save';
+    $function($results, $edit, $account);
+  }
+
+  watchdog('devconnect_user', print_r($results, TRUE));
+}
+
+/**
+ * Implements hook_user_delete().
+ *
+ * @param $account
+ */
+function devconnect_user_user_delete($account) {
+  if (module_exists("devconnect_apigee")) {
+    $dev = new DevConnectApigeeDeveloper($account->mail);
+    $results = $dev->Delete();
+    watchdog("devconnect_user", print_r($results, TRUE));
+  }
+
+  module_invoke_all('devconnect_user_delete', $results, $account);
+}
+
+/**
+ * Page callback for DevConnect Developer Sync.
+ *
+ * Makes sure that all local users have a corresponding account on the API server.
+ *
+ * @return string
+ */
+function devconnect_user_sync() {
+  module_load_include("inc", "devconnect_apigee", "devconnect_apigee_developer");
+  $list_items = array();
+
+  $users = db_select('users', 'u')
+    ->fields('u', array('uid', 'mail'))
+    ->condition('u.uid', 0, '>')
+    ->execute()
+    ->fetchAll(PDO::FETCH_OBJ);
+
+  foreach ($users as $user) {
+    $dev = new DevConnectApigeeDeveloper($user->mail);
+    $validate = $dev->Validate();
+    if (intval($validate['code']) != 200) {
+      $account = user_load($user->uid);
+      $dev = new DevConnectApigeeDeveloper();
+      $create = $dev->Create($account);
+      if ($create['code'] >= 200 && $create['code'] <= 206) {
+        $list_items[] = 'User ' . $account->name . ' created on server';
+      }
+      else {
+        $list_items[] = 'User ' . $account->name . ' not created on server. ' . $create['data']->Message
+          . '<pre>' . print_r($create, TRUE) . '</pre>';
+      }
+    }
+    else {
+      $list_items[] = 'User ' . $user->mail . ' already exists on server.';
+    }
+  }
+
+  $list_params = array(
+    'items' => $list_items,
+    'title' => NULL,
+    'type' => 'ul',
+    'attributes' => array()
+  );
+
+  return theme('item_list', $list_params);
+}
+
+/**
+ * Treat all user pages as not administrative
+ */
+function devconnect_user_admin_paths_alter(&$paths) {
+  $paths['user/*'] = FALSE;
+}
+
+/**
+ * Implements hook_redirect_alter
+ */
+function devconnect_user_redirect_alter(&$redirect){
+  global $user;
+  // Only act if user token in redirect path
+  if(!empty($redirect->redirect) && strpos($redirect->redirect, '[user') !== FALSE){
+    if(!user_is_logged_in()){
+      // Bounce via login back to source path
+      $redirect->redirect = 'user/login';
+      $redirect->redirect_options['query'] = array('destination' => $redirect->source);
+    }else{
+      // Apply user tokens to redirect path
+      $redirect->redirect = token_replace($redirect->redirect, array('user' => $user));
+    }
+  }
+}

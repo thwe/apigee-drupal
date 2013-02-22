@@ -1,0 +1,133 @@
+<?php
+
+/**
+ * undocumented function
+ *
+ * @return void
+ * @author Tom Stovall
+ **/
+function gi_init() {
+  //$path = drupal_get_path("module", "gi");
+  //drupal_add_js($path . "/js/gi.js");
+  //drupal_add_css($path . "/css/gi.css");
+}
+
+/**
+ * implementation of hook_theme
+ *
+ * @return void
+ * @author stovak
+ */
+function gi_theme() {
+  $items = array();
+  $path = drupal_get_path("module", "gi");
+	$items['gi_tree_list'] = array(
+		"function" => "theme_gi_tree_list",
+		"arguments" => array("tree_list" => array())
+	);
+  return $items;
+}
+
+/**
+ * undocumented function
+ *
+ * @return void
+ * @author Tom Stovall
+ **/
+function gi_permission() {
+  return array(
+    'administer github importer' => array(
+      'title' => t('Administer Github Importer'),
+      'description' => t('Perform administration tasks for the Github Repo Importer.'),
+    ),
+    'use github importer' => array(
+      'title' => t('Use Github Importer'),
+      'description' => t('Perform imports with the Github Importer.'),
+    ),
+  );
+}
+
+/**
+ * implementation of hook_menu
+ *
+ * @return void
+ * @author stovak
+ */
+function gi_menu() {
+  $items = array();
+  $items['admin/content/gi'] = array(
+    'title' => 'Github Importer',
+    'page callback' => 'gi_commit_list',
+    'access callback' => user_access("use github importer"),
+    'file' => 'gi.pages.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+  $items['admin/content/gi/now'] = array(
+    'title' => 'Github Importer Import Trees Now',
+    'page callback' => 'gi_import_list_form',
+    'access callback' => user_access("administer github importer"),
+    'file' => 'gi.pages.inc',
+    'type' => MENU_LOCAL_TASK,
+  );
+
+	$items['admin/content/gi/now/ajax/%node'] = array(
+	  'title' => 'Github Importer Import Trees Now',
+	  'page callback' => 'gi_import_now_ajax',
+	  'page arguments' => array(5),
+	  'access callback' => user_access("administer github importer"),
+	  'file' => 'gi.pages.inc',
+	);
+
+  $items['admin/config/content'] = array(
+    'title' => t('Github Importer'),
+    'description' => 'Control flood control options for failed login attempts, contact forms, etc.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('github_importer_settings_form'),
+    'access arguments' => array('administer github importer'),
+    'file' => 'gi.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * undocumented function
+ *
+ * @return void
+ * @author stovak
+ **/
+function gi_cron() {
+	module_load_include("inc", "gi", "gi.pages");
+  $trees = _gi_get_unimported_trees();
+  $toReturn = array();
+  if (is_array($trees)) {
+    foreach ($trees as $nid) {
+     $tree = new GIGithubTree(array("nid" => $nid));
+      $toReturn[] = $tree->import();
+    }
+  }
+  watchdog("github_importer", "Nodes imported via cron", $toReturn, WATCHDOG_NOTICE);
+}
+
+function gi_form_alter(&$form, &$form_state, $form_id) {
+  //print_r($form);
+  //exit();
+}
+
+function gi_form_github_repo_node_form_alter(&$form, &$form_state, $form_id) {
+
+  $form['field_url'][LANGUAGE_NONE][0]['#type'] = "hidden";
+  $form['field_url'][LANGUAGE_NONE][0]['#attributes']['id'] = "field_url_hidden";
+  $form['field_commits']["#access"] = FALSE;
+  $form['revision_information']['#access'] = FALSE;
+  $form['comment_settings']["#access"] = FALSE;
+  $form['options']["#access"] = FALSE;
+  $form['author']["#access"] = FALSE;
+  $form['path']["#access"] = FALSE;
+  $form['menu']["#access"] = FALSE;
+
+}
+
+
+

@@ -1,0 +1,206 @@
+/* CSS file injected in Support webform */
+
+.node-webform label.control-label {
+  display: block;
+  width: 130px;
+  float: left;
+  margin: 0px;
+  padding: 9px 0px 0px;
+  font-size: 15px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.node-webform .grippie {
+  display: none;
+}
+
+.node-webform input,
+.node-webform textarea {
+  width: 560px;
+  padding: 0px 0px 0px 3px;
+  margin: 0px;
+  font-size: 15px;
+}
+
+.node-webform textarea {
+  padding: 6px 0px 0px 3px;
+  line-height: 1.3em;
+  width: 565px;
+}
+
+.node-webform input {
+  height: 33px;
+}
+
+#webform-component-request-details select {
+  width: 255px;
+  padding: 5px 0px 0px 3px;
+  margin: 0px;
+  font-size: 15px;
+  height: 33px;
+  font-weight: bold;
+}
+
+.node-webform .webform-component {
+  margin-bottom: 20px;
+}
+
+/*#webform-component-request-details--product {
+  width: 420px;
+  height: 33px;
+  overflow: hidden;
+  background: url(../images/select.png) no-repeat right;
+}*/
+
+.node-webform .btn-submit {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-radius: 4px 4px 4px 4px;
+  border-style: solid;
+  border-width: 1px;
+  /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);*/
+  box-shadow: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  /*text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);*/
+  text-shadow: none;
+  vertical-align: middle;
+  background-color: #1CA232;
+  /*background-image: -moz-linear-gradient(center top , #F4F4F4, #ECECEC);*/
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #11A629;
+  height: 50px;
+  width: 170px;
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+}
+.node-webform .cancel-button {
+  -moz-border-bottom-colors: none;
+  -moz-border-image: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-radius: 4px 4px 4px 4px;
+  border-style: solid;
+  border-width: 1px;
+  /*box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);*/
+  box-shadow: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  /*text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);*/
+  text-shadow: none;
+  vertical-align: middle;
+  background-color: #B6BEC1;
+  /*background-image: -moz-linear-gradient(center top , #F4F4F4, #ECECEC);*/
+  background-image: none;
+  background-repeat: repeat-x;
+  border-color: #B7C0C4;
+  height: 33px;
+  width: 170px;
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 12px;
+  vertical-align: middle;
+  text-decoration: none;
+  float: right;
+  padding-top: 15px;
+}
+
+.node-webform a.cancel-button:hover {
+  text-decoration: none;
+}
+
+.actions-wrapper {
+  width: 695px;
+}
+
+.node-webform legend {
+  border: none;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.node-webform fieldset {
+  margin-top: 0px;
+  padding: 0px;
+}
+
+/* Top message of the page */
+.node-webform h1 {
+  font-size: 32.5px;
+}
+
+.greybackground-border {
+  height: 90px;
+  width: 650px;
+  background: #F8F8F8;
+  border: 1px solid #CCCCCC;
+  padding: 25px;
+  margin-top: 30px;
+}
+
+.greybackground-border .support-request-form {
+  float: left;
+}
+
+.greybackground-border .title {
+  font-size: 27.5px;
+  display: block;
+  clear: right;
+  width: 500px;
+  margin-left: 120px;
+  margin-bottom: 25px;
+}
+
+.greybackground-border .description {
+  font-size: 20px;
+  display: block;
+  width: 500px;
+  margin-left: 120px;
+  line-height: 19pt;
+}
+
+p.border-bottom {
+  font-size: 20px;
+  border-bottom: 1px solid #D9D9D9;
+  margin-top: 35px;
+  padding-bottom: 40px;
+  width: 700px;
+}
+
+.support-request-form-title {
+  margin-top: 40px;
+  font-size: 32.5px;
+  display: block;
+}
+
+.astericks {
+  color: #666666;
+  margin-top: 23px;
+  margin-bottom: 35px;
+  display: block;
+  font-size: 15px;
+}
+
+textarea.grey {
+  /*color: #E1E4E6;*/
+  color: #B7C0C4;
+}
+
+.node-webform {
+  padding-bottom: 100px;
+}

@@ -1,0 +1,27 @@
+name = DevConnect User
+description = Extra Field for User Entity
+core = 7.x
+package = DevConnect
+version = 7.x-1.0
+project = devconnect_user
+dependencies[] = cck_phone
+dependencies[] = devconnect_apigee
+dependencies[] = features
+dependencies[] = link
+dependencies[] = list
+dependencies[] = options
+features[features_api][] = api:1
+features[field][] = user-user-field_company_name
+features[field][] = user-user-field_company_site_url
+features[field][] = user-user-field_first_name
+features[field][] = user-user-field_last_name
+features[field][] = user-user-field_phone
+
+
+
+; Information added by drush on 2012-07-11
+version = "7.x-4.0-dev-dev"
+core = "7.x"
+project = "devconnect"
+datestamp = "1342015551"
+

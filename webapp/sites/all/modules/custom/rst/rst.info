@@ -1,0 +1,8 @@
+name = RST filter
+description = Allows content to be submitted using RST, a simple plain-text syntax that is transformed into valid XHTML.
+package = "Input filters"
+core = 7.x
+files[] = rst.module
+files[] = rst.php
+project = "Input Filters"
+
