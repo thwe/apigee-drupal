@@ -2,7 +2,7 @@
 core = 7.x
 
 api = 2
-projects[drupal][version] = "7.19"
+projects[drupal][version] = "7.20"
 
 ; Modules
 projects[accordion_menu][subdir] = "contrib"
@@ -96,7 +96,7 @@ projects[commerce_custom_line_items][subdir] = "contrib"
 projects[commerce_custom_line_items][version] = "1.x-dev"
 
 projects[connector][subdir] = "contrib"
-projects[connector][version] = "1.0-beta1"
+projects[connector][version] = "1.0-beta2"
 
 projects[content_access][subdir] = "contrib"
 projects[content_access][version] = "1.2-beta1"
@@ -129,7 +129,7 @@ projects[devconnect][type] = "module"
 projects[devconnect][download][type] = "git"
 projects[devconnect][download][url] = "git@github.com:apigee/devconnect.git"
 projects[devconnect][download][branch] = "7.x-4.21"
-projects[devconnect][download][revision] = "4292d84735b15beebf8be8846e93c71566609a94"
+projects[devconnect][download][revision] = "2e94f6bb8143f30a11611579b4b388c70be662af"
 projects[devconnect][subdir] = "custom"
 
 projects[devconnect_content_admin][type] = "module"
@@ -159,7 +159,7 @@ projects[download_file][subdir] = "contrib"
 projects[download_file][version] = "1.1"
 
 projects[ds][subdir] = "contrib"
-projects[ds][version] = "1.6"
+projects[ds][version] = "1.7"
 
 projects[eck][subdir] = "contrib"
 projects[eck][version] = "2.0-rc1"
@@ -228,7 +228,7 @@ projects[github_connect][subdir] = "contrib"
 projects[github_connect][version] = "1.1"
 
 projects[gmap][subdir] = "contrib"
-projects[gmap][version] = "1.1-beta1"
+projects[gmap][version] = "1.1-beta2"
 
 projects[google_analytics_reports][subdir] = "contrib"
 projects[google_analytics_reports][version] = "1.3"
@@ -487,7 +487,7 @@ projects[toc_filter][subdir] = "contrib"
 projects[toc_filter][version] = "1.2"
 
 projects[token][subdir] = "contrib"
-projects[token][version] = "1.4"
+projects[token][version] = "1.5"
 
 projects[twitter][subdir] = "contrib"
 projects[twitter][version] = "3.3"

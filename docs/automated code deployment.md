@@ -2,17 +2,19 @@ Beginning March 15, 2013 we will be integrating automated deployment into the po
 
 1. A github repo will be created for you by ops when the portal is created. It will be forked from a template. Any repo not forked from this template most likely will have issues with deployment. Please don't change the root directory structure of the repo. It will most likely include several folders (and maybe a few more):
 
-  1. modules folder
+  * modules folder
 
-  1. libraries folder
+  * libraries folder
 
-  1. themes folder
+  * themes folder
 
 1. Clone the repo locally and create a *devl* branch. 
 
 1. Primary development should take place in the *devl* branch. if you have features that should not be deployed until development has completed please create a branch for each feature, then merge the features back into the *devl* branch. 
 
-![A Successful Git Branching Model](./Git-branching-model_sm.png)
+[![A Successful Git Branching Model](./Git-branching-model_sm.png)](http://nvie.com/posts/a-successful-git-branching-model/)
+
+[link](http://nvie.com/posts/a-successful-git-branching-model/) to original article.
 
 1. When development is complete and the code is bug-free locally, please merge the *devl* branch into the *test* branch. 
 
